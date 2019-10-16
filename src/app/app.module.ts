@@ -10,6 +10,7 @@ import { CoursesComponent } from './pages/courses/courses.component';
 import { FakeLogoComponent } from './components/fake-logo/fake-logo.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoadMoreComponent } from './components/load-more/load-more.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HeaderComponent } from './components/header/header.component';
     FakeLogoComponent,
     FooterComponent,
     HeaderComponent,
+    LoadMoreComponent,
   ],
   imports: [
     BrowserModule,
