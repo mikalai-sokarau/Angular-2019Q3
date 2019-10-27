@@ -15,6 +15,9 @@ import { LoadMoreComponent } from './load-more/load-more.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    CoursesComponent
   ]
 })
 export class CoursesModule { }
