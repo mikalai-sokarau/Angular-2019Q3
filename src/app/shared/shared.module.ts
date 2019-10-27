@@ -1,10 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faBars, faSortDown, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+
+const icons: Array<IconDefinition> = [
+  faBars,
+  faPlayCircle,
+  faSortDown
+];
 
 @NgModule({
   declarations: [
@@ -14,7 +23,8 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   exports: [
     BreadcrumbsComponent,
@@ -23,4 +33,8 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  constructor(faLibrary: FaIconLibrary) {
+    faLibrary.addIcons(...icons);
+  }
+}

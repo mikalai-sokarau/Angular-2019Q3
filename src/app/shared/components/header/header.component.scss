@@ -10,4 +10,34 @@ $header-gradient: linear-gradient(
     background: $header-gradient;
     display: block;
     height: 40px;
+
+    .content-container,
+    .control-container,
+    .logo-container {
+        display: flex;
+        align-items: center;
+        color: white;
+    }
+
+    .content-container {
+        max-width: 1200px;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+
+    .logo-container h1 {
+        font-size: 1rem;
+    }
+
+    .control-container {
+        cursor: pointer;
+
+        .user-info {
+            display: flex;
+        }
+
+        .user-avatar {
+            border-radius: 50%;
+        }
+    }
 }
