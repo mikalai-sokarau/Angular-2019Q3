@@ -9,4 +9,5 @@ $header-gradient: linear-gradient(
 :host {
     background: $header-gradient;
     display: block;
+    height: 40px;
 }
