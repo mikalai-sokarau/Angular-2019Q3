@@ -1,1 +1,25 @@
-<p>course works!</p>
+<article class="course-container">
+    <img src="{{course.image}}" alt="course image">
+    <div class="course-info">
+        <div class="main-info">
+            <h3 class="course-title">{{course.title}}</h3>
+            <p class="course-description">{{course.description}}</p>
+            <div class="course-meta-info">
+                <div class="course-author">
+                    {{course.author.firstName}} {{course.author.lastName}}
+                </div>
+                <div class="course-duration">
+                    {{course.duration}}
+                </div>
+                <div class="course-date">
+                    {{course.date}}
+                </div>
+            </div>
+        </div>
+        <div class="aside-info">
+            <fa-icon class="tools" icon="ellipsis-h"></fa-icon>
+            <fa-icon class="tools hidden" icon="trash-alt"></fa-icon>
+            <fa-icon class="tools hidden" icon="edit"></fa-icon>
+        </div>
+    </div>
+</article>

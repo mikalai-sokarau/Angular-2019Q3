@@ -1,0 +1,60 @@
+$active-color: #30b6dd;
+
+.course-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    height: 150px;
+    margin: 15px 0;
+    overflow: hidden;
+
+    fa-icon {
+        color: $active-color;
+    }
+
+    .course-info {
+        width: 100%;
+        display: flex;
+    }
+
+    .main-info {
+        flex: 15;
+        padding-left: 30px;
+
+        .course-meta-info {
+            display: flex;
+        }
+    }
+
+    .aside-info {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        
+        .tools {
+            cursor: pointer;
+            display: block;
+            margin: 10px;
+            
+            &.hidden {
+                visibility: hidden;
+            }
+
+            &:last-child {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    &:hover {
+        .course-title {
+            color: $active-color;
+        }
+
+        .aside-info .hidden {
+            visibility: visible;
+        }
+    }
+}

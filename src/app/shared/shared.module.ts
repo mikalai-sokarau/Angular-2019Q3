@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBars, faSortDown, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faSortDown,
+  faEdit,
+  faEllipsisH,
+  faTrashAlt,
+  IconDefinition
+} from '@fortawesome/free-solid-svg-icons';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
@@ -11,8 +18,11 @@ import { HeaderComponent } from './components/header/header.component';
 
 const icons: Array<IconDefinition> = [
   faBars,
+  faEdit,
+  faEllipsisH,
   faPlayCircle,
-  faSortDown
+  faSortDown,
+  faTrashAlt
 ];
 
 @NgModule({
@@ -28,6 +38,7 @@ const icons: Array<IconDefinition> = [
   ],
   exports: [
     BreadcrumbsComponent,
+    FontAwesomeModule,
     LogoComponent,
     FooterComponent,
     HeaderComponent

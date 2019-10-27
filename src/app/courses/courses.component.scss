@@ -9,9 +9,23 @@ $control-panel-gradient: linear-gradient(
 .interaction-section {
     background: $control-panel-gradient;
     
-    .content-container {
+    .interaction-container {
         color: white;
-        margin: 0 auto;
-        max-width: 1200px;
     }
+}
+
+.courses-container {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.courses-section,
+.interaction-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.courses-number {
+    margin: 25px 0 15px;
 }
