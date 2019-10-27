@@ -1,5 +1,5 @@
 <article class="course-container">
-    <img src="{{course.image}}" alt="course image">
+    <img src="{{course.image}}" width="270" alt="course image">
     <div class="course-info">
         <div class="main-info">
             <h3 class="course-title">{{course.title}}</h3>
@@ -12,7 +12,7 @@
                     {{course.duration}}
                 </div>
                 <div class="course-date">
-                    {{course.date}}
+                    {{course.date | date:'mediumDate'}}
                 </div>
             </div>
         </div>

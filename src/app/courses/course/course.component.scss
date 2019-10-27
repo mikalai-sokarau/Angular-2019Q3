@@ -5,7 +5,7 @@ $active-color: #30b6dd;
     border-radius: 5px;
     color: black;
     display: flex;
-    height: 150px;
+    height: 160px;
     margin: 15px 0;
     overflow: hidden;
 
@@ -18,12 +18,22 @@ $active-color: #30b6dd;
         display: flex;
     }
 
+    .course-description {
+        overflow: hidden;
+    }
+
     .main-info {
         flex: 15;
         padding-left: 30px;
+        display: grid;
+        grid-template-rows: 25% 55% 20%;
 
         .course-meta-info {
             display: flex;
+            
+            > div {
+                padding-right: 20px;
+            }
         }
     }
 
