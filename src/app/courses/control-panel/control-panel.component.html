@@ -2,8 +2,15 @@
     <h2>Find or add courses ...</h2>
     <div class="interaction-container">
         <div class="search">
-            <input type="text" class="search-input">
-            <button class="search-course-btn">search</button>
+            <input 
+                type="text"
+                class="search-input"
+                [(ngModel)]="searchText">
+            <button
+                class="search-course-btn"
+                (click)="onSearchClick()">
+                search
+            </button>
         </div>
         <div class="add-course-btn-container">
             <button class="add-course-btn">
