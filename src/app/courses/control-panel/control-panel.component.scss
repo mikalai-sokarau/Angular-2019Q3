@@ -1,13 +1,59 @@
-$control-panel-gradient: linear-gradient(
-    to right, 
-    rgba(231, 120, 131, 1) 0%, 
-    rgba(237, 131, 112, 1) 33%, 
-    rgba(242, 141, 95, 1) 66%, 
-    rgba(247, 149, 79, 1) 100%
-);
+.control-panel-container {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
 
-:host {
-    background: $control-panel-gradient;
-    display: block;
-    height: 200px;
+    .interaction-container {
+        display: flex;
+        flex-grow: 50%;
+        user-select: none;
+
+        .search {
+            flex-grow: 6;
+            padding-right: 10px;
+            position: relative;
+
+            .search-course-btn {
+                color: white;
+                cursor: pointer;
+                background-color: #66cc94;
+                border: 0;
+                border-radius: 3px;
+                position: absolute;
+                right: 16px;
+                top: 6px;
+                height: 27px;
+                width: 65px;
+
+                &:hover {
+                    background-color: #3cb371;
+                }
+            }
+
+            .search-input {
+                border: none;
+                border-radius: 5px;
+                height: 40px;
+                padding-left: 10px;
+                width: 100%;
+            }
+        }
+
+        .add-course-btn-container {
+            flex-grow: 4;
+            
+            .add-course-btn {
+                height: 100%;
+                background-color: transparent;
+                border: 1px solid white;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(247, 149, 79, 1);
+                }
+            }
+        }
+    }
 }

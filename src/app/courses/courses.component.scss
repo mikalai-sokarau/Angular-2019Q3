@@ -1,0 +1,17 @@
+$control-panel-gradient: linear-gradient(
+    to right, 
+    rgba(231, 120, 131, 1) 0%, 
+    rgba(237, 131, 112, 1) 33%, 
+    rgba(242, 141, 95, 1) 66%, 
+    rgba(247, 149, 79, 1) 100%
+);
+
+.interaction-section {
+    background: $control-panel-gradient;
+    
+    .content-container {
+        color: white;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+}
