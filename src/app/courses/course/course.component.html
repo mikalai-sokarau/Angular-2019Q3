@@ -17,9 +17,19 @@
             </div>
         </div>
         <div class="aside-info">
-            <fa-icon class="tools" icon="ellipsis-h"></fa-icon>
-            <fa-icon class="tools hidden" icon="trash-alt"></fa-icon>
-            <fa-icon class="tools hidden" icon="edit"></fa-icon>
+            <fa-icon 
+                class="tools"
+                icon="ellipsis-h">
+            </fa-icon>
+            <fa-icon 
+                class="tools hidden"
+                icon="trash-alt"
+                (click)="onDeleteClick()">
+            </fa-icon>
+            <fa-icon 
+                class="tools hidden"
+                icon="edit">
+            </fa-icon>
         </div>
     </div>
 </article>

@@ -1,5 +1,5 @@
 export interface ICourse {
-    id: number;
+    id: string;
     title: string;
     date: Date;
     duration: number;
@@ -12,7 +12,7 @@ export interface ICourse {
 }
 
 export class Course implements ICourse {
-    id: number;
+    id: string;
     title: string;
     date: Date;
     duration: number;

@@ -20,4 +20,8 @@ export class CoursesComponent implements OnInit {
         this.courses = courses;
       });
   }
+
+  onDeleteCourse(id: string) {
+    console.log(id);
+  }
 }
