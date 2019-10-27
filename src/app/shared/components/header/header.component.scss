@@ -1,0 +1,12 @@
+$header-gradient: linear-gradient(
+    to right, 
+    rgba(255, 153, 153, 1) 0%, 
+    rgba(240, 152, 132, 1) 33%, 
+    rgba(245, 161, 118, 1) 66%, 
+    rgba(249, 169, 105, 1) 100%
+);
+
+:host {
+    background: $header-gradient;
+    display: block;
+}
