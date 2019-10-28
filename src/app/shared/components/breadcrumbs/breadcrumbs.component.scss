@@ -1,3 +1,11 @@
 .breadcrumbs-container {
+    cursor: pointer;
+    font-style: italic;
     height: 20px;
+    padding: 10px 0;
+
+    &:after {
+        content: ' »';
+        font-size: 0.85rem;
+    }
 }
