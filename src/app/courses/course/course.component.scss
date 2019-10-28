@@ -1,9 +1,11 @@
 $active-color: #30b6dd;
+$card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 0px 16px 0 rgba(0, 0, 0, 0.09);
 
 .course-container {
-    border: 1px solid black;
+    border: 1px solid #eaedf5;
     border-radius: 5px;
-    color: black;
+    box-shadow: $card-shadow;
+    color: #6c7283;
     display: flex;
     height: 160px;
     margin: 15px 0;
@@ -11,6 +13,10 @@ $active-color: #30b6dd;
 
     fa-icon {
         color: $active-color;
+    }
+
+    .course-title::first-letter {
+        text-transform: capitalize;
     }
 
     .course-info {
@@ -49,7 +55,7 @@ $active-color: #30b6dd;
             margin: 10px;
             
             &.hidden {
-                visibility: hidden;
+                opacity: 0;
             }
 
             &:last-child {
@@ -61,10 +67,12 @@ $active-color: #30b6dd;
     &:hover {
         .course-title {
             color: $active-color;
+            transition: color 0.1s ease-out;
         }
 
         .aside-info .hidden {
-            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
         }
     }
 }
