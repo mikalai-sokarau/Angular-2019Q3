@@ -22,6 +22,6 @@ export class CoursesComponent implements OnInit {
   }
 
   onDeleteCourse(id: string) {
-    console.log(id);
+    console.log(`Delete: ${id}`);
   }
 }

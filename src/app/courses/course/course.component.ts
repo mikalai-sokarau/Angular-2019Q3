@@ -18,4 +18,8 @@ export class CourseComponent implements OnInit {
   onDeleteClick() {
     this.deleteCourse.emit(this.course.id);
   }
+
+  onEditClick() {
+    console.log(`Edit: ${this.course.id}`);
+  }
 }
