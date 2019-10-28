@@ -8,6 +8,7 @@ import {
   faEdit,
   faEllipsisH,
   faTrashAlt,
+  faSignOutAlt,
   faUserGraduate,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +31,7 @@ const icons: Array<IconDefinition> = [
   faEllipsisH,
   faPlayCircle,
   faSortDown,
+  faSignOutAlt,
   faTrashAlt,
   faUserGraduate
 ];

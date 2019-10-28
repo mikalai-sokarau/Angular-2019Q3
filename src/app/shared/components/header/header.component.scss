@@ -45,7 +45,45 @@ $header-gradient: linear-gradient(
 
         .user-info {
             display: flex;
+            margin-right: 15px;
+            position: relative;
+
+            .user-dropdown {
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 0px 16px 0 rgba(0, 0, 0, 0.09);
+                color: #30b6dd;
+                cursor: auto;
+                display: none;
+                height: 70px;
+                left: -57px;
+                position: absolute;
+                top: 32px;
+                width: 100px;
+                z-index: 1;
+
+                .logout-container {
+                    cursor: pointer;
+
+                    fa-icon {
+                        font-size: 1rem;
+                    }
+                }
+
+            }
+
+            &:hover .user-dropdown {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            fa-icon {
+                font-size: 0.8rem;
+                margin: 5px;
+            }
         }
+
 
         .user-avatar {
             border-radius: 50%;
