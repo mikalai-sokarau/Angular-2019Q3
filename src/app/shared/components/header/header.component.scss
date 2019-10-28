@@ -25,8 +25,19 @@ $header-gradient: linear-gradient(
         margin: 0 auto;
     }
 
-    .logo-container h1 {
-        font-size: 1rem;
+    .logo-container {
+        cursor: pointer;
+
+        fa-icon {
+            font-size: 1.5rem;
+            margin-right: 5px;
+        }
+
+        h1 {
+            font-size: 1rem;
+            font-style: italic;
+            text-transform: uppercase;
+        }
     }
 
     .control-container {
