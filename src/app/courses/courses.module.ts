@@ -5,6 +5,7 @@ import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { CourseComponent } from './course/course.component';
 import { CoursesComponent } from './courses.component';
 import { LoadMoreComponent } from './load-more/load-more.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,11 @@ import { LoadMoreComponent } from './load-more/load-more.component';
     LoadMoreComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
+  ],
+  exports: [
+    CoursesComponent
   ]
 })
 export class CoursesModule { }

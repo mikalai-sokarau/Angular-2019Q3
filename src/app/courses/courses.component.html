@@ -1,1 +1,18 @@
-<p>courses works!</p>
+<div class="interaction-section">
+    <div class="interaction-container">
+        <app-breadcrumbs></app-breadcrumbs>
+        <app-control-panel></app-control-panel>
+    </div>
+</div>
+<div class="courses-section">
+    <p class="courses-number">There are {{courses.length}} courses</p>
+    <ul class="courses-container">
+        <li *ngFor="let item of courses">
+            <app-course 
+                [course]="item"
+                (deleteCourse)="onDeleteCourse($event)">
+            </app-course>
+        </li>
+    </ul>
+</div>
+<app-load-more></app-load-more>
