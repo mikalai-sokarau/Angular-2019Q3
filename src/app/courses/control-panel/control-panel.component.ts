@@ -13,7 +13,7 @@ export class ControlPanelComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearchClick() {
+  onSearchClick(): void {
     console.log(this.searchText);
   }
 }
