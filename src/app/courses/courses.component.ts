@@ -1,75 +1,29 @@
-import {
-  Component,
-  OnInit,
-  OnChanges,
-  DoCheck,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewInit,
-  AfterViewChecked,
-  OnDestroy
-} from '@angular/core';
+import { CoursesService } from './../shared/services/courses.service';
+import { Component, OnInit } from '@angular/core';
 import { ICourse } from './course/course.model';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+    selector: 'app-courses',
+    templateUrl: './courses.component.html',
+    styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements
-  OnInit,
-  OnChanges,
-  DoCheck,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewInit,
-  AfterViewChecked,
-  OnDestroy {
-  courses: Array<ICourse> = [];
-  private readonly coursesPath = '../../assets/mock-data/courses-data.json';
+export class CoursesComponent implements OnInit {
+    courses: Array<ICourse> = [];
+    private readonly coursesLimit = 5;
 
-  constructor(private http: HttpClient) {}
+    constructor(
+        private coursesService: CoursesService
+    ) {}
 
-  ngOnInit() {
-    this.http.get<Array<ICourse>>(this.coursesPath)
-    .subscribe((courses: Array<ICourse>) => {
-      courses.length = 5;
-      this.courses = courses;
-    });
-  }
+    ngOnInit() {
+        this.coursesService.getCourses()
+            .subscribe((courses: Array<ICourse>) => {
+                courses.length = this.coursesLimit;
+                this.courses = courses;
+            });
+    }
 
-  onDeleteCourse(id: string) {
-    console.log(`Delete: ${id}`);
-  }
-
-  // tslint:disable no-conflicting-lifecycle
-  ngOnChanges() {
-    console.log('ngOnChanges');
-  }
-
-  ngDoCheck() {
-    console.log('ngDoCheck');
-  }
-
-  ngAfterContentInit() {
-    console.log('ngAfterContentInit');
-  }
-
-  ngAfterContentChecked() {
-    console.log('ngAfterContentChecked');
-  }
-
-  ngAfterViewInit() {
-    console.log('ngAfterViewInit');
-  }
-
-  ngAfterViewChecked() {
-    console.log('ngAfterViewChecked');
-  }
-
-  ngOnDestroy() {
-    console.log('ngOnDestroy');
-  }
-  // tslint:enable no-conflicting-lifecycle
+    onDeleteCourse(id: string) {
+        console.log(`Delete: ${id}`);
+    }
 }
