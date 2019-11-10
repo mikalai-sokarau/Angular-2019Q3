@@ -3,18 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import { CourseComponent } from './components/course/course.component';
+import { CourseHighlightingDirective } from './directives/course-highlighting.directive';
 import { CoursesComponent } from './courses.component';
+import { DurationPipe } from './pipes/duration-pipe.pipe';
 import { LoadMoreComponent } from './components/load-more/load-more.component';
 import { SharedModule } from '../shared/shared.module';
-import { CourseHighlightingDirective } from './directives/course-highlighting.directive';
 
 @NgModule({
   declarations: [
     ControlPanelComponent,
     CourseComponent,
+    CourseHighlightingDirective,
     CoursesComponent,
+    DurationPipe,
     LoadMoreComponent,
-    CourseHighlightingDirective
   ],
   imports: [
     CommonModule,
