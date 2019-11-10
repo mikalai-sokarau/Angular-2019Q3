@@ -9,7 +9,8 @@
       "author": {
         "firstName": "Hyde",
         "lastName": "Francis"
-      }
+      },
+      "isTopRated": true
     },
     {
       "id": "5db5a69973813c0a0f99def4",
@@ -21,7 +22,8 @@
       "author": {
         "firstName": "Walton",
         "lastName": "Decker"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699e305e834cdf504e7",
@@ -33,7 +35,8 @@
       "author": {
         "firstName": "Ofelia",
         "lastName": "Battle"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a6996de48e916a8e8336",
@@ -45,7 +48,8 @@
       "author": {
         "firstName": "Kirkland",
         "lastName": "Mathews"
-      }
+      },
+      "isTopRated": true
     },
     {
       "id": "5db5a6992a12da0d48e9ebb4",
@@ -57,7 +61,8 @@
       "author": {
         "firstName": "Brandi",
         "lastName": "Bright"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699dd9776a98b7a03df",
@@ -69,7 +74,8 @@
       "author": {
         "firstName": "Mari",
         "lastName": "Rivera"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a69922fb3d21cbcb78ee",
@@ -81,7 +87,8 @@
       "author": {
         "firstName": "Sophia",
         "lastName": "Pacheco"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699d17eba0ece6132e8",
@@ -93,7 +100,8 @@
       "author": {
         "firstName": "Munoz",
         "lastName": "Garcia"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699f2e75ddc6f2b24aa",
@@ -105,7 +113,8 @@
       "author": {
         "firstName": "Margret",
         "lastName": "Vincent"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a69936c36c3bb10865af",
@@ -117,7 +126,8 @@
       "author": {
         "firstName": "Alyssa",
         "lastName": "Sharpe"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a6993b66dfaafa7eddbe",
@@ -129,7 +139,8 @@
       "author": {
         "firstName": "Kristina",
         "lastName": "Mcleod"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699b77836ff7acad74e",
@@ -141,7 +152,8 @@
       "author": {
         "firstName": "Mathews",
         "lastName": "Gordon"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699b833fa0987066e86",
@@ -153,7 +165,8 @@
       "author": {
         "firstName": "Helena",
         "lastName": "Hopper"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699ef19a103db059a8f",
@@ -165,7 +178,8 @@
       "author": {
         "firstName": "Stevens",
         "lastName": "Vaughan"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699d5ee6b47e9435b89",
@@ -177,7 +191,8 @@
       "author": {
         "firstName": "Curtis",
         "lastName": "Hooper"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699cd74c7bd6cf3a2c4",
@@ -189,7 +204,8 @@
       "author": {
         "firstName": "Leonard",
         "lastName": "Hale"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699af9b96bd61ed5194",
@@ -201,7 +217,8 @@
       "author": {
         "firstName": "Nicole",
         "lastName": "Moreno"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699d61e7ce222d02509",
@@ -213,7 +230,8 @@
       "author": {
         "firstName": "Elise",
         "lastName": "Riley"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699df062b750fc02630",
@@ -225,7 +243,8 @@
       "author": {
         "firstName": "Kayla",
         "lastName": "Burris"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a69941d197541236c1a9",
@@ -237,7 +256,8 @@
       "author": {
         "firstName": "Chrystal",
         "lastName": "Strong"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699a2f21e51c288dd0d",
@@ -249,7 +269,8 @@
       "author": {
         "firstName": "Lynn",
         "lastName": "Ramsey"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699ad0200b3c992251e",
@@ -261,7 +282,8 @@
       "author": {
         "firstName": "Kaufman",
         "lastName": "Keith"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a69987659b17fd24c6ed",
@@ -273,7 +295,8 @@
       "author": {
         "firstName": "Heidi",
         "lastName": "Larsen"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699e460b1c46348104e",
@@ -285,7 +308,8 @@
       "author": {
         "firstName": "Katheryn",
         "lastName": "Vinson"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699194a0d0bb24993a1",
@@ -297,7 +321,8 @@
       "author": {
         "firstName": "James",
         "lastName": "Estrada"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a6994186f0c0405da470",
@@ -309,7 +334,8 @@
       "author": {
         "firstName": "Angie",
         "lastName": "Baker"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699c63aa8f72c9c8cda",
@@ -321,7 +347,8 @@
       "author": {
         "firstName": "Jones",
         "lastName": "Berry"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699bb40d11ebe3a2759",
@@ -333,7 +360,8 @@
       "author": {
         "firstName": "Minnie",
         "lastName": "Head"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a69943f14aeaf8550a0d",
@@ -345,7 +373,8 @@
       "author": {
         "firstName": "Bobbie",
         "lastName": "Nichols"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a6994750d4effed9de32",
@@ -357,7 +386,8 @@
       "author": {
         "firstName": "Deirdre",
         "lastName": "Duke"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699d39d8935ec622b87",
@@ -369,7 +399,8 @@
       "author": {
         "firstName": "Miranda",
         "lastName": "Short"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699ef44594731f52a9f",
@@ -381,7 +412,8 @@
       "author": {
         "firstName": "Mcgee",
         "lastName": "Burton"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699d264ada6e82d0bb4",
@@ -393,7 +425,8 @@
       "author": {
         "firstName": "Tia",
         "lastName": "Fields"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a6992d3793dabc8de2f7",
@@ -405,7 +438,8 @@
       "author": {
         "firstName": "Holden",
         "lastName": "Huber"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699f9ad62e9ad3584c7",
@@ -417,7 +451,8 @@
       "author": {
         "firstName": "Mildred",
         "lastName": "Ford"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a6995fd67c1d689ee64d",
@@ -429,7 +464,8 @@
       "author": {
         "firstName": "Johnnie",
         "lastName": "Boone"
-      }
+      },
+      "isTopRated": false
     },
     {
       "id": "5db5a699ed9bfc7edeaae4ec",
@@ -441,6 +477,7 @@
       "author": {
         "firstName": "Angel",
         "lastName": "Mooney"
-      }
+      },
+      "isTopRated": false
     }
   ]

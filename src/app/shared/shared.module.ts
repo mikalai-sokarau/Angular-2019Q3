@@ -15,7 +15,8 @@ import {
 import {
   faCalendarAlt,
   faClock,
-  faPlayCircle
+  faPlayCircle,
+  faStar
 } from '@fortawesome/free-regular-svg-icons';
 
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
@@ -32,6 +33,7 @@ const icons: Array<IconDefinition> = [
   faPlayCircle,
   faSortDown,
   faSignOutAlt,
+  faStar,
   faTrashAlt,
   faUserGraduate
 ];
