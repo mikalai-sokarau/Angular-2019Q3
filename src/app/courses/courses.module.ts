@@ -7,6 +7,7 @@ import { CourseHighlightingDirective } from './directives/course-highlighting.di
 import { CoursesComponent } from './courses.component';
 import { DurationPipe } from './pipes/duration-pipe.pipe';
 import { LoadMoreComponent } from './components/load-more/load-more.component';
+import { OrderByPipe } from './pipes/order-by.pipe';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     CoursesComponent,
     DurationPipe,
     LoadMoreComponent,
+    OrderByPipe,
   ],
   imports: [
     CommonModule,

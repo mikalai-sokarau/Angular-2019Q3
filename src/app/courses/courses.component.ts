@@ -8,8 +8,8 @@ import { ICourse } from './components/course/course.model';
     styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-    courses: Array<ICourse> = [];
-    private readonly coursesLimit = 5;
+    public courses: Array<ICourse> = [];
+    public readonly coursesLimit = 5;
 
     constructor(
         private coursesService: CoursesService
@@ -17,10 +17,7 @@ export class CoursesComponent implements OnInit {
 
     ngOnInit() {
         this.coursesService.getCourses()
-            .subscribe((courses: Array<ICourse>) => {
-                courses.length = this.coursesLimit;
-                this.courses = courses;
-            });
+            .subscribe((courses: Array<ICourse>) => this.courses = courses);
     }
 
     onDeleteCourse(id: string) {
