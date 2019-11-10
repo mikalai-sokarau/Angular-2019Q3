@@ -10,6 +10,7 @@
         <li *ngFor="let item of courses">
             <app-course 
                 [course]="item"
+                appCourseHighlighting
                 (deleteCourse)="onDeleteCourse($event)">
             </app-course>
         </li>
