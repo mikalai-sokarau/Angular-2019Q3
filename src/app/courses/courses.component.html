@@ -1,7 +1,9 @@
 <div class="interaction-section">
     <div class="interaction-container">
         <app-breadcrumbs></app-breadcrumbs>
-        <app-control-panel></app-control-panel>
+        <app-control-panel
+            (executeSearch)="onExecuteSearch($event)">
+        </app-control-panel>
     </div>
 </div>
 <div class="courses-section">
