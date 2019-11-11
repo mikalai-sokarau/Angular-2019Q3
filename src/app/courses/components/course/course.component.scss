@@ -2,7 +2,6 @@ $active-color: #30b6dd;
 $card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 0px 16px 0 rgba(0, 0, 0, 0.09);
 
 .course-container {
-    border: 1px solid #eaedf5;
     border-radius: 5px;
     box-shadow: $card-shadow;
     color: #6c7283;
@@ -85,4 +84,33 @@ $card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 0px 16px 0 rgba(0, 0, 0, 0.09);
             transition: opacity 0.3s ease-out;
         }
     }
+}
+
+.top-rated-icon {
+    font-size: 0.9em;
+    margin-left: 10px;
+}
+
+.top-rated-course {
+    background: #fcffe8;
+}
+
+%course-status {
+    border: 1px solid #eaedf5;
+    border-right: 4px solid;
+}
+
+.course-status-fresh {
+    @extend %course-status;
+    border-right-color: #66cc94;
+}
+
+.course-status-upcoming {
+    @extend %course-status;
+    border-right-color: #30b6dd;
+}
+
+.course-status-regular {
+    @extend %course-status;
+    border-right-color: #cecece;
 }

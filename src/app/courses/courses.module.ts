@@ -1,18 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ControlPanelComponent } from './control-panel/control-panel.component';
-import { CourseComponent } from './course/course.component';
+import { ControlPanelComponent } from './components/control-panel/control-panel.component';
+import { CourseComponent } from './components/course/course.component';
+import { CourseHighlightingDirective } from './directives/course-highlighting.directive';
 import { CoursesComponent } from './courses.component';
-import { LoadMoreComponent } from './load-more/load-more.component';
+import { DurationPipe } from './pipes/duration/duration-pipe.pipe';
+import { FilterPipe } from './pipes/filter/filter.pipe';
+import { LoadMoreComponent } from './components/load-more/load-more.component';
+import { OrderByPipe } from './pipes/orderBy/order-by.pipe';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     ControlPanelComponent,
     CourseComponent,
+    CourseHighlightingDirective,
     CoursesComponent,
-    LoadMoreComponent
+    DurationPipe,
+    FilterPipe,
+    LoadMoreComponent,
+    OrderByPipe,
   ],
   imports: [
     CommonModule,

@@ -31,3 +31,15 @@ $control-panel-gradient: linear-gradient(
     font-style: italic;
     margin: 25px 0 15px;
 }
+
+.no-data-error {
+    color: #30b6dd;
+    font-style: italic;
+    font-weight: 600;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
