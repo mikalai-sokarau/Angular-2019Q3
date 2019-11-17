@@ -2,6 +2,10 @@ import { CoursesService } from '../shared/services/courses/courses.service';
 import { Component, OnInit } from '@angular/core';
 import { ICourse } from './components/course/course.model';
 import { FilterPipe } from './pipes/filter/filter.pipe';
+import { ModalService } from '../shared/services/modal/modal.service';
+import {
+    DeleteConfirmationModalComponent
+} from './../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
 
 @Component({
     selector: 'app-courses',
@@ -16,7 +20,8 @@ export class CoursesComponent implements OnInit {
 
     constructor(
         private coursesService: CoursesService,
-        private filter: FilterPipe
+        private filter: FilterPipe,
+        private modalService: ModalService
     ) {}
 
     ngOnInit() {
@@ -25,7 +30,15 @@ export class CoursesComponent implements OnInit {
     }
 
     onDeleteCourse(id: string) {
-        this.courses = this.coursesService.removeCourse(id);
+        const modalRef = this.modalService.openModal(DeleteConfirmationModalComponent);
+
+        modalRef.instance.userAction.subscribe(isDelete => {
+            if (isDelete) {
+                this.courses = this.coursesService.removeCourse(id);
+            }
+
+            this.modalService.closeModal(modalRef);
+        });
     }
 
     onExecuteSearch(text: string) {

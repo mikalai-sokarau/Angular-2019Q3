@@ -1,0 +1,23 @@
+<section class="app-modal">
+    <div class="delete-confirmation-modal-wrapper">
+        <h3 class="modal-title">Do you really want to delete this course?</h3>
+        <div class="buttons-block">
+            <button 
+                class="modal-button button-confirm"
+                (click)="onUserAction(true)">
+                Yes
+            </button>
+            <button 
+                class="modal-button button-refuse"
+                (click)="onUserAction(false)">
+                No
+            </button>
+        </div>
+        <span
+            class="close-icon"
+            (click)="onUserAction(false)">
+            <fa-icon icon="times"></fa-icon>
+        </span>
+    </div>
+</section>
+

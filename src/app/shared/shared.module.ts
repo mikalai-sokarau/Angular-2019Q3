@@ -7,6 +7,7 @@ import {
   faSortDown,
   faEdit,
   faEllipsisH,
+  faTimes,
   faTrashAlt,
   faSignOutAlt,
   faUserGraduate,
@@ -23,6 +24,9 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { LogoComponent } from './components/logo/logo.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import {
+  DeleteConfirmationModalComponent
+} from './components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
 
 const icons: Array<IconDefinition> = [
   faBars,
@@ -34,6 +38,7 @@ const icons: Array<IconDefinition> = [
   faSortDown,
   faSignOutAlt,
   faStar,
+  faTimes,
   faTrashAlt,
   faUserGraduate
 ];
@@ -43,7 +48,8 @@ const icons: Array<IconDefinition> = [
     BreadcrumbsComponent,
     LogoComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    DeleteConfirmationModalComponent
   ],
   imports: [
     CommonModule,
