@@ -34,9 +34,9 @@ export class CoursesService {
     return courseToUpdate;
   }
 
-  removeCourse(courseToRemove: ICourse): ICourse {
-    this.courses = this.courses.filter(course => course.id !== courseToRemove.id);
+  removeCourse(id: string): Array<ICourse> {
+    this.courses = this.courses.filter(course => course.id !== id);
 
-    return courseToRemove;
+    return this.courses;
   }
 }

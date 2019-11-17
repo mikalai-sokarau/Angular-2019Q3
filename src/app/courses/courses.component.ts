@@ -25,7 +25,7 @@ export class CoursesComponent implements OnInit {
     }
 
     onDeleteCourse(id: string) {
-        console.log(`Delete: ${id}`);
+        this.courses = this.coursesService.removeCourse(id);
     }
 
     onExecuteSearch(text: string) {
