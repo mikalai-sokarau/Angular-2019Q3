@@ -1,12 +1,12 @@
 import { of, Observable } from 'rxjs';
-import { CoursesService } from './../shared/services/courses.service';
+import { CoursesService } from '../shared/services/courses/courses.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CoursesComponent } from './courses.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ICourse } from './course/course.model';
+import { ICourse } from './components/course/course.model';
 
 const mockCourses: ICourse[] = [
   {

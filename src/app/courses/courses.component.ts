@@ -1,4 +1,4 @@
-import { CoursesService } from './../shared/services/courses.service';
+import { CoursesService } from '../shared/services/courses/courses.service';
 import { Component, OnInit } from '@angular/core';
 import { ICourse } from './components/course/course.model';
 import { FilterPipe } from './pipes/filter/filter.pipe';
