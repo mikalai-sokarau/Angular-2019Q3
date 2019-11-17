@@ -12,7 +12,10 @@
                      height="30">
                 <fa-icon icon="sort-down"></fa-icon>
                 <div class="user-dropdown">
-                    <div class="logout-container">
+                    <div
+                        class="logout-container"
+                        (click)="authService.logout()"
+                        *ngIf="authService.isAuthenticated; else loginTemplate">
                         <fa-icon icon="sign-out-alt"></fa-icon>
                         <span>Log out</span>
                     </div>
@@ -24,3 +27,12 @@
         </div>
     </div>
 </header>
+
+<ng-template #loginTemplate>
+    <div
+        class="logout-container"
+        (click)="authService.login()">
+        <fa-icon icon="sign-in-alt"></fa-icon>
+        <span>Log in</span>
+    </div>
+</ng-template>

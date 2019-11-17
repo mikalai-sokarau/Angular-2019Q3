@@ -9,6 +9,7 @@ import {
   faEllipsisH,
   faTimes,
   faTrashAlt,
+  faSignInAlt,
   faSignOutAlt,
   faUserGraduate,
   IconDefinition
@@ -36,6 +37,7 @@ const icons: Array<IconDefinition> = [
   faEllipsisH,
   faPlayCircle,
   faSortDown,
+  faSignInAlt,
   faSignOutAlt,
   faStar,
   faTimes,
