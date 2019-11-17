@@ -20,10 +20,8 @@ export class CoursesComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.coursesService.getCourses()
-            .subscribe((courses: Array<ICourse>) =>
-                this.allCourses = this.courses = courses
-            );
+        this.allCourses = this.coursesService.getCourses();
+        this.courses = this.allCourses;
     }
 
     onDeleteCourse(id: string) {

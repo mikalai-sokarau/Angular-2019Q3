@@ -1,4 +1,4 @@
-[
+const courses = [
     {
       "id": "5db5a6997605146e68ffbd7d",
       "title": "labore dolor qui duis aliquip magna dolore",
@@ -481,3 +481,5 @@
       "isTopRated": false
     }
   ]
+
+export { courses };
