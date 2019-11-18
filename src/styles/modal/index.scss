@@ -1,10 +1,4 @@
-$confirm-color: #30b6dd;
-$confirm-color-light: #41caf2;
-$refuse-color: white;
-$gray: #6c7283;
-$light-gray: #dddee5;
-$orange: #ff9f21;
-// TODO: create a file with global variables ;)
+@import '../variables';
 
 .app-modal {
     align-items: center;

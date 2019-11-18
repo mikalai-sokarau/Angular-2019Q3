@@ -28,6 +28,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {
   DeleteConfirmationModalComponent
 } from './components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 const icons: Array<IconDefinition> = [
   faBars,
@@ -56,7 +57,8 @@ const icons: Array<IconDefinition> = [
   imports: [
     CommonModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   exports: [
     BreadcrumbsComponent,

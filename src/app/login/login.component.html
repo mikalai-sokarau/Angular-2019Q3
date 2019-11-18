@@ -1,0 +1,32 @@
+<div class="login-page">
+    <section class="welcome-block">
+        <h2 class="welcome-title">Welcome</h2>
+        <p class="welcome-greetings">
+            To the Angular global mentoring program, here you can find courses
+            that cover all topics needed to start your own Angular application.
+        </p>
+    </section>
+    <section class="login-block">
+        <form class="login-form">
+            <h3 class="login-form-header">Login</h3>
+            <button class="external-login-btn">EPAM Login</button>
+            <div class="separator">or</div>
+            <div class="user-info">
+                <input class="user-email" type="email" placeholder="Email">
+                <input class="user-password" type="password" placeholder="Password">
+                <div class="login-options">
+                    <div>
+                        <input type="checkbox" id="remember-me">
+                        <label class="remember-me" for="remember-me">Remember me</label>
+                    </div>
+                    <a class="forgot-password-message" href="/login">Forgot password?</a>
+                </div>
+            </div>
+            <button 
+                class="login-btn"
+                type="button"
+                (click)="authService.login()">Login</button>
+        </form>
+    </section>
+</div>
+
