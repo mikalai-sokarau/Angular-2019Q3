@@ -1,3 +1,4 @@
+import { LoginModule } from './login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     SharedModule,
     CoursesModule,
-    CoreModule
+    CoreModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

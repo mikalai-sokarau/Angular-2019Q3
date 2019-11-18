@@ -1,0 +1,46 @@
+.delete-confirmation-modal-wrapper {
+    align-items: center;
+    background: white;
+    box-shadow: 10px 10px 10px 0 rgba(0,0,0,0.3);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 190px;
+    position: absolute;
+    justify-content: center;
+    width: 450px;
+
+    .buttons-block {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        width: 200px;
+    }
+
+    .modal-button {
+        border-radius: 5px;
+        height: 40px;
+        width: 80px;
+    }
+
+    .modal-title {
+        color: #6c7283;
+        font-style: italic;
+    }
+
+    .close-icon {
+        align-content: center;
+        color: #6c7283;
+        cursor: pointer;
+        height: 20px;
+        font-size: 1.1rem;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        width: 20px;
+
+        &:hover {
+            color: #ff9f21;
+        }
+    }
+}

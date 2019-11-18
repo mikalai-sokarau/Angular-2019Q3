@@ -10,6 +10,9 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 import { LoadMoreComponent } from './components/load-more/load-more.component';
 import { OrderByPipe } from './pipes/orderBy/order-by.pipe';
 import { SharedModule } from '../shared/shared.module';
+import {
+  DeleteConfirmationModalComponent
+} from './../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { SharedModule } from '../shared/shared.module';
   ],
   exports: [
     CoursesComponent
+  ],
+  entryComponents: [
+    DeleteConfirmationModalComponent
   ]
 })
 export class CoursesModule { }
