@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoursesComponent } from './courses/courses.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: '**', component: CoursesComponent, pathMatch: 'full' },
+  { path: 'courses', component: CoursesComponent, pathMatch: 'full' },
+  { path: '**', component: LoginComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
