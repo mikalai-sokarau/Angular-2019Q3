@@ -1,4 +1,4 @@
-import { ICourse } from '../../../courses/components/course/course.model';
+import { ICourse } from '../../components/course/course.model';
 import { Injectable } from '@angular/core';
 import { courses } from '../../../../assets/mock-data/courses-data.js';
 
