@@ -29,7 +29,7 @@ export class CoursesComponent implements OnInit {
         this.courses = this.allCourses;
     }
 
-    onDeleteCourse(id: string) {
+    public onDeleteCourse(id: string) {
         const modalRef = this.modalService.openModal(DeleteConfirmationModalComponent);
 
         modalRef.instance.userAction.subscribe(isDelete => {
@@ -41,7 +41,7 @@ export class CoursesComponent implements OnInit {
         });
     }
 
-    onExecuteSearch(text: string) {
+    public onExecuteSearch(text: string) {
         this.courses = this.filter.transform(this.allCourses, text);
     }
 }

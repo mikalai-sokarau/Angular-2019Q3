@@ -12,27 +12,27 @@ const MOCK_USER: IUser = {
 })
 export class AuthService {
   public isAuthenticated: boolean;
-  private user: IUser;
+  private user: IUser | null;
 
   constructor() {
     this.isAuthenticated = Boolean(this.user);
   }
 
-  login(): void {
+  public login(): void {
     this.user = MOCK_USER;
     this.isAuthenticated = true;
 
     console.log('logged in successfully');
   }
 
-  logout(): void {
+  public logout(): void {
     this.user = null;
     this.isAuthenticated = false;
 
     console.log('logged out successfully');
   }
 
-  getUserInfo(): IUser {
+  public getUserInfo(): IUser {
     return this.user;
   }
 }

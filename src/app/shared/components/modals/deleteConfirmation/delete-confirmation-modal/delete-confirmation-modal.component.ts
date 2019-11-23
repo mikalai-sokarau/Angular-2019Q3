@@ -13,7 +13,7 @@ export class DeleteConfirmationModalComponent implements OnInit {
 
   ngOnInit() { }
 
-  onUserAction(value: boolean) {
+  public onUserAction(value: boolean) {
     this.userAction.emit(value);
   }
 }

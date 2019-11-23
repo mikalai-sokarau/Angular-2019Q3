@@ -15,11 +15,11 @@ export class CourseComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDeleteClick() {
+  public onDeleteClick() {
     this.deleteCourse.emit(this.course.id);
   }
 
-  onEditClick() {
+  public onEditClick() {
     console.log(`Edit: ${this.course.id}`);
   }
 }
