@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AddCourseComponent } from './components/add-course/add-course.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import { CourseComponent } from './components/course/course.component';
 import { CourseHighlightingDirective } from './directives/course-highlighting.directive';
@@ -16,6 +17,7 @@ import {
 
 @NgModule({
   declarations: [
+    AddCourseComponent,
     ControlPanelComponent,
     CourseComponent,
     CourseHighlightingDirective,

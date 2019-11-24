@@ -11,18 +11,18 @@
     width: 100%;
 
     .button-confirm {
-        background: $confirm-color;
+        background: $blue;
         border: 0;
-        color: $refuse-color;
+        color: $white;
         cursor: pointer;
 
         &:hover {
-            background: $confirm-color-light;
+            background: $light-blue;
         }
     }
 
     .button-refuse {
-        background: $refuse-color;
+        background: $white;
         border: 1px solid $gray;
         color: $gray;
         cursor: pointer;

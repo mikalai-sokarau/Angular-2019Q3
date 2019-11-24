@@ -1,0 +1,47 @@
+@import '../variables';
+
+%default-btn {
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    margin: 0 auto;
+    width: 100px;
+}
+
+%warning-btn {
+    @extend %default-btn;
+    background: $orange;
+
+    &:hover {
+        background: white;
+        border: 2px solid $orange;
+        color: $orange;
+    }
+}
+
+%info-btn {
+    @extend %default-btn;
+    background: $blue;
+
+    &:hover {
+        background: white;
+        border: 2px solid $blue;
+        color: $blue;
+    }    
+}
+
+%pale-btn {
+    @extend %default-btn;
+    background: white;
+    color: $gray;
+    border: 2px solid $gray;
+
+    &:hover {
+        background: $gray;
+        border: 2px solid $gray;
+        color: $white;
+    }
+}

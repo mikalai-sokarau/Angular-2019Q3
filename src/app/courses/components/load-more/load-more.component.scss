@@ -1,15 +1,7 @@
-.load-more-btn {
-    background: #f7954f;
-    border: 1px solid white;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    display: block;
-    height: 40px;
-    width: 100px;
-    margin: 30px auto;
+@import '../../../../styles/elements';
 
-    &:hover {
-        background: #f9a969;
-    }
+.load-more-btn {
+    @extend %warning-btn;
+
+    margin: 30px auto;
 }

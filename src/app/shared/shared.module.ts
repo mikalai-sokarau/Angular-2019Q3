@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faBars,
-  faSortDown,
+  faCloudUploadAlt,
   faEdit,
   faEllipsisH,
   faTimes,
   faTrashAlt,
   faSignInAlt,
   faSignOutAlt,
+  faSortDown,
   faUserGraduate,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
@@ -34,6 +35,7 @@ const icons: Array<IconDefinition> = [
   faBars,
   faClock,
   faCalendarAlt,
+  faCloudUploadAlt,
   faEdit,
   faEllipsisH,
   faPlayCircle,
