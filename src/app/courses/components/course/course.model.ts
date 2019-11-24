@@ -9,6 +9,7 @@ export interface ICourse {
         firstName: string,
         lastName: string
     };
+    isTopRated: boolean;
 }
 
 export class Course implements ICourse {
@@ -22,4 +23,5 @@ export class Course implements ICourse {
         firstName: string,
         lastName: string
     };
+    isTopRated: boolean;
 }
