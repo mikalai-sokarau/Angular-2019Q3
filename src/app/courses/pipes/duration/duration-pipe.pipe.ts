@@ -9,9 +9,13 @@ export class DurationPipe implements PipeTransform {
   private readonly minutesPostfix = 'mm';
   private readonly minutesPrefix = '0';
 
-  transform(value: string): string {
-    const hours = Math.floor(Number(value) / this.minutesInHour) || '';
-    const minutes = Number(value) % this.minutesInHour;
+  public transform(value: number): string {
+    if (isNaN(value) || value <= 0) {
+      return `0${this.hoursPostfix}00${this.minutesPostfix}`;
+    }
+
+    const hours = Math.floor(value / this.minutesInHour) || '';
+    const minutes = value % this.minutesInHour;
     const formattedHours = hours && hours + this.hoursPostfix;
     const formattedMinutes = (this.minutesPrefix + minutes + this.minutesPostfix).slice(-4);
 

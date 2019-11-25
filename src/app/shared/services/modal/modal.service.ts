@@ -18,11 +18,11 @@ export class ModalService {
     private resolver: ComponentFactoryResolver,
   ) { }
 
-  openModal(modalInstance): ComponentRef<any> {
+  public openModal(modalInstance): ComponentRef<any> {
     return this.attachComponentToBody(modalInstance);
   }
 
-  closeModal(componentRef: ComponentRef<any>): void {
+  public closeModal(componentRef: ComponentRef<any>): void {
     this.removeComponentFromBody(componentRef);
   }
 

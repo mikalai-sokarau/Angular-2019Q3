@@ -22,7 +22,7 @@ $header-gradient: linear-gradient(
     }
 
     .content-container {
-        max-width: 1200px;
+        max-width: $app-max-width;
         justify-content: space-between;
         margin: 0 auto;
     }

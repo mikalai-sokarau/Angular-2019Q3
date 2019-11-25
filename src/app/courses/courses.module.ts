@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AddCourseComponent } from './components/add-course/add-course.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import { CourseComponent } from './components/course/course.component';
 import { CourseHighlightingDirective } from './directives/course-highlighting.directive';
@@ -13,9 +14,12 @@ import { SharedModule } from '../shared/shared.module';
 import {
   DeleteConfirmationModalComponent
 } from './../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
+import { InputDurationComponent } from './components/input-duration/input-duration.component';
+import { InputTextComponent } from './components/input-text/input-text.component';
 
 @NgModule({
   declarations: [
+    AddCourseComponent,
     ControlPanelComponent,
     CourseComponent,
     CourseHighlightingDirective,
@@ -24,6 +28,8 @@ import {
     FilterPipe,
     LoadMoreComponent,
     OrderByPipe,
+    InputDurationComponent,
+    InputTextComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { ICourse } from '../../../courses/components/course/course.model';
+import { ICourse } from '../../components/course/course.model';
 import { Injectable } from '@angular/core';
 import { courses } from '../../../../assets/mock-data/courses-data.js';
 
@@ -12,21 +12,21 @@ export class CoursesService {
     this.courses = courses;
   }
 
-  getCourses(): Array<ICourse> {
+  public getCourses(): Array<ICourse> {
     return this.courses;
   }
 
-  createCourse(course: ICourse): ICourse {
+  public createCourse(course: ICourse): ICourse {
     this.courses.push(course);
 
     return course;
   }
 
-  getCourseById(id: string): ICourse {
+  public getCourseById(id: string): ICourse {
     return this.courses.find(course => id === course.id);
   }
 
-  updateCourse(config: ICourse): ICourse {
+  public updateCourse(config: ICourse): ICourse {
     const courseToUpdate = this.courses.find(course => config.id === course.id);
 
     Object.assign(courseToUpdate, config);
@@ -34,7 +34,7 @@ export class CoursesService {
     return courseToUpdate;
   }
 
-  removeCourse(id: string): Array<ICourse> {
+  public removeCourse(id: string): Array<ICourse> {
     this.courses = this.courses.filter(course => course.id !== id);
 
     return this.courses;

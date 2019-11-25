@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(courses: Array<ICourse>, filterBy: string): Array<ICourse> {
+  public transform(courses: Array<ICourse>, filterBy: string): Array<ICourse> {
     return courses.filter(course => course.title.indexOf(filterBy) >= 0);
   }
 

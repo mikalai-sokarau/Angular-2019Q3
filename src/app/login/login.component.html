@@ -12,8 +12,18 @@
             <button class="external-login-btn">EPAM Login</button>
             <div class="separator">or</div>
             <div class="user-info">
-                <input class="user-email" type="email" placeholder="Email">
-                <input class="user-password" type="password" placeholder="Password">
+                <input 
+                    class="user-email"
+                    [(ngModel)]="userEmail"
+                    [ngModelOptions]="{standalone: true}"
+                    type="email"
+                    placeholder="Email">
+                <input
+                    class="user-password"
+                    [(ngModel)]="userPassword"
+                    [ngModelOptions]="{standalone: true}"
+                    type="password"
+                    placeholder="Password">
                 <div class="login-options">
                     <div>
                         <input type="checkbox" id="remember-me">

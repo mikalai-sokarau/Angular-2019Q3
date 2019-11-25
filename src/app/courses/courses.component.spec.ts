@@ -1,5 +1,5 @@
 import { of, Observable } from 'rxjs';
-import { CoursesService } from '../shared/services/courses/courses.service';
+import { CoursesService } from './services/courses/courses.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CoursesComponent } from './courses.component';

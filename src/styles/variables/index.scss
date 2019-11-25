@@ -1,11 +1,23 @@
-$confirm-color: #30b6dd;
-$confirm-color-light: #6dd4f3;
-$refuse-color: white;
-$gray: #6c7283;
+/* colors */
+
+$blue: #30b6dd;
+$light-blue: #6dd4f3;
+
+$gray: #b8b8b8;
+$dark-gray: #6c7283;
+$light-gray: #dddee5;
+
 $green: #9bc837;
 $light-green: #66cc94;;
-$light-gray: #dddee5;
-$orange: #ff9f21;
+
+$orange: #f7954f;
+$light-orange: #f9a969;
+
+$white: white;
+
+
+
+/* gradients */
 
 $main-gradient: linear-gradient(
     to right, 
@@ -14,3 +26,9 @@ $main-gradient: linear-gradient(
     rgba(242, 141, 95, 1) 66%, 
     rgba(247, 149, 79, 1) 100%
 );
+
+
+
+/* sizes */
+
+$app-max-width: 1200px;

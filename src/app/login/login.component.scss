@@ -76,14 +76,14 @@ $form-elements-space: 15px;
 
 .external-login-btn {
     background: white;
-    border: 2px solid $confirm-color-light;
-    color: $confirm-color-light;
+    border: 2px solid $light-blue;
+    color: $light-blue;
     font-size: 1rem;
     font-weight: 700;
 
     &:hover {
-        background-color: $confirm-color-light;
-        border-color: $confirm-color-light;
+        background-color: $light-blue;
+        border-color: $light-blue;
         color: white;
     }
 }
@@ -120,7 +120,7 @@ $form-elements-space: 15px;
     cursor: pointer;
 
     &:hover {
-        color: $confirm-color-light;
+        color: $light-blue;
     }
 }
 

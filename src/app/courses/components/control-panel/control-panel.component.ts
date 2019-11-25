@@ -7,14 +7,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ControlPanelComponent implements OnInit {
   @Output() executeSearch: EventEmitter<string> = new EventEmitter();
-  searchText = '';
+  public searchText = '';
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSearchClick(): void {
+  public onSearchClick(): void {
     this.executeSearch.emit(this.searchText);
   }
 }
