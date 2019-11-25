@@ -1,0 +1,36 @@
+.duration-container {
+    position: relative;
+
+    input::-webkit-inner-spin-button, 
+    input::-webkit-outer-spin-button { 
+        appearance: none; 
+        margin: 0; 
+    }
+
+    label {
+        cursor: pointer;
+        text-transform: capitalize;
+
+        &:after {
+            content: '*';
+            padding-left: 3px;
+        }
+    }
+}
+
+.duration {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 80px;
+    width: 100%;
+}
+
+.formatted-duration {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+

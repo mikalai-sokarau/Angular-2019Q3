@@ -1,0 +1,27 @@
+@import '../../../../styles/variables';
+
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+.description {
+    margin-top: 10px;
+    border: 1px solid $light-gray;
+    border-radius: 5px;
+    font-style: italic;
+    margin: 10px 0;
+    padding-left: 15px;
+    padding-top: 15px;
+    resize: none;
+}
+
+.description-label {
+    cursor: pointer;
+    text-transform: capitalize;
+
+    &:after {
+        content: '*';
+        padding-left: 3px;
+    }
+}

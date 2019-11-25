@@ -14,6 +14,8 @@ import { SharedModule } from '../shared/shared.module';
 import {
   DeleteConfirmationModalComponent
 } from './../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
+import { InputDurationComponent } from './components/input-duration/input-duration.component';
+import { InputTextComponent } from './components/input-text/input-text.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import {
     FilterPipe,
     LoadMoreComponent,
     OrderByPipe,
+    InputDurationComponent,
+    InputTextComponent,
   ],
   imports: [
     CommonModule,

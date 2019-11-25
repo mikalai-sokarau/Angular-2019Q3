@@ -1,0 +1,18 @@
+<div class="duration-container">
+    <label for="duration-id">duration</label>
+    <input
+        type="number"
+        id="duration-id"
+        placeholder="Enter duration"
+        class="duration"
+        min="0"
+        max="MAX_DURATION_IN_MINUTES"
+        step="1"
+        pattern="[0-9]"
+        (keyup)="onDurationChange()"
+        [(ngModel)]="duration"
+        name="duration">
+    <span class="formatted-duration">
+        {{formattedDuration}}
+    </span>
+</div>

@@ -25,23 +25,13 @@
         display: grid;
     }
 
-    [class^="course"] {
-        input, textarea {
-            border: 1px solid $light-gray;
-            border-radius: 5px;
-            font-style: italic;
-            margin: 10px 0;
-            padding-left: 15px;
-        }
-
-        input {
-            height: 40px;
-        }
-
-        textarea {
-            padding-top: 15px;
-            resize: none;
-        }
+    input[class^="course"] {
+        border: 1px solid $light-gray;
+        border-radius: 5px;
+        font-style: italic;
+        height: 40px;
+        margin: 10px 0;
+        padding-left: 15px;
     }
 
     h2::first-letter,
@@ -51,8 +41,8 @@
 
     input::-webkit-inner-spin-button, 
     input::-webkit-outer-spin-button { 
-    appearance: none; 
-    margin: 0; 
+        appearance: none; 
+        margin: 0; 
     }
 
     label {
@@ -63,20 +53,6 @@
         &:not([for*="upload"]):after {
             content: '*';
             padding-left: 3px;
-        }
-    }
-
-    .course-duration-container {
-        position: relative;
-
-        .course-duration {
-            padding-right: 80px;
-        }
-
-        .formatted-course-duration {
-            position: absolute;
-            top: 40px;
-            right: 10px;
         }
     }
 

@@ -15,17 +15,12 @@
                     type="text"
                     id="course-title-id"
                     class="course-title"
-                    placeholder="Enter a course name">
+                    placeholder="Enter a course name"
+                    [(ngModel)]="courseTitle"
+                    name="title">
             </li>
             <li class="course-description-container">
-                <label for="course-description-id">description</label>
-                <textarea
-                    class="course-description"
-                    name="course-description"
-                    id="course-description-id"
-                    placeholder="Enter a course description"
-                    cols="30"
-                    rows="10"></textarea>
+                <app-input-text></app-input-text>
             </li>
             <li class="course-meta-info-container">
                 <div class="course-date-container">
@@ -36,24 +31,9 @@
                         placeholder="Enter a course date"
                         class="course-date">
                 </div>
-                <div class="course-duration-container">
-                    <label for="course-duration-id">duration</label>
-                    <input
-                        type="number"
-                        id="course-duration-id"
-                        placeholder="Enter a course duration"
-                        class="course-duration"
-                        min="0"
-                        max="COURSE_MAX_DURATION_IN_MINUTES"
-                        step="1"
-                        pattern="[0-9]"
-                        (keyup)="onDurationChange()"
-                        [(ngModel)]="courseDuration"
-                        [ngModelOptions]="{standalone: true}">
-                    <span class="formatted-course-duration">
-                        {{formattedCourseDuration}}
-                    </span>
-                </div>
+                <app-input-duration
+                    (durationChange)="onDurationChange($event)"
+                ></app-input-duration>                
             </li>
             <li class="course-author-container">
                 <label for="course-author-id">authors</label>
