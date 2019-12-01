@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CoursesService } from '../../services/courses/courses.service';
 
 @Component({
   selector: 'app-add-course',
@@ -6,19 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-course.component.scss'],
 })
 export class AddCourseComponent {
-  public courseTitle: string;
-
-  constructor() {}
-
-  public onDurationChange(duration: number): void {
-    console.log('duration: ' + duration);
-  }
-
-  public onCancel(): void {
-    console.log('cancel click');
-  }
-
-  public onSave(): void {
-    console.log('save click');
-  }
+  constructor(private coursesService: CoursesService) { }
+  
 }

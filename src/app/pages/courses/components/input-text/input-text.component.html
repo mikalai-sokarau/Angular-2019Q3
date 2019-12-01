@@ -10,5 +10,6 @@
     placeholder="Enter a description"
     cols="30"
     rows="10"
-    [(ngModel)]="description">
+    [(ngModel)]="description"
+    (ngModelChange)="onChange($event)">
 </textarea>

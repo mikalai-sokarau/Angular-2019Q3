@@ -18,7 +18,8 @@ describe('CourseComponent', () => {
     author: {
       firstName: 'Walton',
       lastName: 'Decker'
-    }
+    },
+    isTopRated: false
   };
 
   beforeEach(async(() => {

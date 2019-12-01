@@ -16,6 +16,9 @@ import {
 } from '../../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
 import { InputDurationComponent } from './components/input-duration/input-duration.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { EditCourseComponent } from './components/edit-course/edit-course.component';
+import { CourseManipulationComponent } from './components/course-manipulation/course-manipulation.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +33,13 @@ import { InputTextComponent } from './components/input-text/input-text.component
     OrderByPipe,
     InputDurationComponent,
     InputTextComponent,
+    EditCourseComponent,
+    CourseManipulationComponent,
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule
   ],
   exports: [
     CoursesComponent

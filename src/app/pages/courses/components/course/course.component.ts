@@ -9,7 +9,7 @@ import { ICourse } from './course.model';
 })
 export class CourseComponent implements OnInit {
   @Input() course: ICourse;
-  @Output() deleteCourseEmitter = new EventEmitter<string>();
+  @Output() deleteCourse = new EventEmitter<string>();
 
   constructor() { }
 
@@ -17,10 +17,6 @@ export class CourseComponent implements OnInit {
   }
 
   public onDeleteClick(): void {
-    this.deleteCourseEmitter.emit(this.course.id);
-  }
-
-  public onEditClick(): void {
-    console.log(`Edit: ${this.course.id}`);
+    this.deleteCourse.emit(this.course.id);
   }
 }

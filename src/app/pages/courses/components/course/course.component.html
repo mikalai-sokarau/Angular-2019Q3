@@ -35,11 +35,12 @@
                 icon="trash-alt"
                 (click)="onDeleteClick()">
             </fa-icon>
-            <fa-icon 
-                class="tools hidden"
-                icon="edit"
-                (click)="onEditClick()">
-            </fa-icon>
+            <a [routerLink]="['/courses', course.id]">
+                <fa-icon 
+                    class="tools hidden"
+                    icon="edit">
+                </fa-icon>
+            </a>
         </div>
     </div>
 </article>
