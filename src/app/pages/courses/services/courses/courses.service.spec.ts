@@ -1,4 +1,4 @@
-import { ICourse } from './../../courses/course/course.model';
+import { ICourse } from '../../courses/course/course.model';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CoursesService } from './courses.service';

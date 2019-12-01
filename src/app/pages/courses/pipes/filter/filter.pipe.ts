@@ -1,4 +1,4 @@
-import { ICourse } from './../../components/course/course.model';
+import { ICourse } from '../../components/course/course.model';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

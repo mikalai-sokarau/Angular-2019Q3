@@ -10,10 +10,10 @@ import { DurationPipe } from './pipes/duration/duration-pipe.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { LoadMoreComponent } from './components/load-more/load-more.component';
 import { OrderByPipe } from './pipes/orderBy/order-by.pipe';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import {
   DeleteConfirmationModalComponent
-} from './../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
+} from '../../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
 import { InputDurationComponent } from './components/input-duration/input-duration.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
 
