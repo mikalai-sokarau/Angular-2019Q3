@@ -37,3 +37,16 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+:host ::ng-deep {
+    .breadcrumbs-container
+    .breadcrumbs-list
+    .breadcrumb-item
+    .breadcrumb {
+        color: white;
+
+        &:hover {
+            color: white;
+        }
+    }
+}

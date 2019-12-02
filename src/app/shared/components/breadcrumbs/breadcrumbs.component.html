@@ -1,3 +1,11 @@
 <div class="breadcrumbs-container">
-    <span class="breadcrumb">courses</span>
+    <ul class="breadcrumbs-list">
+        <li *ngFor="let breadcrumb of breadcrumbs"
+            class="breadcrumb-item">
+            <a class="breadcrumb"
+                [routerLink]="breadcrumb.link">
+                {{breadcrumb.name}}
+            </a>
+        </li>
+    </ul>
 </div>
