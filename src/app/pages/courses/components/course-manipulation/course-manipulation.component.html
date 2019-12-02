@@ -24,9 +24,12 @@
                         type="date"
                         id="course-date-id"
                         placeholder="Enter a course date"
-                        class="course-date">
+                        class="course-date"
+                        [(ngModel)]="date"
+                        name="date">
                 </div>
                 <app-input-duration
+                    [duration]="duration"
                     (durationChange)="onDurationChange($event)"
                 ></app-input-duration>                
             </li>
@@ -72,8 +75,16 @@
             * Mandatory fields
         </span>
         <div class="buttons-block">
-            <button class="cancel" (click)="onCancel()">cancel</button>
-            <button class="save" (click)="onSave()">save</button>
+            <a class="cancel"
+                [routerLink]="'/courses'"
+                role="button">
+                cancel
+            </a>
+            <a class="save"
+                role="button"
+                (click)="onSave()">
+                save
+            </a>
         </div>
     </footer>
 </section>

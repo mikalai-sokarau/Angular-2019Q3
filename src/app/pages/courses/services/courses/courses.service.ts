@@ -1,6 +1,7 @@
 import { ICourse } from '../../components/course/course.model';
 import { Injectable } from '@angular/core';
 import { courses } from '../../../../../assets/mock-data/courses-data.js';
+import { getRandomCourseImage } from '../../../../../assets/mock-data/courses-data';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class CoursesService {
   }
 
   public createCourse(course: ICourse): ICourse {
+    course.id = String(Date.now());
+    course.isTopRated = false;
+    course.image = getRandomCourseImage();
+
     this.courses.push(course);
 
     return course;

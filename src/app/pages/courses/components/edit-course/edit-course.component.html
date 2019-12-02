@@ -3,6 +3,9 @@
         <h2 class="edit-course-title">Edit course</h2>
         <div class="separator"></div>
     </header>
-    <app-course-manipulation [course]="course"></app-course-manipulation>
+    <app-course-manipulation
+        [course]="course"
+        (saveCourse)="editCourse($event)">
+    </app-course-manipulation>
 </section>
     

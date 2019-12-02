@@ -1,8 +1,8 @@
 export interface ICourse {
     id: string;
     title: string;
-    date: Date;
-    duration: number;
+    date: string;
+    duration: string;
     description: string;
     image: string;
     author: {
@@ -15,8 +15,8 @@ export interface ICourse {
 export class Course implements ICourse {
     id: string;
     title: string;
-    date: Date;
-    duration: number;
+    date: string;
+    duration: string;
     description: string;
     image: string;
     author: {

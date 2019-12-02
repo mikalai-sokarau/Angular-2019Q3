@@ -24,4 +24,7 @@ export class EditCourseComponent implements OnInit {
     })
   }
 
+  public editCourse(course: ICourse): void {
+    this.coursesService.updateCourse(course);
+  }
 }

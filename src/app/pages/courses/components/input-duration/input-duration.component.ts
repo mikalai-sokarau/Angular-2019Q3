@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { DurationPipe } from '../../pipes/duration/duration-pipe.pipe';
 
 @Component({
@@ -9,13 +9,14 @@ import { DurationPipe } from '../../pipes/duration/duration-pipe.pipe';
 })
 export class InputDurationComponent implements OnInit {
   public readonly MAX_DURATION_IN_MINUTES = 1440;
-  public duration: number;
   public formattedDuration: string;
+  @Input() duration: number;
   @Output() durationChange: EventEmitter<number> = new EventEmitter();
 
   constructor(private durationPipe: DurationPipe) {}
 
   ngOnInit() {
+    this.formattedDuration = this.durationPipe.transform(this.duration);
   }
 
   public onDurationChange(): void {
