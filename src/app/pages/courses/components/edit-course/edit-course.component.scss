@@ -1,0 +1,11 @@
+@import '../../../../../styles/variables';
+
+.edit-course-container {
+    color: $dark-gray;
+    margin: 0 auto;
+    max-width: $app-max-width;
+
+    h2::first-letter {
+        text-transform: capitalize;
+    }
+}

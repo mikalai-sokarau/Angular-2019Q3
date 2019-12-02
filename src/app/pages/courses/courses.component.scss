@@ -1,0 +1,52 @@
+@import '../../../styles/variables';
+
+.interaction-section {
+    background: $main-gradient;
+    
+    .interaction-container {
+        color: white;
+    }
+}
+
+.courses-container {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.courses-section,
+.interaction-container {
+    max-width: $app-max-width;
+    margin: 0 auto;
+}
+
+.courses-number {
+    color: #6c7283;
+    font-style: italic;
+    margin: 25px 0 15px;
+}
+
+.no-data-error {
+    color: #30b6dd;
+    font-style: italic;
+    font-weight: 600;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+:host ::ng-deep {
+    .breadcrumbs-container
+    .breadcrumbs-list
+    .breadcrumb-item
+    .breadcrumb {
+        color: white;
+
+        &:hover {
+            color: white;
+        }
+    }
+}

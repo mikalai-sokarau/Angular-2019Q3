@@ -1,5 +1,6 @@
 import { IUser } from './../../models/user.model';
 import { Injectable } from '@angular/core';
+import {Router} from '@angular/router';
 
 const MOCK_USER: IUser = {
   firstName: 'Walton',
@@ -14,22 +15,20 @@ export class AuthService {
   public isAuthenticated: boolean;
   private user: IUser | null;
 
-  constructor() {
+  constructor(private router: Router) {
     this.isAuthenticated = Boolean(this.user);
   }
 
   public login(): void {
     this.user = MOCK_USER;
     this.isAuthenticated = true;
-
-    console.log('logged in successfully');
+    this.router.navigate(['/courses']);
   }
 
   public logout(): void {
     this.user = null;
     this.isAuthenticated = false;
-
-    console.log('logged out successfully');
+    this.router.navigate(['/login']);
   }
 
   public getUserInfo(): IUser {

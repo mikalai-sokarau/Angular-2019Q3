@@ -1,0 +1,23 @@
+<div class="control-panel-container">
+    <h2>Find or add courses ...</h2>
+    <div class="interaction-container">
+        <div class="search">
+            <input 
+                type="text"
+                class="search-input"
+                [(ngModel)]="searchText">
+            <button
+                class="search-course-btn"
+                (click)="onSearchClick()">
+                search
+            </button>
+        </div>
+        <div class="add-course-btn-container">
+            <a [routerLink]="'/courses/new'"
+                class="add-course-btn"
+                role="button">
+                + Add course
+            </a>
+        </div>
+    </div>
+</div>

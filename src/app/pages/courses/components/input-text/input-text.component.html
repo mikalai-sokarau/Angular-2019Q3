@@ -1,0 +1,15 @@
+<label
+    class="description-label"
+    for="description-id">
+    description
+</label>
+<textarea
+    class="description"
+    name="description"
+    id="description-id"
+    placeholder="Enter a description"
+    cols="30"
+    rows="10"
+    [(ngModel)]="description"
+    (ngModelChange)="onChange($event)">
+</textarea>

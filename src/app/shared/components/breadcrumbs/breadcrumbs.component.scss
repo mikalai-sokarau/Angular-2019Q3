@@ -1,14 +1,31 @@
+@import '../../../../styles/variables';
+
 .breadcrumbs-container {
     font-style: italic;
     height: 20px;
-    padding: 10px 0;
+    padding: 10px 0 30px 0;
     
-    .breadcrumb {
-        cursor: pointer;
+    .breadcrumbs-list {
+        display: flex;
     }
 
-    &:after {
-        content: ' »';
-        font-size: 0.85rem;
+    .breadcrumb {
+        cursor: pointer;
+        color: $dark-gray;
+        padding-right: 10px;
+
+        &:hover {
+            color: $orange;
+        }
+
+        &:after {
+            content: ' »';
+            font-size: 0.85rem;
+        }
+    }
+
+    .breadcrumb-item:last-child:not(:first-child) .breadcrumb {
+        color: $gray;
+        pointer-events: none;
     }
 }

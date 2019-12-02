@@ -1,0 +1,7 @@
+@import '../../../../../styles/elements';
+
+.load-more-btn {
+    @extend %warning-btn;
+
+    margin: 30px auto;
+}

@@ -1,0 +1,63 @@
+.control-panel-container {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+
+    .interaction-container {
+        display: flex;
+        flex-grow: 50%;
+        user-select: none;
+
+        .search {
+            flex-grow: 6;
+            padding-right: 10px;
+            position: relative;
+
+            .search-course-btn {
+                color: white;
+                cursor: pointer;
+                background-color: #66cc94;
+                border: 0;
+                border-radius: 6px;
+                position: absolute;
+                right: 14px;
+                top: 4px;
+                height: 32px;
+                width: 65px;
+
+                &:hover {
+                    background-color: #3cb371;
+                    transition: background-color 0.1s ease-out;
+                }
+            }
+
+            .search-input {
+                border: none;
+                border-radius: 5px;
+                height: 40px;
+                padding-left: 10px;
+                padding-right: 80px;
+                width: 100%;
+            }
+        }
+
+        .add-course-btn-container {
+            flex-grow: 4;
+            
+            .add-course-btn {
+                height: 100%;
+                background-color: transparent;
+                border: 1px solid white;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+                display: inline-block;
+                padding: 9px;
+
+                &:hover {
+                    background-color: rgba(247, 149, 79, 1);
+                }
+            }
+        }
+    }
+}
