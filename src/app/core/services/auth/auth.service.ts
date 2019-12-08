@@ -2,6 +2,7 @@ import { IUser } from './../../models/user.model';
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,10 @@ export class AuthService {
         if (userData) {
           this.user = userData;
           this.isAuthenticated = true;
-          this.router.navigate(['/courses']);
+          this.router.navigate(
+            ['/courses'],
+            { queryParams: { size: CoursesService.DEFAULT_COURSES_SIZE } }
+          );
         }
       });
   }

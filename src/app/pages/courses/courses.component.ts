@@ -15,7 +15,6 @@ import {
 })
 export class CoursesComponent implements OnInit {
     public courses: Array<ICourse> = [];
-    public readonly coursesLimit = 5;
     private allCourses: Array<ICourse>;
 
     constructor(
@@ -25,8 +24,11 @@ export class CoursesComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.allCourses = this.coursesService.getCourses();
-        this.courses = this.allCourses;
+        this.coursesService.getCourses()
+            .subscribe(courses => {
+                this.allCourses = courses;
+                this.courses = this.allCourses;
+            });
     }
 
     public onDeleteCourse(id: string) {
