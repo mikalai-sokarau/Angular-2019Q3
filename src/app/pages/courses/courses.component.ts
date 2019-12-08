@@ -26,16 +26,14 @@ export class CoursesComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        const size = this.route.snapshot.queryParams.size;
+        this.route.queryParams
+            .subscribe(params => this.coursesService.loadCourses(Number(params.size)));
         
-        this.coursesService.getCourses(size)
-            .subscribe(courses => {
-                this.allCourses = courses;
-                this.courses = this.allCourses;
-            });
+        this.coursesService.coursesUpdates()
+            .subscribe(courses => this.courses = courses);
     }
 
-    public onDeleteCourse(id: string) {
+    public onDeleteCourse(id: string): void {
         const modalRef = this.modalService.openModal(DeleteConfirmationModalComponent);
 
         modalRef.instance.userAction.subscribe(isDelete => {
@@ -47,7 +45,11 @@ export class CoursesComponent implements OnInit {
         });
     }
 
-    public onExecuteSearch(text: string) {
+    public onExecuteSearch(text: string): void {
         this.courses = this.filter.transform(this.allCourses, text);
+    }
+
+    public trackByFn(index: number, course: ICourse): string {
+        return course.id;
     }
 }

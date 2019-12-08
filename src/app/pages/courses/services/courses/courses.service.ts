@@ -2,7 +2,7 @@ import { ICourse } from '../../components/course/course.model';
 import { Injectable } from '@angular/core';
 // import { getRandomCourseImage } from '../../../../../assets/mock-data/courses-data';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +10,15 @@ import { Observable } from 'rxjs';
 export class CoursesService {
   private readonly apiUrl = 'api/courses';
   static readonly DEFAULT_COURSES_SIZE = 5;
-  private courses: Array<ICourse> = [];
+  public courses: Array<ICourse> = [];
+  public courses$: BehaviorSubject<Array<ICourse>>
 
-  constructor(
-    private http: HttpClient
-  ) {
-    this.loadCourses()
-      .subscribe((courses) => {
-        if (courses) {
-          this.courses = courses;
-        }
-      });
+  constructor(private http: HttpClient) {
+    this.courses$ = new BehaviorSubject(new Array<ICourse>());
   }
 
-  public getCourses(size?: number): Observable<Array<ICourse>> {
-    return this.loadCourses(size)
+  public coursesUpdates(): Observable<Array<ICourse>> {
+    return this.courses$.asObservable();
   }
 
   public createCourse(course: ICourse): ICourse {
@@ -55,11 +49,13 @@ export class CoursesService {
     return this.courses;
   }
 
-  private loadCourses(
-    size = CoursesService.DEFAULT_COURSES_SIZE
-  ): Observable<Array<ICourse>> {
-    const url = `${this.apiUrl}?size=${size}`;
-
-    return this.http.get<Array<ICourse>>(url)
+  public loadCourses(to = CoursesService.DEFAULT_COURSES_SIZE): void {
+    const url = `${this.apiUrl}?from=${this.courses.length}&to=${to}`;
+    
+    this.http.get<Array<ICourse>>(url)
+      .subscribe(courses => {
+        this.courses.push(...courses);
+        this.courses$.next(this.courses);
+      });
   }
 }

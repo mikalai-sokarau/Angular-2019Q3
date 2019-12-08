@@ -1,4 +1,4 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { courses } from '../db/courses';
 import { ICourse } from './courses.interface';
 
@@ -11,8 +11,7 @@ export class CoursesService {
     this.courses = courses;
   }
 
-  getCourses(size: number): Array<ICourse> {
-    return this.courses.slice(0, size);
+  getCourses(from: number, to: number): Array<ICourse> {
+    return this.courses.slice(from, to);
   }
-
 }
