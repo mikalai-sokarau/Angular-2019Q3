@@ -6,6 +6,7 @@ import { ModalService } from '../../shared/services/modal/modal.service';
 import {
     DeleteConfirmationModalComponent
 } from '../../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-courses',
@@ -20,11 +21,14 @@ export class CoursesComponent implements OnInit {
     constructor(
         private coursesService: CoursesService,
         private filter: FilterPipe,
-        private modalService: ModalService
+        private modalService: ModalService,
+        private route: ActivatedRoute
     ) {}
 
     ngOnInit() {
-        this.coursesService.getCourses()
+        const size = this.route.snapshot.queryParams.size;
+        
+        this.coursesService.getCourses(size)
             .subscribe(courses => {
                 this.allCourses = courses;
                 this.courses = this.allCourses;

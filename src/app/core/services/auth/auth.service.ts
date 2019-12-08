@@ -1,6 +1,6 @@
 import { IUser } from './../../models/user.model';
 import { Injectable } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
 
