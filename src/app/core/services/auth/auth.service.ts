@@ -35,7 +35,7 @@ export class AuthService {
           this.saveUserToStore(userData);
           this.router.navigate(
             ['/courses'],
-            { queryParams: { size: CoursesService.DEFAULT_COURSES_SIZE } }
+            { queryParams: { from: 0, to: CoursesService.DEFAULT_COURSES_SIZE } }
           );
         }
       });
