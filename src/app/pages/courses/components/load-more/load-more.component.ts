@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../../services/courses/courses.service';
-import { Router, Params } from '@angular/router';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-load-more',
@@ -10,18 +10,19 @@ import { Router, Params } from '@angular/router';
 export class LoadMoreComponent implements OnInit {
 
   constructor(
-    private coursesService: CoursesService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
   }
 
   public loadMore(): void {
-    const size = this.coursesService.courses.length
-      + CoursesService.DEFAULT_COURSES_SIZE;
-    const queryParams: Params = { size };
+    const from = Number(this.activatedRoute.snapshot.queryParams.to) || 0;
+    const to = from + CoursesService.DEFAULT_COURSES_SIZE;
     
-    this.router.navigate([], { queryParams });
+    const queryParams: Params = { to };
+    
+    this.router.navigate([], { queryParams, queryParamsHandling: 'merge' });
   }
 }

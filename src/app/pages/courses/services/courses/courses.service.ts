@@ -49,12 +49,12 @@ export class CoursesService {
     return this.courses;
   }
 
-  public loadCourses(to = CoursesService.DEFAULT_COURSES_SIZE): void {
-    const url = `${this.apiUrl}?from=${this.courses.length}&to=${to}`;
+  public loadCourses(from = 0, to = CoursesService.DEFAULT_COURSES_SIZE): void {
+    const url = `${this.apiUrl}?from=${from}&to=${to}`;
     
     this.http.get<Array<ICourse>>(url)
       .subscribe(courses => {
-        this.courses.push(...courses);
+        this.courses = courses;
         this.courses$.next(this.courses);
       });
   }

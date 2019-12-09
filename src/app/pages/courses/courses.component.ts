@@ -27,7 +27,7 @@ export class CoursesComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams
-            .subscribe(params => this.coursesService.loadCourses(Number(params.size)));
+            .subscribe(({from ,to}) => this.coursesService.loadCourses(from, to));
         
         this.coursesService.coursesUpdates()
             .subscribe(courses => this.courses = courses);
