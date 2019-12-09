@@ -1,30 +1,35 @@
 import { ICourse } from '../../components/course/course.model';
 import { Injectable } from '@angular/core';
-import { courses } from '../../../../../assets/mock-data/courses-data.js';
-import { getRandomCourseImage } from '../../../../../assets/mock-data/courses-data';
+// import { getRandomCourseImage } from '../../../../../assets/mock-data/courses-data';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
-  private courses: Array<ICourse> = [];
+  private readonly apiUrl = 'api/courses';
+  static readonly DEFAULT_COURSES_SIZE = 5;
+  public courses: Array<ICourse> = [];
+  public courses$: BehaviorSubject<Array<ICourse>>
 
-  constructor() {
-    this.courses = courses;
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) {
+    this.courses$ = new BehaviorSubject(new Array<ICourse>());
   }
 
-  public getCourses(): Array<ICourse> {
-    return this.courses;
+  public coursesUpdates(): Observable<Array<ICourse>> {
+    return this.courses$.asObservable();
   }
 
-  public createCourse(course: ICourse): ICourse {
-    course.id = String(Date.now());
-    course.isTopRated = false;
-    course.image = getRandomCourseImage();
-
-    this.courses.push(course);
-
-    return course;
+  public createCourse(course: ICourse): void {
+    const url = `${this.apiUrl}/create`;
+    const body = { course: JSON.stringify(course) };
+    
+    this.http.put<ICourse>(url, body).subscribe()
   }
 
   public getCourseById(id: string): ICourse {
@@ -39,9 +44,43 @@ export class CoursesService {
     return courseToUpdate;
   }
 
-  public removeCourse(id: string): Array<ICourse> {
-    this.courses = this.courses.filter(course => course.id !== id);
+  public removeCourse(id: string): void {
+    const url = `${this.apiUrl}/delete?id=${id}`;
+    const { from , to } = this.route.snapshot.queryParams;
 
-    return this.courses;
+    this.http.delete<Array<ICourse>>(url)
+      .subscribe(
+        () => this.loadCourses(from, to),
+        this.handleErrors
+      );
+  }
+
+  public findCourses(text: string): void {
+    const url = `${this.apiUrl}/find?text=${text}`;
+
+    this.http.get<Array<ICourse>>(url)
+      .subscribe(
+        this.updateCourses,
+        this.handleErrors
+      );
+  }
+
+  public loadCourses(from = 0, to = CoursesService.DEFAULT_COURSES_SIZE): void {
+    const url = `${this.apiUrl}?from=${from}&to=${to}`;
+
+    this.http.get<Array<ICourse>>(url)
+      .subscribe(
+        this.updateCourses,
+        this.handleErrors
+      );
+  }
+
+  private updateCourses = (courses: Array<ICourse>) => {
+    this.courses = courses;
+    this.courses$.next(this.courses);
+  }
+
+  private handleErrors = () => {
+    this.updateCourses([]);
   }
 }

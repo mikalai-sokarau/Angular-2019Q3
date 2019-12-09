@@ -1,1 +1,5 @@
-<button class="load-more-btn">Load more</button>
+<button class="load-more-btn"
+    *ngIf="!isHidden"
+    (click)="loadMore()">
+    Load more
+</button>

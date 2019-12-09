@@ -9,7 +9,7 @@
 <div class="courses-section">
     <p class="courses-number">There are {{courses.length}} courses</p>
     <ul class="courses-container" *ngIf="courses.length; else noCoursesMessage">
-        <li *ngFor="let item of courses | orderBy : 'date' : coursesLimit">
+        <li *ngFor="let item of courses trackBy: trackByFn">
             <app-course 
                 [course]="item"
                 appCourseHighlighting
