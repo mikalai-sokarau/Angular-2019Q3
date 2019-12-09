@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { courses } from '../db/courses';
+import { courses, getRandomCourseImage } from '../db/courses';
 import { ICourse } from './courses.interface';
 
 @Injectable()
@@ -26,7 +26,19 @@ export class CoursesService {
       ({ id }) => id !== courseId
     );
 
-    return !this.courses.some(({id}) => id === courseId);
+    return !this.courses.some(({ id }) => id === courseId);
+  }
+
+  createCourse(course: string): boolean {
+    const newCourse = JSON.parse(course) as ICourse;
+
+    newCourse.id = String(Date.now());
+    newCourse.isTopRated = false;
+    newCourse.image = getRandomCourseImage();
+
+    this.courses.push(newCourse);
+
+    return this.courses.some(({ id }) => id === newCourse.id);
   }
 
   private findText(title: string, description: string, text: string): boolean {

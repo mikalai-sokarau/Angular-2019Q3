@@ -1,4 +1,4 @@
-import { Controller, Res, HttpStatus, Get, Query, HttpException, Delete } from '@nestjs/common';
+import { Controller, Res, HttpStatus, Get, Query, HttpException, Delete, Put, Body } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { Response } from 'express';
 
@@ -44,6 +44,20 @@ export class CoursesController {
     
     if(!isDeleted) {
       throw new HttpException('There are no courses left', HttpStatus.NOT_FOUND);
+    }
+
+    res.status(HttpStatus.OK).send();
+  }
+
+  @Put('create')
+  createCourse(
+    @Res() res: Response,
+    @Body('course') course: string
+  ) {
+    const isCreated = this.coursesService.createCourse(course);
+
+    if(!isCreated) {
+      throw new HttpException('Error during the course creation', HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     res.status(HttpStatus.OK).send();

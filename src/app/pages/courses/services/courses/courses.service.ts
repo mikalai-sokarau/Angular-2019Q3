@@ -25,14 +25,11 @@ export class CoursesService {
     return this.courses$.asObservable();
   }
 
-  public createCourse(course: ICourse): ICourse {
-    course.id = String(Date.now());
-    course.isTopRated = false;
-    // course.image = getRandomCourseImage();
-
-    this.courses.push(course);
-
-    return course;
+  public createCourse(course: ICourse): void {
+    const url = `${this.apiUrl}/create`;
+    const body = { course: JSON.stringify(course) };
+    
+    this.http.put<ICourse>(url, body).subscribe()
   }
 
   public getCourseById(id: string): ICourse {
