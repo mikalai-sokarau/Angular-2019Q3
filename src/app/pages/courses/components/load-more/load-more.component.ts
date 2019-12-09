@@ -8,20 +8,23 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
   styleUrls: ['./load-more.component.scss']
 })
 export class LoadMoreComponent implements OnInit {
+  isHidden: boolean;
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.route.queryParams
+      .subscribe(({ find }) => this.isHidden = Boolean(find));
   }
 
   public loadMore(): void {
-    const from = Number(this.activatedRoute.snapshot.queryParams.to) || 0;
-    const to = from + CoursesService.DEFAULT_COURSES_SIZE;
-    
-    const queryParams: Params = { to };
+    const defaultSize = CoursesService.DEFAULT_COURSES_SIZE;
+    const from = this.route.snapshot.queryParams.from || 0;
+    const to = Number(this.route.snapshot.queryParams.to || defaultSize) + defaultSize;
+    const queryParams: Params = { from, to };
     
     this.router.navigate([], { queryParams, queryParamsHandling: 'merge' });
   }

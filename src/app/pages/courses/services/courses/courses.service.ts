@@ -49,13 +49,32 @@ export class CoursesService {
     return this.courses;
   }
 
+  public findCourses(text: string): void {
+    const url = `${this.apiUrl}/find?text=${text}`;
+
+    this.http.get<Array<ICourse>>(url)
+      .subscribe(
+        this.updateCourses,
+        this.handleErrors
+      );
+  }
+
   public loadCourses(from = 0, to = CoursesService.DEFAULT_COURSES_SIZE): void {
     const url = `${this.apiUrl}?from=${from}&to=${to}`;
-    
+
     this.http.get<Array<ICourse>>(url)
-      .subscribe(courses => {
-        this.courses = courses;
-        this.courses$.next(this.courses);
-      });
+      .subscribe(
+        this.updateCourses,
+        this.handleErrors
+      );
+  }
+
+  private updateCourses = (courses: Array<ICourse>) => {
+    this.courses = courses;
+    this.courses$.next(this.courses);
+  }
+
+  private handleErrors = () => {
+    this.updateCourses([]);
   }
 }

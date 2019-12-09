@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-control-panel',
@@ -6,15 +7,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./control-panel.component.scss']
 })
 export class ControlPanelComponent implements OnInit {
-  @Output() executeSearch: EventEmitter<string> = new EventEmitter();
   public searchText = '';
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
 
   public onSearchClick(): void {
-    this.executeSearch.emit(this.searchText);
+    const queryParams: Params = { find: this.searchText };
+
+    this.router.navigate([], { queryParams });
   }
 }

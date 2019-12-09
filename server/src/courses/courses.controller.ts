@@ -15,7 +15,21 @@ export class CoursesController {
     const courses = this.coursesService.getCourses(from, to);
 
     if(!courses.length) {
-        throw new HttpException('Courses not found', HttpStatus.NOT_FOUND);
+      throw new HttpException('Courses not found', HttpStatus.NOT_FOUND);
+    }
+
+    res.status(HttpStatus.OK).send(courses);
+  }
+
+  @Get('find')
+  findCourse(
+    @Res() res: Response,
+    @Query('text') text: string,
+  ): void {
+    const courses = this.coursesService.findCourses(text);
+    
+    if(!courses.length) {
+      throw new HttpException('Course not found', HttpStatus.NOT_FOUND);
     }
 
     res.status(HttpStatus.OK).send(courses);
