@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 // import { getRandomCourseImage } from '../../../../../assets/mock-data/courses-data';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class CoursesService {
   public courses: Array<ICourse> = [];
   public courses$: BehaviorSubject<Array<ICourse>>
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) {
     this.courses$ = new BehaviorSubject(new Array<ICourse>());
   }
 
@@ -43,10 +47,15 @@ export class CoursesService {
     return courseToUpdate;
   }
 
-  public removeCourse(id: string): Array<ICourse> {
-    this.courses = this.courses.filter(course => course.id !== id);
+  public removeCourse(id: string): void {
+    const url = `${this.apiUrl}/delete?id=${id}`;
+    const { from , to } = this.route.snapshot.queryParams;
 
-    return this.courses;
+    this.http.delete<Array<ICourse>>(url)
+      .subscribe(
+        () => this.loadCourses(from, to),
+        this.handleErrors
+      );
   }
 
   public findCourses(text: string): void {

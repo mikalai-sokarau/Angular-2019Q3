@@ -40,7 +40,7 @@ export class CoursesComponent implements OnInit {
 
         modalRef.instance.userAction.subscribe(isDelete => {
             if (isDelete) {
-                this.courses = this.coursesService.removeCourse(id);
+                this.coursesService.removeCourse(id);
             }
 
             this.modalService.closeModal(modalRef);

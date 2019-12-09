@@ -1,4 +1,4 @@
-import { Controller, Res, HttpStatus, Get, Query, HttpException } from '@nestjs/common';
+import { Controller, Res, HttpStatus, Get, Query, HttpException, Delete } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { Response } from 'express';
 
@@ -24,7 +24,7 @@ export class CoursesController {
   @Get('find')
   findCourse(
     @Res() res: Response,
-    @Query('text') text: string,
+    @Query('text') text: string
   ): void {
     const courses = this.coursesService.findCourses(text);
     
@@ -33,5 +33,19 @@ export class CoursesController {
     }
 
     res.status(HttpStatus.OK).send(courses);
+  }
+
+  @Delete('delete')
+  deleteCourse(
+    @Res() res: Response,
+    @Query('id') id: string
+  ): void {
+    const isDeleted = this.coursesService.deleteCourse(id);
+    
+    if(!isDeleted) {
+      throw new HttpException('There are no courses left', HttpStatus.NOT_FOUND);
+    }
+
+    res.status(HttpStatus.OK).send();
   }
 }

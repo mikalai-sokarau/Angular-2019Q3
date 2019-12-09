@@ -4,7 +4,7 @@ import { ICourse } from './courses.interface';
 
 @Injectable()
 export class CoursesService {
-  private readonly courses: Array<ICourse>
+  private courses: Array<ICourse>
 
   constructor() {
     /* request to db */
@@ -19,6 +19,14 @@ export class CoursesService {
     return this.courses.filter(
       ({ title, description }) => this.findText(title, description, text)
     );
+  }
+
+  deleteCourse(courseId: string): boolean {
+    this.courses = this.courses.filter(
+      ({ id }) => id !== courseId
+    );
+
+    return !this.courses.some(({id}) => id === courseId);
   }
 
   private findText(title: string, description: string, text: string): boolean {
