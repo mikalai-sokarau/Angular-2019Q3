@@ -11,27 +11,36 @@ import { debounce, filter } from 'rxjs/operators';
 export class ControlPanelComponent implements AfterViewInit, OnDestroy {
   public searchText = '';
   public searchEvent$: Observable<string>;
+
   private subscription: Subscription;
-  private DEBOUNCE_INTERVAL_MS = 300;
+  private readonly DEBOUNCE_INTERVAL_MS = 300;
+  private readonly MINIMAL_SEARCH_TEXT_LENGTH = 3;
   
   @ViewChild('searchInput', { static: false }) searchInput;
 
   constructor(private router: Router) {}
 
   ngAfterViewInit(): void {
+    const excludeShortSearchQueries = () => 
+      this.searchText.length >= this.MINIMAL_SEARCH_TEXT_LENGTH
+      || !this.searchText.length;
+    const addIntervalBetweenQueryChanges = () => interval(this.DEBOUNCE_INTERVAL_MS);
+
     this.searchEvent$ = fromEvent<string>(this.searchInput.nativeElement, 'keyup')
       .pipe(
-        filter(() => this.searchText.length >= 3),
-        debounce(() => interval(this.DEBOUNCE_INTERVAL_MS))
+        filter(excludeShortSearchQueries),
+        debounce(addIntervalBetweenQueryChanges)
       );
 
-    this.subscription = this.searchEvent$.subscribe(() => this.doSearch());
+    this.subscription = this.searchEvent$.subscribe({
+      next: () => this.doSearch()
+    });
   }
 
   private doSearch(): void {
-    console.log(this.searchText);
-    
-    const queryParams: Params = { find: this.searchText };
+    const queryParams: Params = this.searchText
+      ? { find: this.searchText }
+      : {};
 
     this.router.navigate([], { queryParams });
   }
