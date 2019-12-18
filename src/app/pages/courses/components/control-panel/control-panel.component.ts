@@ -28,8 +28,8 @@ export class ControlPanelComponent implements AfterViewInit, OnDestroy {
 
     this.searchEvent$ = fromEvent<string>(this.searchInput.nativeElement, 'keyup')
       .pipe(
-        filter(excludeShortSearchQueries),
-        debounce(addIntervalBetweenQueryChanges)
+        debounce(addIntervalBetweenQueryChanges),
+        filter(excludeShortSearchQueries)
       );
 
     this.subscription = this.searchEvent$.subscribe({
