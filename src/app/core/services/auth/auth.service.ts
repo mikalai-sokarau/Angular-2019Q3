@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public isAuthenticated: boolean;
+  public isAuthenticated: ReplaySubject<boolean>;
   private readonly loginUrl = '/api/login';
   private readonly userStoreId = 'user';
   private user: IUser | null;
@@ -16,9 +17,10 @@ export class AuthService {
   constructor(
     private router: Router,
     private http: HttpClient
-    ) {
+  ) {
     this.user = this.getUserFromStore();
-    this.isAuthenticated = Boolean(this.user);
+    this.isAuthenticated = new ReplaySubject(1);
+    this.isAuthenticated.next(Boolean(this.user));
   }
 
   public login(email: string, password: string): void {
@@ -31,7 +33,7 @@ export class AuthService {
       .subscribe((userData: IUser) => {
         if (userData) {
           this.user = userData;
-          this.isAuthenticated = true;
+          this.isAuthenticated.next(true);
           this.saveUserToStore(userData);
           this.router.navigate(
             ['/courses'],
@@ -43,7 +45,7 @@ export class AuthService {
 
   public logout(): void {
     this.user = null;
-    this.isAuthenticated = false;
+    this.isAuthenticated.next(false);
     this.clearUserData();
     this.router.navigate(['/login']);
   }
