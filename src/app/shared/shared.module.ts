@@ -30,6 +30,7 @@ import {
   DeleteConfirmationModalComponent
 } from './components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { GlobalLoadingComponent } from './components/modals/global-loading/global-loading.component';
 
 const icons: Array<IconDefinition> = [
   faBars,
@@ -54,7 +55,8 @@ const icons: Array<IconDefinition> = [
     LogoComponent,
     FooterComponent,
     HeaderComponent,
-    DeleteConfirmationModalComponent
+    DeleteConfirmationModalComponent,
+    GlobalLoadingComponent
   ],
   imports: [
     CommonModule,

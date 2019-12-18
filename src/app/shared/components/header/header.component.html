@@ -9,7 +9,8 @@
                 </a>
             </h1>
         </div>
-        <div class="control-container">
+        <div class="control-container"
+            *ngIf="authService.isAuthenticated$ | async">
             <div class="user-info">
                 <img src="../../../../assets/images/avatar.png"
                      alt="user avatar"
@@ -17,10 +18,17 @@
                      height="30">
                 <fa-icon icon="sort-down"></fa-icon>
                 <div class="user-dropdown">
+                    <ul class="user-personal-info">
+                        <li class="user-firstname">
+                            {{user.firstName}}
+                        </li>
+                        <li class="user-lastname">
+                            {{user.lastName}}
+                        </li>
+                    </ul>
                     <div
                         class="logout-container"
-                        (click)="authService.logout()"
-                        *ngIf="authService.isAuthenticated; else loginTemplate">
+                        (click)="authService.logout()">
                         <fa-icon icon="sign-out-alt"></fa-icon>
                         <span>Log out</span>
                     </div>
@@ -32,12 +40,3 @@
         </div>
     </div>
 </header>
-
-<ng-template #loginTemplate>
-    <div
-        class="logout-container"
-        (click)="authService.login()">
-        <fa-icon icon="sign-in-alt"></fa-icon>
-        <span>Log in</span>
-    </div>
-</ng-template>

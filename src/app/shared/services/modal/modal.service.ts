@@ -11,6 +11,7 @@ import {
   providedIn: 'root'
 })
 export class ModalService {
+  public isActive = false;
 
   constructor(
     private appRef: ApplicationRef,
@@ -19,10 +20,12 @@ export class ModalService {
   ) { }
 
   public openModal(modalInstance): ComponentRef<any> {
+    this.isActive = true;
     return this.attachComponentToBody(modalInstance);
   }
 
   public closeModal(componentRef: ComponentRef<any>): void {
+    this.isActive = false;
     this.removeComponentFromBody(componentRef);
   }
 

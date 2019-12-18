@@ -13,24 +13,6 @@
             padding-right: 10px;
             position: relative;
 
-            .search-course-btn {
-                color: white;
-                cursor: pointer;
-                background-color: #66cc94;
-                border: 0;
-                border-radius: 6px;
-                position: absolute;
-                right: 14px;
-                top: 4px;
-                height: 32px;
-                width: 65px;
-
-                &:hover {
-                    background-color: #3cb371;
-                    transition: background-color 0.1s ease-out;
-                }
-            }
-
             .search-input {
                 border: none;
                 border-radius: 5px;
