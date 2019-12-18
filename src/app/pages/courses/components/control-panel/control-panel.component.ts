@@ -42,6 +42,8 @@ export class ControlPanelComponent implements AfterViewInit, OnDestroy {
       ? { find: this.searchText }
       : {};
 
+    /* api call is implicitly triggered in the courses component */
+
     this.router.navigate([], { queryParams });
   }
 
