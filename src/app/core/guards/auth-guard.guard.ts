@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
     public authService: AuthService,
     public router: Router
   ) {
-    this.authService.isAuthenticated.subscribe(isAuthenticated => 
+    this.authService.isAuthenticated$.subscribe(isAuthenticated => 
       this.isUserAuthenticated = isAuthenticated
     );
   }

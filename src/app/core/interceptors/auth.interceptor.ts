@@ -10,7 +10,7 @@ export class AuthInterceptor implements HttpInterceptor {
     private user: IUser;
 
     constructor(private authService: AuthService) {
-        this.authService.isAuthenticated.subscribe(isAuthenticated => {
+        this.authService.isAuthenticated$.subscribe(isAuthenticated => {
             this.isUserAuthenticated = isAuthenticated;
         });
         this.authService.getUserInfo().subscribe(user => this.user = user);

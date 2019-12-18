@@ -48,25 +48,31 @@ $header-gradient: linear-gradient(
     }
 
     .control-container {
-        cursor: pointer;
-
         .user-info {
             display: flex;
             margin-right: 15px;
             position: relative;
+
+            .user-personal-info {
+                display: flex;
+
+                .user-firstname {
+                    margin-right: 0.3rem;
+                }
+            }
 
             .user-dropdown {
                 background: white;
                 border-radius: 10px;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 0px 16px 0 rgba(0, 0, 0, 0.09);
                 color: #30b6dd;
-                cursor: auto;
+                cursor: default;
                 display: none;
-                height: 70px;
                 left: -57px;
+                min-width: 140px;
+                padding-bottom: 1rem;
                 position: absolute;
                 top: 31px;
-                width: 100px;
                 z-index: 1;
 
                 .logout-container {
@@ -80,8 +86,9 @@ $header-gradient: linear-gradient(
             }
 
             &:hover .user-dropdown {
-                display: flex;
                 align-items: center;
+                display: flex;
+                flex-direction: column;
                 justify-content: center;
             }
 
