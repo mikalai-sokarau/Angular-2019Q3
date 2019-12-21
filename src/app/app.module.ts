@@ -10,6 +10,9 @@ import { CoursesModule } from './pages/courses/courses.module';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundModule } from './pages/not-found/not-found.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { reducers, storeModuleConfig, storeDevtoolsConfig } from './store';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     CoursesModule,
     CoreModule,
     LoginModule,
-    NotFoundModule
+    NotFoundModule,
+    StoreModule.forRoot(reducers, storeModuleConfig),
+    storeDevtoolsConfig(environment)
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
