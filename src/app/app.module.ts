@@ -13,6 +13,8 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { reducers, storeModuleConfig, storeDevtoolsConfig } from './store';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './pages/login/login.effects';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { environment } from '../environments/environment';
     LoginModule,
     NotFoundModule,
     StoreModule.forRoot(reducers, storeModuleConfig),
+    EffectsModule.forRoot([AuthEffects]),
     storeDevtoolsConfig(environment)
   ],
   providers: [

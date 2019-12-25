@@ -10,7 +10,7 @@
             </h1>
         </div>
         <div class="control-container"
-            *ngIf="authService.isAuthenticated$ | async">
+            *ngIf="(user$ | async).isAuthenticated">
             <div class="user-info">
                 <img src="../../../../assets/images/avatar.png"
                      alt="user avatar"
@@ -20,15 +20,15 @@
                 <div class="user-dropdown">
                     <ul class="user-personal-info">
                         <li class="user-firstname">
-                            {{user.firstName}}
+                            {{ (user$ | async).userData.firstName }}
                         </li>
                         <li class="user-lastname">
-                            {{user.lastName}}
+                            {{ (user$ | async).userData.lastName }}
                         </li>
                     </ul>
                     <div
                         class="logout-container"
-                        (click)="authService.logout()">
+                        (click)="store.dispatch(logoutRequest())">
                         <fa-icon icon="sign-out-alt"></fa-icon>
                         <span>Log out</span>
                     </div>

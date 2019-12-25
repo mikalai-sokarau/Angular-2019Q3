@@ -2,34 +2,37 @@ import { IUser } from './../../models/user.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
 import { ReplaySubject, Observable } from 'rxjs';
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { GlobalLoadingComponent } from 'src/app/shared/components/modals/global-loading/global-loading.component';
+import { Store } from '@ngrx/store';
+import { restoreUserData } from './auth.service.actions';
+import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
+import { IAuthState } from './auth.service.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public isAuthenticated$: ReplaySubject<boolean>;
   private readonly loginUrl = '/api/login';
   private readonly userStoreId = 'user';
-  private user: IUser | null;
   private userInfo$: ReplaySubject<IUser>;
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private store: Store<{ auth: IAuthState }>
   ) {
-    this.user = this.getUserFromStore();
-    this.isAuthenticated$ = new ReplaySubject(1);
-    this.isAuthenticated$.next(Boolean(this.user));
+    const user = this.getUserFromStore();
+
+    this.store.dispatch(
+      restoreUserData({ user, isAuthenticated: Boolean(user) })
+    );
     this.userInfo$ = new ReplaySubject<IUser>(1);
-    this.userInfo$.next(this.user);
   }
 
-  public login(email: string, password: string): void {
+  public login(email: string, password: string): Observable<any> {
     const params = {
       email,
       password
@@ -39,28 +42,22 @@ export class AuthService {
     this.http.post(this.loginUrl, params)
       .subscribe((userData: IUser) => {
         if (userData) {
-          this.user = userData;
-          this.isAuthenticated$.next(true);
-          this.userInfo$.next(this.user);
           this.saveUserToStore(userData);
-          this.modalService.closeModal(modalRef);
+          this.userInfo$.next(userData);
           this.router.navigate(
             ['/courses'],
             { queryParams: { from: 0, to: CoursesService.DEFAULT_COURSES_SIZE } }
-          );
+          )
         }
+        this.modalService.closeModal(modalRef);
       });
+
+    return this.userInfo$;
   }
 
   public logout(): void {
-    this.user = null;
-    this.isAuthenticated$.next(false);
     this.clearUserData();
     this.router.navigate(['/login']);
-  }
-
-  public getUserInfo(): Observable<IUser> {
-    return this.userInfo$;
   }
 
   private getUserFromStore(): IUser {
