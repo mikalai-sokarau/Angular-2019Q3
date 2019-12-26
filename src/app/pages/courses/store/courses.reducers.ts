@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { coursesRequestSuccess, coursesRequestUpdateSuccess } from './courses.actions';
+import { coursesRequestSuccess, coursesRequestUpdateSuccess, coursesRequestCreateSuccess } from './courses.actions';
 import { ICourse } from '../components/course/course.model';
 
 export interface ICoursesState {
@@ -31,6 +31,13 @@ const reducer = createReducer<ICoursesState>(
                 items: newItems
             }
         }
+    ),
+    on(
+        coursesRequestCreateSuccess,
+        (state, { course }) => ({
+            ...state,
+            items: [...state.items, course]
+        })
     )
 );
 

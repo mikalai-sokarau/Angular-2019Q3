@@ -26,12 +26,17 @@ export class CoursesService {
     this.singleCourse$ = new ReplaySubject(1);
   }
 
-  public createCourse(course: ICourse): void {
+  public createCourse(course: ICourse): Observable<ICourse> {
     const url = `${this.apiUrl}/create`;
     const body = { course: JSON.stringify(course) };
    
     this.addSpinner();
-    this.http.put<ICourse>(url, body).subscribe(() => this.removeSpinner());
+    this.http.put<ICourse>(url, body).subscribe(course => {
+      this.removeSpinner();
+      this.singleCourse$.next(course);
+    });
+
+    return this.singleCourse$;
   }
 
   public getCourseById(id: string): ICourse {
@@ -49,7 +54,7 @@ export class CoursesService {
       this.singleCourse$.next(course);
     });
 
-    return this.singleCourse$
+    return this.singleCourse$;
   }
 
   public removeCourse(id: string): void {

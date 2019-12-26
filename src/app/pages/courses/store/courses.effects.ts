@@ -2,9 +2,14 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { CoursesActionTypes, coursesRequestSuccess, coursesRequestUpdateSuccess } from './courses.actions';
 import { CoursesService } from '../services/courses/courses.service';
 import { ICourse } from '../components/course/course.model';
+import { 
+    CoursesActionTypes,
+    coursesRequestSuccess,
+    coursesRequestUpdateSuccess,
+    coursesRequestCreateSuccess
+} from './courses.actions';
 
 @Injectable()
 export class CoursesEffects {
@@ -19,10 +24,19 @@ export class CoursesEffects {
     ));
 
     public updateCourse$ = createEffect(() => this.actions$.pipe<{ course: ICourse }, any>(
-        ofType(CoursesActionTypes.COURSES_REQUEST_Update),
+        ofType(CoursesActionTypes.COURSES_REQUEST_UPDATE),
         mergeMap(({ course }) => 
             this.coursesService.updateCourse(course).pipe(
                 map(course => coursesRequestUpdateSuccess({ course })),
+                catchError(() => EMPTY)
+        ))
+    ));
+    
+    public addCourse$ = createEffect(() => this.actions$.pipe<{ course: ICourse }, any>(
+        ofType(CoursesActionTypes.COURSES_REQUEST_CREATE),
+        mergeMap(({ course }) => 
+            this.coursesService.createCourse(course).pipe(
+                map(course => coursesRequestCreateSuccess({ course })),
                 catchError(() => EMPTY)
         ))
     ));
