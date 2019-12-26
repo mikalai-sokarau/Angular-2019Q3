@@ -1,7 +1,7 @@
 import { ICourse } from '../../components/course/course.model';
 import { Injectable, ComponentRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { GlobalLoadingComponent } from 'src/app/shared/components/modals/global-loading/global-loading.component';
@@ -13,7 +13,7 @@ export class CoursesService {
   private readonly apiUrl = 'api/courses';
   static readonly DEFAULT_COURSES_SIZE = 5;
   public courses: Array<ICourse> = [];
-  public courses$: BehaviorSubject<Array<ICourse>>;
+  public courses$: ReplaySubject<Array<ICourse>>;
   private modalRef: ComponentRef<any>;
 
   constructor(
@@ -21,11 +21,7 @@ export class CoursesService {
     private route: ActivatedRoute,
     private modalService: ModalService
   ) {
-    this.courses$ = new BehaviorSubject(new Array<ICourse>());
-  }
-
-  public coursesUpdates(): Observable<Array<ICourse>> {
-    return this.courses$.asObservable();
+    this.courses$ = new ReplaySubject(1);
   }
 
   public createCourse(course: ICourse): void {
@@ -71,7 +67,10 @@ export class CoursesService {
       );
   }
 
-  public loadCourses(from = 0, to = CoursesService.DEFAULT_COURSES_SIZE): void {
+  public loadCourses(
+    from = 0,
+    to = CoursesService.DEFAULT_COURSES_SIZE
+  ): Observable<Array<ICourse>> {
     const url = `${this.apiUrl}?from=${from}&to=${to}`;
 
     this.addSpinner();
@@ -80,6 +79,8 @@ export class CoursesService {
         this.updateCourses,
         this.handleErrors
       );
+
+    return this.courses$
   }
 
   private updateCourses = (courses: Array<ICourse>) => {

@@ -19,6 +19,11 @@ import { InputTextComponent } from './components/input-text/input-text.component
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { CourseManipulationComponent } from './components/course-manipulation/course-manipulation.component';
+import { StoreModule } from '@ngrx/store';
+import { storeDevtoolsConfig, coursesFeatureKey, reducers, metaReducers } from './store';
+import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { CoursesEffects } from './store/courses.effects';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,14 @@ import { CourseManipulationComponent } from './components/course-manipulation/co
   imports: [
     CommonModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forFeature(
+      coursesFeatureKey, 
+      reducers,
+      { metaReducers }
+    ),
+    EffectsModule.forFeature([CoursesEffects]),
+    storeDevtoolsConfig(environment)
   ],
   exports: [
     CoursesComponent

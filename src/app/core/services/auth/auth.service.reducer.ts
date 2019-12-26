@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on, Action } from '@ngrx/store';
 import { loginRequestSuccess, logoutRequestSuccess, restoreUserData } from './auth.service.actions';
 import { IUser } from '../../models/user.model';
 
@@ -16,7 +16,7 @@ const initialState: IAuthState = {
     }
 };
 
-export const authReducer = createReducer(
+const reducer = createReducer<IAuthState>(
     initialState,
     on(
         restoreUserData,
@@ -55,3 +55,7 @@ export const authReducer = createReducer(
         })
     )
 );
+
+export function authReducer(state: IAuthState | undefined, action: Action) {
+    return reducer(state, action);
+}

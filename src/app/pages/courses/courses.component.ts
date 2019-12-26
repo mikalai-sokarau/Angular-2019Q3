@@ -6,6 +6,11 @@ import {
     DeleteConfirmationModalComponent
 } from '../../shared/components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
 import { ActivatedRoute } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { ICoursesState } from './store/courses.reducers';
+import { coursesRequest } from './store/courses.actions';
+import { Observable } from 'rxjs';
+import { coursesFeatureKey } from './store';
 
 @Component({
     selector: 'app-courses',
@@ -13,12 +18,13 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-    public courses: Array<ICourse> = [];
+    public courses$: Observable<ICoursesState> = this.store.pipe(select(coursesFeatureKey));
 
     constructor(
         private coursesService: CoursesService,
         private modalService: ModalService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private store: Store<{ courses: ICoursesState }>
     ) {}
 
     ngOnInit() {
@@ -27,12 +33,9 @@ export class CoursesComponent implements OnInit {
                 if (find) {
                     this.coursesService.findCourses(find);
                 } else {
-                    this.coursesService.loadCourses(from, to)
+                    this.store.dispatch(coursesRequest({ from, to }));
                 }
             });
-        
-        this.coursesService.coursesUpdates()
-            .subscribe(courses => this.courses = courses);
     }
 
     public onDeleteCourse(id: string): void {
