@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { coursesRequestSuccess } from './courses.actions';
+import { coursesRequestSuccess, coursesRequestUpdateSuccess } from './courses.actions';
 import { ICourse } from '../components/course/course.model';
 
 export interface ICoursesState {
@@ -19,6 +19,19 @@ const reducer = createReducer<ICoursesState>(
             items
         })
     ),
+    on(
+        coursesRequestUpdateSuccess,
+        (state, { course }) => {
+            const index = state.items.findIndex(item => item.id === course.id);
+            const newItems = [...state.items];
+            newItems[index] = course;
+
+            return {
+                ...state,
+                items: newItems
+            }
+        }
+    )
 );
 
 export function coursesReducer(state: ICoursesState | undefined, action: Action) {

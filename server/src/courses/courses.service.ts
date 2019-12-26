@@ -41,6 +41,15 @@ export class CoursesService {
     return this.courses.some(({ id }) => id === newCourse.id);
   }
 
+  updateCourse(course: string): ICourse {
+    const updatedCourse = JSON.parse(course) as ICourse;
+    const index = this.courses.findIndex(c => c.id === updatedCourse.id);
+
+    this.courses[index] = updatedCourse;
+
+    return updatedCourse;
+  }
+
   private findText(title: string, description: string, text: string): boolean {
     const normalizedTitle = title.toLowerCase();
     const normalizedDescription = description.toLowerCase();

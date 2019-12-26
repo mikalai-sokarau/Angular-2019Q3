@@ -14,6 +14,7 @@ export class CoursesService {
   static readonly DEFAULT_COURSES_SIZE = 5;
   public courses: Array<ICourse> = [];
   public courses$: ReplaySubject<Array<ICourse>>;
+  private singleCourse$: ReplaySubject<ICourse>;
   private modalRef: ComponentRef<any>;
 
   constructor(
@@ -22,6 +23,7 @@ export class CoursesService {
     private modalService: ModalService
   ) {
     this.courses$ = new ReplaySubject(1);
+    this.singleCourse$ = new ReplaySubject(1);
   }
 
   public createCourse(course: ICourse): void {
@@ -36,12 +38,18 @@ export class CoursesService {
     return this.courses.find(course => id === course.id);
   }
 
-  public updateCourse(config: ICourse): ICourse {
-    const courseToUpdate = this.courses.find(course => config.id === course.id);
+  public updateCourse(course: ICourse): Observable<ICourse> {
+    const url = `${this.apiUrl}/update`;
+    const courseToUpdate = this.courses.find(c => c.id === course.id);
+    const body = { course: JSON.stringify({ ...courseToUpdate, ...course })}
 
-    Object.assign(courseToUpdate, config);
+    this.addSpinner();
+    this.http.put<ICourse>(url, body).subscribe(course => {
+      this.removeSpinner();
+      this.singleCourse$.next(course);
+    });
 
-    return courseToUpdate;
+    return this.singleCourse$
   }
 
   public removeCourse(id: string): void {

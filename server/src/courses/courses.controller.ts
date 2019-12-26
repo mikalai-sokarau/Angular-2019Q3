@@ -62,4 +62,18 @@ export class CoursesController {
 
     res.status(HttpStatus.OK).send();
   }
+
+  @Put('update')
+  updateCourse(
+    @Res() res: Response,
+    @Body('course') course: string
+  ) {
+    const updatedCourse = this.coursesService.updateCourse(course);
+
+    if(!updatedCourse) {
+      throw new HttpException('Error during course updating', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    res.status(HttpStatus.OK).send(updatedCourse);
+  }
 }
