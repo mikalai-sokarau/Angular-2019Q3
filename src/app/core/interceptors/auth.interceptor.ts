@@ -3,7 +3,8 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 import { IUser } from '../models/user.model';
 import { Store, select } from '@ngrx/store';
-import { IAuthState } from '../services/auth/auth.service.reducer';
+import { IAuthState } from '../store/auth/auth.reducer';
+import { authFeatureKey } from '../store/auth';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -11,10 +12,12 @@ export class AuthInterceptor implements HttpInterceptor {
     private user: IUser;
 
     constructor(private store: Store<{ auth: IAuthState }>) {
-        this.store.pipe(select('auth')).subscribe(({ userData, isAuthenticated }) => {
-            this.user = userData;
-            this.isUserAuthenticated = isAuthenticated;
-        });
+        this.store
+            .pipe(select(authFeatureKey))
+            .subscribe(({ userData, isAuthenticated }) => {
+                this.user = userData;
+                this.isUserAuthenticated = isAuthenticated;
+            });
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

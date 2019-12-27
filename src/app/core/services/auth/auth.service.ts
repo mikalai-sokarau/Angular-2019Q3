@@ -6,9 +6,9 @@ import { ReplaySubject, Observable } from 'rxjs';
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { GlobalLoadingComponent } from 'src/app/shared/components/modals/global-loading/global-loading.component';
 import { Store } from '@ngrx/store';
-import { restoreUserData } from './auth.service.actions';
+import { restoreUserData } from '../../store/auth/auth.actions';
 import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
-import { IAuthState } from './auth.service.reducer';
+import { IAuthState } from '../../store/auth/auth.reducer';
 
 @Injectable({
   providedIn: 'root'

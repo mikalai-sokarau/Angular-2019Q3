@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { loginRequestSuccess, logoutRequestSuccess, restoreUserData } from './auth.service.actions';
+import { loginRequestSuccess, logoutRequestSuccess, restoreUserData } from './auth.actions';
 import { IUser } from '../../models/user.model';
 
 export interface IAuthState {
@@ -7,7 +7,7 @@ export interface IAuthState {
     userData: IUser
 }
 
-const initialState: IAuthState = {
+export const authInitialState: IAuthState = {
     isAuthenticated: false,
     userData: {
         firstName: null,
@@ -16,8 +16,8 @@ const initialState: IAuthState = {
     }
 };
 
-const reducer = createReducer<IAuthState>(
-    initialState,
+const reducer = createReducer(
+    authInitialState,
     on(
         restoreUserData,
         (state, { isAuthenticated, user }) => ({
