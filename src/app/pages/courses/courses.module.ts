@@ -20,10 +20,11 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { CourseManipulationComponent } from './components/course-manipulation/course-manipulation.component';
 import { StoreModule } from '@ngrx/store';
-import { storeDevtoolsConfig, coursesFeatureKey, reducers, metaReducers } from './store';
+import { storeDevtoolsConfig, coursesFeatureKey } from './store';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { CoursesEffects } from './store/courses.effects';
+import { coursesReducer } from './store/courses.reducers';
 
 @NgModule({
   declarations: [
@@ -47,8 +48,7 @@ import { CoursesEffects } from './store/courses.effects';
     AppRoutingModule,
     StoreModule.forFeature(
       coursesFeatureKey, 
-      reducers,
-      { metaReducers }
+      coursesReducer
     ),
     EffectsModule.forFeature([CoursesEffects]),
     storeDevtoolsConfig(environment)

@@ -10,11 +10,20 @@ import { CoursesModule } from './pages/courses/courses.module';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundModule } from './pages/not-found/not-found.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { StoreModule } from '@ngrx/store';
-import { reducers, storeModuleConfig, storeDevtoolsConfig } from './store';
+import { StoreModule, RootStoreConfig, MetaReducer, ActionReducerMap } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './pages/login/login.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+const metaReducers: MetaReducer[] = [];
+const reducers: ActionReducerMap<any> = {};
+const storeModuleConfig: RootStoreConfig<any, any> = {
+  metaReducers, 
+  runtimeChecks: {
+    strictStateImmutability: true,
+    strictActionImmutability: true,
+  }
+}
 
 @NgModule({
   declarations: [
@@ -30,8 +39,13 @@ import { AuthEffects } from './pages/login/login.effects';
     LoginModule,
     NotFoundModule,
     StoreModule.forRoot(reducers, storeModuleConfig),
-    EffectsModule.forRoot([AuthEffects]),
-    storeDevtoolsConfig(environment)
+    EffectsModule.forRoot([]),
+    environment.production
+      ? []
+      : StoreDevtoolsModule.instrument({
+          maxAge: 10,
+          logOnly: environment.production
+      })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

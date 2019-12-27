@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loginRequest } from 'src/app/core/services/auth/auth.service.actions';
-import { IAuthState } from 'src/app/core/services/auth/auth.service.reducer';
+import { loginRequest } from 'src/app/core/store/auth/auth.actions';
+import { IAuthState } from 'src/app/core/store/auth/auth.reducer';
 
 @Component({
   selector: 'app-login',

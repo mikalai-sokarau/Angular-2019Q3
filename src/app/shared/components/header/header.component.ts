@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { logoutRequest } from 'src/app/core/services/auth/auth.service.actions';
-import { IAuthState } from 'src/app/core/services/auth/auth.service.reducer';
+import { logoutRequest } from 'src/app/core/store/auth/auth.actions';
+import { IAuthState } from 'src/app/core/store/auth/auth.reducer';
+import { authFeatureKey } from 'src/app/core/store/auth';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { IAuthState } from 'src/app/core/services/auth/auth.service.reducer';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  public user$: Observable<IAuthState> = this.store.pipe(select('auth'));
+  public user$: Observable<IAuthState> = this.store.pipe(select(authFeatureKey));
   public logoutRequest = logoutRequest;
   
   constructor(private store: Store<{ auth: IAuthState }>) {}
