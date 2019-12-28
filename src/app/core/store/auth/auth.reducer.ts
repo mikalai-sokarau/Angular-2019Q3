@@ -1,6 +1,11 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { loginRequestSuccess, logoutRequestSuccess, restoreUserData } from './auth.actions';
 import { IUser } from '../../models/user.model';
+import {
+    loginRequestSuccess,
+    logoutRequestSuccess,
+    restoreUserData,
+    authRequestError
+} from './auth.actions';
 
 export interface IAuthState {
     isAuthenticated: boolean;
@@ -22,7 +27,7 @@ const reducer = createReducer(
         restoreUserData,
         (state, { isAuthenticated, user }) => ({
             ...state,
-            isAuthenticated: isAuthenticated,
+            isAuthenticated,
             userData: {
                 firstName: user && user.firstName,
                 lastName: user && user.lastName,
@@ -44,6 +49,7 @@ const reducer = createReducer(
     ),
     on(
         logoutRequestSuccess,
+        authRequestError,
         state => ({
             ...state,
             isAuthenticated: false,

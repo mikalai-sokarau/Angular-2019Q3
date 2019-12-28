@@ -7,6 +7,7 @@ export enum AuthActionTypes {
     LOGIN_REQUEST_SUCCESS = '[AuthService] LoginRequestSuccess',
     LOGOUT_REQUEST = '[AuthService] LogoutRequest',
     LOGOUT_REQUEST_SUCCESS = '[AuthService] LogoutRequestSuccess',
+    AUTH_REQUEST_ERROR = '[AuthService] LogoutRequestError'
 }
 
 export const restoreUserData = createAction(
@@ -30,4 +31,8 @@ export const logoutRequest = createAction(
 
 export const logoutRequestSuccess = createAction(
     AuthActionTypes.LOGOUT_REQUEST_SUCCESS
+);
+
+export const authRequestError = createAction(
+    AuthActionTypes.AUTH_REQUEST_ERROR
 );
