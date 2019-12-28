@@ -1,66 +1,70 @@
 import { IUser } from './../../models/user.model';
-import { Injectable } from '@angular/core';
+import { Injectable, ComponentRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
-import { ReplaySubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { GlobalLoadingComponent } from 'src/app/shared/components/modals/global-loading/global-loading.component';
+import { Store, select } from '@ngrx/store';
+import { restoreUserData } from '../../store/auth/auth.actions';
+import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
+import { IAuthState } from '../../store/auth/auth.reducer';
+import { authFeatureKey } from '../../store/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public isAuthenticated$: ReplaySubject<boolean>;
   private readonly loginUrl = '/api/login';
   private readonly userStoreId = 'user';
-  private user: IUser | null;
-  private userInfo$: ReplaySubject<IUser>;
+  private modalRef: ComponentRef<any>;
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private store: Store<{ auth: IAuthState }>
   ) {
-    this.user = this.getUserFromStore();
-    this.isAuthenticated$ = new ReplaySubject(1);
-    this.isAuthenticated$.next(Boolean(this.user));
-    this.userInfo$ = new ReplaySubject<IUser>(1);
-    this.userInfo$.next(this.user);
+    const user = this.getUserFromStore();
+    
+    this.store.dispatch(
+      restoreUserData({ user, isAuthenticated: Boolean(user) })
+    );
+
+    this.store
+      .pipe(select(authFeatureKey))
+      .subscribe((state: IAuthState) => this.updateUserData(state.userData));
   }
 
-  public login(email: string, password: string): void {
+  public login(email: string, password: string): Observable<IUser> {
     const params = {
       email,
       password
     };
-    const modalRef = this.modalService.openModal(GlobalLoadingComponent);
 
-    this.http.post(this.loginUrl, params)
-      .subscribe((userData: IUser) => {
-        if (userData) {
-          this.user = userData;
-          this.isAuthenticated$.next(true);
-          this.userInfo$.next(this.user);
-          this.saveUserToStore(userData);
-          this.modalService.closeModal(modalRef);
-          this.router.navigate(
-            ['/courses'],
-            { queryParams: { from: 0, to: CoursesService.DEFAULT_COURSES_SIZE } }
-          );
-        }
-      });
+    this.modalRef = this.modalService.openModal(GlobalLoadingComponent);
+
+    return this.http.post<IUser>(this.loginUrl, params);
   }
 
   public logout(): void {
-    this.user = null;
-    this.isAuthenticated$.next(false);
     this.clearUserData();
     this.router.navigate(['/login']);
   }
 
-  public getUserInfo(): Observable<IUser> {
-    return this.userInfo$;
+  private updateUserData(userData: IUser): void {
+    if (userData.firstName && userData.lastName && userData.id) {
+      this.saveUserToStore(userData);
+      this.router.navigate(
+        ['/courses'],
+        { queryParams: { from: 0, to: CoursesService.DEFAULT_COURSES_SIZE } }
+      )
+    }
+
+    if (this.modalRef) {
+      this.modalService.closeModal(this.modalRef);
+      this.modalRef = null;
+    }
   }
 
   private getUserFromStore(): IUser {

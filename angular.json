@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular2019q3"
+    }
+  },
+  "defaultProject": "angular2019q3",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

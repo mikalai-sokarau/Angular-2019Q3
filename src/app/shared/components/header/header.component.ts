@@ -1,25 +1,18 @@
-import { AuthService } from './../../../core/services/auth/auth.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IUser } from 'src/app/core/models/user.model';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { logoutRequest } from 'src/app/core/store/auth/auth.actions';
+import { IAuthState } from 'src/app/core/store/auth/auth.reducer';
+import { authFeatureKey } from 'src/app/core/store/auth';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
-  public user: IUser;
-  private subscription: Subscription;
-
-  constructor(public authService: AuthService) { }
-
-  ngOnInit() {
-    this.subscription = this.authService.getUserInfo()
-      .subscribe(user => this.user = user);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
-  }
+export class HeaderComponent {
+  public user$: Observable<IAuthState> = this.store.pipe(select(authFeatureKey));
+  public logoutRequest = logoutRequest;
+  
+  constructor(private store: Store<{ auth: IAuthState }>) {}
 }
