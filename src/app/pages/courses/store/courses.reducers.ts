@@ -1,6 +1,12 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { coursesRequestSuccess, coursesRequestUpdateSuccess, coursesRequestCreateSuccess } from './courses.actions';
 import { ICourse } from '../components/course/course.model';
+import {
+    coursesRequestSuccess,
+    coursesRequestUpdateSuccess,
+    coursesRequestFindSuccess,
+    coursesRequestFindError,
+    coursesRequestDeleteSuccess
+} from './courses.actions';
 
 export interface ICoursesState {
     items: Array<ICourse>
@@ -33,10 +39,24 @@ const reducer = createReducer<ICoursesState>(
         }
     ),
     on(
-        coursesRequestCreateSuccess,
-        (state, { course }) => ({
+        coursesRequestFindSuccess,
+        (state, { items }) => ({
             ...state,
-            items: [...state.items, course]
+            items
+        })
+    ),
+    on(
+        coursesRequestFindError,
+        state => ({
+            ...state,
+            items: []
+        })
+    ),
+    on(
+        coursesRequestDeleteSuccess,
+        (state, { id }) => ({
+            ...state,
+            items: state.items.filter(item => id !== item.id)
         })
     )
 );

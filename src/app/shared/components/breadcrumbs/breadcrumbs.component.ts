@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IBreadcrumb } from './breadcrumbs.model';
 import { ActivatedRoute } from '@angular/router';
-import { CoursesService } from 'src/app/pages/courses/services/courses/courses.service';
+import { ICoursesState } from 'src/app/pages/courses/store/courses.reducers';
+import { Store, select } from '@ngrx/store';
+import { coursesFeatureKey } from 'src/app/pages/courses/store';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -14,18 +16,24 @@ export class BreadcrumbsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private coursesService: CoursesService
+    private store: Store<{ courses: ICoursesState }>
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      try {
         const id = params.get('id');
-        const course = this.coursesService.getCourseById(id);
-        const breadcrumb = { name: course.title, link: '' };
         
-        this.breadcrumbs.push(breadcrumb);
-      } catch (e) { /* do nothing */ }
+        this.store
+          .pipe(select(coursesFeatureKey))
+          .subscribe(({ items }) => { 
+            try {
+              const course = items.find(c => id === c.id);
+              const breadcrumb = { name: course.title, link: '' };
+              
+              this.breadcrumbs.push(breadcrumb);
+            } catch (e) { /* do nothing */ }
+          });
+        
     })
   }
 

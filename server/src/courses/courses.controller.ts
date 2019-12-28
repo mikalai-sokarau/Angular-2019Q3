@@ -46,7 +46,7 @@ export class CoursesController {
       throw new HttpException('There are no courses left', HttpStatus.NOT_FOUND);
     }
 
-    res.status(HttpStatus.OK).send();
+    res.status(HttpStatus.OK).send({ id });
   }
 
   @Put('create')
@@ -68,7 +68,7 @@ export class CoursesController {
     @Res() res: Response,
     @Body('course') course: string
   ) {
-    const updatedCourse = this.coursesService.updateCourse(course);
+    const updatedCourse = this.coursesService.updateCourse(JSON.parse(course));
 
     if(!updatedCourse) {
       throw new HttpException('Error during course updating', HttpStatus.INTERNAL_SERVER_ERROR);

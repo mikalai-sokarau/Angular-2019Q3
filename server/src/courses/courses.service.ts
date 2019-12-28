@@ -41,9 +41,9 @@ export class CoursesService {
     return this.courses.some(({ id }) => id === newCourse.id);
   }
 
-  updateCourse(course: string): ICourse {
-    const updatedCourse = JSON.parse(course) as ICourse;
-    const index = this.courses.findIndex(c => c.id === updatedCourse.id);
+  updateCourse(course: ICourse): ICourse {
+    const index = this.courses.findIndex(c => c.id === course.id);
+    const updatedCourse = { ...this.courses[index], ...course };
 
     this.courses[index] = updatedCourse;
 
