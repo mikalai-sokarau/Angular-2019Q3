@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, forwardRef } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -12,30 +12,28 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   }],
 })
 export class InputTextComponent implements ControlValueAccessor {
-  @Input() public description: string;
-  @Output() descriptionChange: EventEmitter<string> = new EventEmitter();
+  public description: string;
 
-  public currentValue: string;
+  constructor() {}
 
-  constructor() { }
-  
-  public onChange(): void {
-    this.descriptionChange.emit(this.description);
+  public onKeyUp(value: string): void {
+    this.writeValue(value);
   }
 
-  onTouched = () => {};
+  public writeValue(value: string): void {
+    this.description = value;
+    this.onChange(value);
+    this.onTouched();
+  }
 
-  registerOnChange(fn: any) {
+  public registerOnChange(fn: any): void {
     this.onChange = fn;
   }
-
-  registerOnTouched(fn: any) {
+  
+  public registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
-  writeValue(value: any) {
-    if (value !== this.currentValue) {
-      this.currentValue = value;
-    }
-  }
+  private onChange: any = () => {};
+  private onTouched: any = () => {};
 }

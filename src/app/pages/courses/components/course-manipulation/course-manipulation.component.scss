@@ -1,6 +1,8 @@
 @import '../../../../../styles/variables';
 @import '../../../../../styles/elements';
 
+$default-input-padding: 15px;
+
 .course-manipulation-container {
     color: $dark-gray;
     margin: 0 auto;
@@ -21,7 +23,7 @@
         font-style: italic;
         height: 40px;
         margin: 10px 0;
-        padding-left: 15px;
+        padding-left: $default-input-padding;
     }
 
     label::first-letter {
@@ -125,16 +127,20 @@
         }
     }
 
-    .duration-container.error {
+    .duration-container.error,
+    .course-description-container.error {
         .error-msg {
             color: $red;
             visibility: visible;
         }
 
-        ::ng-deep app-input-duration {
-            .duration {
+        ::ng-deep app-input-duration,
+        ::ng-deep app-input-text {
+            .duration,
+            .description {
                 border-left-color: $red;
                 border-left-width: 4px;
+                padding-left: $default-input-padding - 3px;
             }
 
             .formatted-duration {

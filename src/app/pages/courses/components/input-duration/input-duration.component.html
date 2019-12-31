@@ -1,10 +1,11 @@
 <div class="duration-container">
     <label for="duration-id">duration</label>
     <input
+        class="duration"
         #durationInput
         type="number"
+        id="duration-id"
         placeholder="Enter duration"
-        class="duration"
         [value]="duration"
         (keyup)="onKeyUp(durationInput.value)">
     <span class="formatted-duration">

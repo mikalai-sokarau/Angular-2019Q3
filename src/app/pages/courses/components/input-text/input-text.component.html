@@ -5,11 +5,11 @@
 </label>
 <textarea
     class="description"
-    name="description"
     id="description-id"
+    #descriptionArea
     placeholder="Enter a description"
     cols="30"
     rows="10"
-    [(ngModel)]="description"
-    (ngModelChange)="onChange($event)">
+    [value]="description"
+    (keyup)="onKeyUp(descriptionArea.value)">
 </textarea>
