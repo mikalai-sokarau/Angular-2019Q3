@@ -124,4 +124,26 @@
             @extend %info-btn;
         }
     }
+
+    .duration-container.error {
+        .error-msg {
+            color: $red;
+            visibility: visible;
+        }
+
+        ::ng-deep app-input-duration {
+            .duration {
+                border-left-color: $red;
+                border-left-width: 4px;
+            }
+
+            .formatted-duration {
+                color: $red;
+            }
+        }
+    }
+
+    .error-msg {
+        visibility: hidden;
+    }
 }

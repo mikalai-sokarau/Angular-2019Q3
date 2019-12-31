@@ -24,4 +24,21 @@ export class Course implements ICourse {
         lastName: string
     };
     isTopRated: boolean;
+
+    constructor(
+        title = '',
+        date = '',
+        duration = '',
+        description = '',
+        author = {
+            firstName: '',
+            lastName: ''
+        }
+    ) {
+        this.title = title,
+        this.date = date,
+        this.duration = duration,
+        this.description = description,
+        this.author = author;
+    }
 }

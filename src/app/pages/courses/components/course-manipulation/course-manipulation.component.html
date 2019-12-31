@@ -1,21 +1,26 @@
 <section class="course-manipulation-container">
-    <form class="course-manipulation-form">
+    <form
+        class="course-manipulation-form"
+        [formGroup]="courseForm">
         <ul class="form-sections">
             <li class="course-title-container">
-                <label for="course-title-id">title</label>
+                <label for="course-title">title</label>
                 <input
                     type="text"
-                    id="course-title-id"
+                    id="course-title"
                     class="course-title"
                     placeholder="Enter a course name"
-                    [(ngModel)]="title"
-                    name="title">
+                    formControlName ="title">
             </li>
-            <li class="course-description-container">
+            <li class="course-description-container"
+                [class.error]="description.invalid && (description.dirty || description.touched)">
                 <app-input-text
-                    [description]="description"
-                    (descriptionChange)=onDescriptionChange($event)>
+                    formControlName="description">
                 </app-input-text>
+                <span class="error-msg">
+                    Please put a description shorter than
+                    {{ maxDescriptionLength }} symbols.
+                </span>
             </li>
             <li class="course-meta-info-container">
                 <div class="course-date-container">
@@ -25,13 +30,22 @@
                         id="course-date-id"
                         placeholder="Enter a course date"
                         class="course-date"
-                        [(ngModel)]="date"
-                        name="date">
+                        formControlName="date">
+                    <span class="error-msg">
+                        Please set duration between 
+                        {{ minDuration }} and {{ maxDuration }} minutes.
+                    </span>
                 </div>
-                <app-input-duration
-                    [duration]="duration"
-                    (durationChange)="onDurationChange($event)"
-                ></app-input-duration>                
+                <div class="duration-container"
+                    [class.error]="duration.invalid && (duration.dirty || duration.touched)">
+                    <app-input-duration
+                        formControlName="duration"
+                    ></app-input-duration>
+                    <span class="error-msg">
+                        Please set duration between 
+                        {{ minDuration }} and {{ maxDuration }} minutes.
+                    </span>
+                </div>
             </li>
             <li class="course-author-container">
                 <label for="course-author-id">authors</label>
@@ -40,8 +54,8 @@
                     id="course-author-id"
                     placeholder="Enter a course author"
                     class="course-author"
-                    [(ngModel)]="author"
-                    name="author">
+                    formControlName="author"
+                    value="author.firstName">
             </li>
             <li class="course-upload-area-container">
                 <label for="course-upload-file-id">upload video file</label>
@@ -75,16 +89,19 @@
             * Mandatory fields
         </span>
         <div class="buttons-block">
-            <a class="cancel"
+            <button class="cancel"
                 [routerLink]="'/courses'"
                 role="button">
                 cancel
-            </a>
-            <a class="save"
+            </button>
+            <button
+                class="save"
+                type="submit"
                 role="button"
-                (click)="onSave()">
+                (click)="onSave()"
+                [disabled]="courseForm.invalid">
                 save
-            </a>
+            </button>
         </div>
     </footer>
 </section>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ICourse } from '../course/course.model';
+import { ICourse, Course } from '../course/course.model';
 import { ICoursesState } from '../../store/courses.reducers';
 import { Store } from '@ngrx/store';
 import { coursesRequestCreate } from '../../store/courses.actions';
@@ -10,7 +10,9 @@ import { coursesRequestCreate } from '../../store/courses.actions';
   styleUrls: ['./add-course.component.scss'],
 })
 export class AddCourseComponent {
-  constructor(private store: Store<{ courses: ICoursesState }>) { }
+  public course: ICourse = new Course();
+
+  constructor(private store: Store<{ courses: ICoursesState }>) {}
 
   public onSaveCourse(course: ICourse): void {
     this.store.dispatch(coursesRequestCreate({ course }));

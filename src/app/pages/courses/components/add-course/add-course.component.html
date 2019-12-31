@@ -3,6 +3,8 @@
         <h2 class="add-course-title">add course</h2>
         <div class="separator"></div>
     </header>
-    <app-course-manipulation (saveCourse)="onSaveCourse($event)">
+    <app-course-manipulation
+        [course]="course"
+        (saveCourse)="onSaveCourse($event)">
     </app-course-manipulation>
 </section>
