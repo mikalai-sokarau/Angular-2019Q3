@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { ICourse } from '../components/course/course.model';
+import { ICourse } from '../../components/course/course.model';
 import { CourseStatus } from './course-highlighting.model';
 
 @Directive({
