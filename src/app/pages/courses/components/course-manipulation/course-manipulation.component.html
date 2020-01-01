@@ -3,7 +3,8 @@
         class="course-manipulation-form"
         [formGroup]="courseForm">
         <ul class="form-sections">
-            <li class="course-title-container">
+            <li class="course-title-container"
+                [class.error]="title.invalid && (title.dirty || title.touched)">
                 <label for="course-title">title</label>
                 <input
                     type="text"
@@ -11,6 +12,10 @@
                     class="course-title"
                     placeholder="Enter a course name"
                     formControlName ="title">
+                <span class="error-msg">
+                    Please put a title shorter than
+                    {{ maxTitleLength }} symbols.
+                </span>
             </li>
             <li class="course-description-container"
                 [class.error]="description.invalid && (description.dirty || description.touched)">

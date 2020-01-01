@@ -3,6 +3,12 @@
 
 $default-input-padding: 15px;
 
+%error {
+    border-left-color: $red;
+    border-left-width: 4px;
+    padding-left: $default-input-padding - 3px;
+}
+
 .course-manipulation-container {
     color: $dark-gray;
     margin: 0 auto;
@@ -13,7 +19,7 @@ $default-input-padding: 15px;
         grid-gap: 30px;
     }
 
-    [class^="course"][class$="container"] {
+    [class^="course"][class*="container"] {
         display: grid;
     }
 
@@ -128,19 +134,22 @@ $default-input-padding: 15px;
     }
 
     .duration-container.error,
-    .course-description-container.error {
+    .course-description-container.error,
+    .course-title-container.error {
         .error-msg {
             color: $red;
             visibility: visible;
+        }
+
+        .course-title {
+            @extend %error;
         }
 
         ::ng-deep app-input-duration,
         ::ng-deep app-input-text {
             .duration,
             .description {
-                border-left-color: $red;
-                border-left-width: 4px;
-                padding-left: $default-input-padding - 3px;
+                @extend %error;
             }
 
             .formatted-duration {

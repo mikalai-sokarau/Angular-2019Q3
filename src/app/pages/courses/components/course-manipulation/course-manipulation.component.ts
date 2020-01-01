@@ -28,6 +28,10 @@ export class CourseManipulationComponent implements OnInit {
     return this.courseForm.get('description');
   }
 
+  get title() {
+    return this.courseForm.get('title');
+  }
+
   constructor(private router: Router) { }
 
   ngOnInit() {
