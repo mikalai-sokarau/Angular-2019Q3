@@ -11,7 +11,8 @@ import {
     coursesRequestCreateSuccess,
     coursesRequestFindSuccess,
     coursesRequestFindError,
-    coursesRequestDeleteSuccess
+    coursesRequestDeleteSuccess,
+    authorsRequestSuccess
 } from './courses.actions';
 
 @Injectable()
@@ -71,6 +72,17 @@ export class CoursesEffects {
                     catchError(() => EMPTY)
                 )
         )
+    ));
+
+    public getAuthors$ = createEffect(() => this.actions$.pipe<any, any>(
+        ofType(CoursesActionTypes.AUTHORS_REQUEST),
+        mergeMap(() => 
+            this.coursesService
+                .loadAuthors()
+                .pipe(
+                    map(authors => authorsRequestSuccess({ authors })),
+                    catchError(() => EMPTY)
+                ))
     ));
   
     constructor(

@@ -13,7 +13,7 @@
                     placeholder="Enter a course name"
                     formControlName ="title">
                 <span class="error-msg">
-                    Please put a title shorter than
+                    Please put any title shorter than
                     {{ maxTitleLength }} symbols.
                 </span>
             </li>
@@ -23,7 +23,7 @@
                     formControlName="description">
                 </app-input-text>
                 <span class="error-msg">
-                    Please put a description shorter than
+                    Please put any description shorter than
                     {{ maxDescriptionLength }} symbols.
                 </span>
             </li>
@@ -49,14 +49,10 @@
                 </div>
             </li>
             <li class="course-author-container">
-                <label for="course-author-id">authors</label>
-                <input
-                    type="text"
-                    id="course-author-id"
-                    placeholder="Enter a course author"
-                    class="course-author"
+                <app-input-author
+                    authors="authors$ | async"
                     formControlName="author"
-                    value="author.firstName">
+                ></app-input-author>
             </li>
             <li class="course-upload-area-container">
                 <label for="course-upload-file-id">upload video file</label>

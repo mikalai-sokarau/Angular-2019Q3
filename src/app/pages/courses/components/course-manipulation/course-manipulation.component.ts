@@ -6,6 +6,11 @@ import { durationValidator } from '../../directives/duration-validator/duration-
 import { InputDurationComponent } from '../input-duration/input-duration.component';
 import { dateValidator } from '../../directives/date-validator/date-validator.directive';
 import { InputDateComponent } from '../input-date/input-date.component';
+import { Store, select } from '@ngrx/store';
+import { ICoursesState } from '../../store/courses.reducers';
+import { Observable } from 'rxjs';
+import { coursesFeatureKey } from '../../store';
+import { authorsRequest } from '../../store/courses.actions';
 
 @Component({
   selector: 'app-course-manipulation',
@@ -21,6 +26,7 @@ export class CourseManipulationComponent implements OnInit {
   public readonly maxDuration = InputDurationComponent.MAX_DURATION_IN_MINUTES;
   public readonly maxDescriptionLength = 500;
   public readonly maxTitleLength = 50;
+  public authors$: Observable<ICoursesState> = this.store.pipe(select(coursesFeatureKey));
 
   get duration() {
     return this.courseForm.get('duration');
@@ -38,9 +44,13 @@ export class CourseManipulationComponent implements OnInit {
     return this.courseForm.get('date');
   }
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private store: Store<{ courses: ICoursesState }>
+  ) {}
 
   ngOnInit() {
+    this.store.dispatch(authorsRequest());
     this.courseForm = this.createForm(this.course);
   }
 
@@ -69,6 +79,8 @@ export class CourseManipulationComponent implements OnInit {
   }
 
   private createForm(course: ICourse): FormGroup {
+    console.log(course);
+    
     const author = new FormControl(
       course.author,
       [ Validators.required ]

@@ -1,0 +1,13 @@
+<label
+    class="course-author-label"
+    for="course-author-id">
+    authors
+</label>
+<input
+    type="text"
+    #inputAuthor
+    id="course-author-id"
+    placeholder="Enter a course author"
+    class="course-author"
+    [value]="author"
+    (keyup)="onKeyUp(inputAuthor.value)">

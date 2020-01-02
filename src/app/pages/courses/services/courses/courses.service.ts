@@ -7,6 +7,7 @@ import { GlobalLoadingComponent } from 'src/app/shared/components/modals/global-
 import { ICoursesState } from '../../store/courses.reducers';
 import { Store, select } from '@ngrx/store';
 import { coursesFeatureKey } from '../../store';
+import { IAuthor } from '../../components/input-author/input-author.model';
 
 @Injectable({
   providedIn: 'root'
@@ -68,7 +69,13 @@ export class CoursesService {
     return this.http.get<Array<ICourse>>(url)
   }
 
-  removeSpinner(): void {
+  public loadAuthors(): Observable<Array<IAuthor>> {
+    const url = `${this.apiUrl}/authors`;
+
+    return this.http.get<Array<IAuthor>>(url)
+  }
+
+  public removeSpinner(): void {
     if (this.modalRef) {
       this.modalService.closeModal(this.modalRef);
       this.modalRef = null;

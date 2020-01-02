@@ -5,15 +5,19 @@ import {
     coursesRequestUpdateSuccess,
     coursesRequestFindSuccess,
     coursesRequestFindError,
-    coursesRequestDeleteSuccess
+    coursesRequestDeleteSuccess,
+    authorsRequestSuccess
 } from './courses.actions';
+import { IAuthor } from '../components/input-author/input-author.model';
 
 export interface ICoursesState {
-    items: Array<ICourse>
+    items: Array<ICourse>,
+    autors: Array<IAuthor>
 }
 
 export const initialState: ICoursesState = {
-    items: []
+    items: [],
+    autors: []
 };
 
 const reducer = createReducer<ICoursesState>(
@@ -57,6 +61,13 @@ const reducer = createReducer<ICoursesState>(
         (state, { id }) => ({
             ...state,
             items: state.items.filter(item => id !== item.id)
+        })
+    ),
+    on(
+        authorsRequestSuccess,
+        (state, { authors }) => ({
+            ...state,
+            authors
         })
     )
 );
