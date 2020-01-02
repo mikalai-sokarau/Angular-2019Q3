@@ -35,6 +35,19 @@ export class CoursesController {
     res.status(HttpStatus.OK).send(courses);
   }
 
+  @Get('authors')
+  authors(
+    @Res() res: Response
+  ): void {
+    const authors = this.coursesService.getAuthors();
+
+    if(!authors.length) {
+      throw new HttpException('Authors not found', HttpStatus.NOT_FOUND);
+    }
+
+    res.status(HttpStatus.OK).send(authors);
+  }
+
   @Delete('delete')
   deleteCourse(
     @Res() res: Response,

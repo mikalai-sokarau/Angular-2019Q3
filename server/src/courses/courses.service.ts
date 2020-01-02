@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { courses, getRandomCourseImage } from '../db/courses';
-import { ICourse } from './courses.interface';
+import { ICourse, IAuthor } from './courses.interface';
 
 @Injectable()
 export class CoursesService {
@@ -13,6 +13,10 @@ export class CoursesService {
 
   getCourses(from: number, to: number): Array<ICourse> {
     return this.courses.slice(from, to);
+  }
+
+  getAuthors(): Array<IAuthor> {
+    return this.courses.map(({ author }) => author);
   }
 
   findCourses(text: string): Array<ICourse> {

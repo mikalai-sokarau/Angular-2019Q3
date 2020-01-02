@@ -5,9 +5,11 @@ export interface ICourse {
     duration: string;
     description: string;
     image: string;
-    author: {
-        firstName: string,
-        lastName: string
-    };
+    author: IAuthor;
     isTopRated: boolean;
+}
+
+export interface IAuthor {
+    firstName: string,
+    lastName: string
 }

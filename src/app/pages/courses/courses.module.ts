@@ -29,6 +29,7 @@ import { CourseManipulationComponent } from './components/course-manipulation/co
 import { DurationValidatorDirective } from './directives/duration-validator/duration-validator.directive';
 import { InputDateComponent } from './components/input-date/input-date.component';
 import { DateValidatorDirective } from './directives/date-validator/date-validator.directive';
+import { InputAuthorComponent } from './components/input-author/input-author.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { DateValidatorDirective } from './directives/date-validator/date-validat
     FilterPipe,
     LoadMoreComponent,
     OrderByPipe,
+    InputAuthorComponent,
     InputDateComponent,
     InputDurationComponent,
     InputTextComponent,
