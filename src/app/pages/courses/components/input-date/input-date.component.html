@@ -1,0 +1,14 @@
+<label
+    class="course-date-label"
+    for="course-date-id">
+    date
+</label>
+<input
+    type="text"
+    #dateInput
+    id="course-date-id"
+    placeholder="dd/mm/yyyy"
+    class="course-date"
+    [value]="date"
+    (keyup)="onKeyUp(dateInput.value)"
+>

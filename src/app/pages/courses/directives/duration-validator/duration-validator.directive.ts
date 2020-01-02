@@ -26,7 +26,7 @@ export class DurationValidatorDirective implements Validator {
   @Input() min: number;
   @Input() max: number;
   
-  validate(control: AbstractControl): { [ key: string ]: number } | null {
+  public validate(control: AbstractControl): { [ key: string ]: number } | null {
     return durationValidator(this.min, this.max)(control);
   }
 }

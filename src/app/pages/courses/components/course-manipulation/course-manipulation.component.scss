@@ -135,7 +135,8 @@ $default-input-padding: 15px;
 
     .duration-container.error,
     .course-description-container.error,
-    .course-title-container.error {
+    .course-title-container.error,
+    .date-container.error {
         .error-msg {
             color: $red;
             visibility: visible;
@@ -146,7 +147,9 @@ $default-input-padding: 15px;
         }
 
         ::ng-deep app-input-duration,
-        ::ng-deep app-input-text {
+        ::ng-deep app-input-text,
+        ::ng-deep app-input-date {
+            .course-date,
             .duration,
             .description {
                 @extend %error;

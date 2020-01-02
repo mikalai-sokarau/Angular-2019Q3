@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { durationValidator } from '../../directives/duration-validator/duration-validator.directive';
 import { InputDurationComponent } from '../input-duration/input-duration.component';
+import { dateValidator } from '../../directives/date-validator/date-validator.directive';
+import { InputDateComponent } from '../input-date/input-date.component';
 
 @Component({
   selector: 'app-course-manipulation',
@@ -32,6 +34,10 @@ export class CourseManipulationComponent implements OnInit {
     return this.courseForm.get('title');
   }
 
+  get date() {
+    return this.courseForm.get('date');
+  }
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -48,7 +54,7 @@ export class CourseManipulationComponent implements OnInit {
           firstName: authorData[0] || '',
           lastName: authorData[1] || ''
         },
-        date: this.course.date,
+        date: InputDateComponent.formatDate(this.course.date, true),
         description: this.course.description,
         duration: this.course.duration,
         id: this.course.id,
@@ -68,8 +74,11 @@ export class CourseManipulationComponent implements OnInit {
       [ Validators.required ]
     );
     const date = new FormControl(
-      course.date,
-      [ Validators.required ]
+      InputDateComponent.formatDate(course.date),
+      [
+        Validators.required,
+        dateValidator()
+      ]
     );
     const description = new FormControl(
       course.description,

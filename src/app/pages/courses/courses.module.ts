@@ -27,6 +27,8 @@ import { environment } from 'src/environments/environment';
 import { storeDevtoolsConfig, coursesFeatureKey } from './store';
 import { CourseManipulationComponent } from './components/course-manipulation/course-manipulation.component';
 import { DurationValidatorDirective } from './directives/duration-validator/duration-validator.directive';
+import { InputDateComponent } from './components/input-date/input-date.component';
+import { DateValidatorDirective } from './directives/date-validator/date-validator.directive';
 
 @NgModule({
   declarations: [
@@ -35,11 +37,13 @@ import { DurationValidatorDirective } from './directives/duration-validator/dura
     CourseComponent,
     CourseHighlightingDirective,
     CoursesComponent,
+    DateValidatorDirective,
     DurationPipe,
     DurationValidatorDirective,
     FilterPipe,
     LoadMoreComponent,
     OrderByPipe,
+    InputDateComponent,
     InputDurationComponent,
     InputTextComponent,
     EditCourseComponent,

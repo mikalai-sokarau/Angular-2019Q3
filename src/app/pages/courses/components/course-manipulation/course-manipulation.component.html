@@ -28,17 +28,13 @@
                 </span>
             </li>
             <li class="course-meta-info-container">
-                <div class="course-date-container">
-                    <label for="course-date-id">date</label>
-                    <input
-                        type="date"
-                        id="course-date-id"
-                        placeholder="Enter a course date"
-                        class="course-date"
+                <div class="date-container"
+                    [class.error]="date.invalid && (date.dirty || date.touched)">
+                    <app-input-date
                         formControlName="date">
+                    </app-input-date>
                     <span class="error-msg">
-                        Please set duration between 
-                        {{ minDuration }} and {{ maxDuration }} minutes.
+                        Please fill the date in the correct format - dd/mm/yyyy.
                     </span>
                 </div>
                 <div class="duration-container"

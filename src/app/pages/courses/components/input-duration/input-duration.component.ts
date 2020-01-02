@@ -51,7 +51,7 @@ export class InputDurationComponent implements AfterContentInit, ControlValueAcc
 
     return num > Number.MAX_SAFE_INTEGER || num <= 0
       ? ''
-      : value;
+      : String(num);
   }
   
   private onChange: any = () => {};
