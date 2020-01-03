@@ -5,7 +5,7 @@ export interface ICourse {
     duration: string;
     description: string;
     image: string;
-    author: IAuthor;
+    authors: Array<IAuthor>;
     isTopRated: boolean;
 }
 

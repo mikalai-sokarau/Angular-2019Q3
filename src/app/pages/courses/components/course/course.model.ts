@@ -1,3 +1,5 @@
+import { IAuthor } from '../input-author/input-author.model';
+
 export interface ICourse {
     id: string;
     title: string;
@@ -5,10 +7,7 @@ export interface ICourse {
     duration: string;
     description: string;
     image: string;
-    author: {
-        firstName: string,
-        lastName: string
-    };
+    authors: Array<IAuthor>;
     isTopRated: boolean;
 }
 
@@ -19,10 +18,7 @@ export class Course implements ICourse {
     duration: string;
     description: string;
     image: string;
-    author: {
-        firstName: string,
-        lastName: string
-    };
+    authors: Array<IAuthor>;
     isTopRated: boolean;
 
     constructor(
@@ -30,15 +26,17 @@ export class Course implements ICourse {
         date = '',
         duration = '',
         description = '',
-        author = {
-            firstName: '',
-            lastName: ''
-        }
+        authors = [
+            {
+                firstName: '',
+                lastName: ''
+            }
+        ]
     ) {
         this.title = title,
         this.date = date,
         this.duration = duration,
         this.description = description,
-        this.author = author;
+        this.authors = authors;
     }
 }

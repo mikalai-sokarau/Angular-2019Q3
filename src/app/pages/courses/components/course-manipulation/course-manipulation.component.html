@@ -50,8 +50,8 @@
             </li>
             <li class="course-author-container">
                 <app-input-author
-                    authors="authors$ | async"
-                    formControlName="author"
+                    [authors]="(authors$ | async).authors"
+                    formControlName="authors"
                 ></app-input-author>
             </li>
             <li class="course-upload-area-container">

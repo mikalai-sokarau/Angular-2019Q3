@@ -16,7 +16,9 @@ export class CoursesService {
   }
 
   getAuthors(): Array<IAuthor> {
-    return this.courses.map(({ author }) => author);
+    return this.courses.reduce((acc, course) => {
+      return acc.push(...course.authors), acc;
+    }, []);
   }
 
   findCourses(text: string): Array<ICourse> {
