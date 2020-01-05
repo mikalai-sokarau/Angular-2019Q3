@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ICourse } from '../course/course.model';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { durationValidator } from '../../directives/duration-validator/duration-validator.directive';
 import { InputDurationComponent } from '../input-duration/input-duration.component';
 import { dateValidator } from '../../directives/date-validator/date-validator.directive';
@@ -29,23 +29,23 @@ export class CourseManipulationComponent implements OnInit {
   public readonly maxTitleLength = 50;
   public authors$: Observable<ICoursesState> = this.store.pipe(select(coursesFeatureKey));
 
-  get duration() {
+  get duration(): AbstractControl {
     return this.courseForm.get('duration');
   }
 
-  get description() {
+  get description(): AbstractControl {
     return this.courseForm.get('description');
   }
 
-  get title() {
+  get title(): AbstractControl {
     return this.courseForm.get('title');
   }
 
-  get date() {
+  get date(): AbstractControl {
     return this.courseForm.get('date');
   }
 
-  get authors() {
+  get authors(): AbstractControl {
     return this.courseForm.get('authors');
   }
 

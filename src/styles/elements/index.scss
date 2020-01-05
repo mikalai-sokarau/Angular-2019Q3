@@ -53,3 +53,14 @@
         color: $white;
     }
 }
+
+%error {
+    border-left-color: $red;
+    border-left-width: 4px;
+    padding-left: $default-input-padding - 3px;
+}
+
+%valid {
+    @extend %error;
+    border-left-color: $green;
+}
