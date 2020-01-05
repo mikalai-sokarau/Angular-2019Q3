@@ -36,6 +36,10 @@ export class InputDateComponent implements ControlValueAccessor {
   public registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
+
+  public onFocusOut(): void {
+    this.onTouched();
+  }
   
   public static formatDate(date: string, toServer?: boolean) {
     const slash = '/';

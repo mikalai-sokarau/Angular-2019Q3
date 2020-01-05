@@ -11,5 +11,6 @@
     cols="30"
     rows="10"
     [value]="description"
-    (keyup)="onKeyUp(descriptionArea.value)">
+    (keyup)="onKeyUp(descriptionArea.value)"
+    (focusout)="onFocusOut()">
 </textarea>

@@ -20,6 +20,10 @@ export class InputTextComponent implements ControlValueAccessor {
     this.writeValue(value);
   }
 
+  public onFocusOut(): void {
+    this.onTouched();
+  }
+
   public writeValue(value: string): void {
     this.description = value;
     this.onChange(value);

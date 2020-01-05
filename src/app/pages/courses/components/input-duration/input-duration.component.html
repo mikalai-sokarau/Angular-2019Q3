@@ -7,7 +7,8 @@
         id="duration-id"
         placeholder="Enter duration"
         [value]="duration"
-        (keyup)="onKeyUp(durationInput.value)">
+        (keyup)="onKeyUp(durationInput.value)"
+        (focusout)="onFocusOut()">
     <span class="formatted-duration">
         {{formattedDuration}}
     </span>

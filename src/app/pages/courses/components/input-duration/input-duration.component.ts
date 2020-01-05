@@ -30,6 +30,10 @@ export class InputDurationComponent implements AfterContentInit, ControlValueAcc
   public onKeyUp(value: string): void {
     this.writeValue(value);
   }
+
+  public onFocusOut(): void {
+    this.onTouched();
+  }
   
   public writeValue(value: string): void {
     this.duration = this.getLimitedDuration(value);
