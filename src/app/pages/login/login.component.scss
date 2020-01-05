@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/elements/';
 
 $form-elements-space: 15px;
 
@@ -15,7 +16,7 @@ $form-elements-space: 15px;
 
 .login-block,
 .welcome-block {
-    height: 500px;
+    min-height: 500px;
 }
 
 .login-block {
@@ -64,11 +65,32 @@ $form-elements-space: 15px;
     cursor: pointer;
 }
 
+.email-container,
+.password-container {
+    &.error {
+        .user-email,
+        .user-password {
+            @extend %error;
+            margin-bottom: 0;
+        }
+
+        .error-msg {
+            display: block;
+        }
+    }
+}
+
 .user-email,
 .user-password {
     border: 1px solid $light-gray;
     padding-left: 10px;
+    width: 100%;
+    margin-bottom: 19px;
     
+    &.ng-valid {
+        @extend %valid;
+    }
+
     &::placeholder {
         color: $light-gray;
     }
@@ -94,8 +116,13 @@ $form-elements-space: 15px;
     color: white;
     font-size: 1.15rem;
     margin-top: 15px;
+    
+    &[disabled] {
+        background-color: $gray;
+        cursor: not-allowed;
+    }
 
-    &:hover {
+    &:hover:not([disabled]) {
         background-color: white;
         border: 2px solid $light-green;
         color: $light-green;
@@ -128,4 +155,10 @@ $form-elements-space: 15px;
     color: $light-gray;
     text-align: center;
     width: 100%;
+}
+
+.error-msg {
+    display: none;
+    margin: 0;
+    color: $red;
 }

@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ICourse } from '../components/course/course.model';
+import { IAuthor } from '../components/input-author/input-author.model';
 
 export enum CoursesActionTypes {
     COURSES_REQUEST = '[Courses Page] CoursesRequest',
@@ -12,7 +13,9 @@ export enum CoursesActionTypes {
     COURSES_REQUEST_FIND_SUCCESS = '[Courses Page] CoursesRequestFindSuccess',
     COURSES_REQUEST_FIND_ERROR = '[Courses Page] CoursesRequestFindError',
     COURSES_REQUEST_DELETE = '[Courses Page] CoursesRequestDelete',
-    COURSES_REQUEST_DELETE_SUCCESS = '[Courses Page] CoursesRequestDeleteSuccess'
+    COURSES_REQUEST_DELETE_SUCCESS = '[Courses Page] CoursesRequestDeleteSuccess',
+    AUTHORS_REQUEST = '[Courses Page] AuthorsRequest',
+    AUTHORS_REQUEST_SUCCESS = '[Courses Page] AuthorsRequestSuccess'
 };
 
 export const coursesRequest = createAction(
@@ -66,4 +69,13 @@ export const coursesRequestDelete = createAction(
 export const coursesRequestDeleteSuccess = createAction(
     CoursesActionTypes.COURSES_REQUEST_DELETE_SUCCESS,
     props<{ id: string }>()
+);
+
+export const authorsRequest = createAction(
+    CoursesActionTypes.AUTHORS_REQUEST
+);
+
+export const authorsRequestSuccess = createAction(
+    CoursesActionTypes.AUTHORS_REQUEST_SUCCESS,
+    props<{ authors: Array<IAuthor> }>()
 );

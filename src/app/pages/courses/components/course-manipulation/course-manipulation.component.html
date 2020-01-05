@@ -1,47 +1,64 @@
 <section class="course-manipulation-container">
-    <form class="course-manipulation-form">
+    <form
+        class="course-manipulation-form"
+        [formGroup]="courseForm"
+        autocomplete="off">
         <ul class="form-sections">
-            <li class="course-title-container">
-                <label for="course-title-id">title</label>
+            <li class="course-title-container"
+                [class.error]="title.invalid && (title.dirty || title.touched)">
+                <label for="course-title">title</label>
                 <input
                     type="text"
-                    id="course-title-id"
+                    id="course-title"
                     class="course-title"
                     placeholder="Enter a course name"
-                    [(ngModel)]="title"
-                    name="title">
+                    formControlName="title">
+                <span class="error-msg">
+                    Please put any title shorter than
+                    {{ maxTitleLength }} symbols.
+                </span>
             </li>
-            <li class="course-description-container">
+            <li class="course-description-container"
+                [class.error]="description.invalid && (description.dirty || description.touched)">
                 <app-input-text
-                    [description]="description"
-                    (descriptionChange)=onDescriptionChange($event)>
+                    formControlName="description">
                 </app-input-text>
+                <span class="error-msg">
+                    Please put any description shorter than
+                    {{ maxDescriptionLength }} symbols.
+                </span>
             </li>
             <li class="course-meta-info-container">
-                <div class="course-date-container">
-                    <label for="course-date-id">date</label>
-                    <input
-                        type="date"
-                        id="course-date-id"
-                        placeholder="Enter a course date"
-                        class="course-date"
-                        [(ngModel)]="date"
-                        name="date">
+                <div class="date-container"
+                    [class.error]="date.invalid && (date.dirty || date.touched)">
+                    <!-- only 2010-2029 years are valid -->
+                    <app-input-date
+                        formControlName="date">
+                    </app-input-date>
+                    <span class="error-msg">
+                        Please fill the date in the correct format - dd/mm/yyyy.
+                    </span>
                 </div>
-                <app-input-duration
-                    [duration]="duration"
-                    (durationChange)="onDurationChange($event)"
-                ></app-input-duration>                
+                <div class="duration-container"
+                    [class.error]="duration.invalid && (duration.dirty || duration.touched)">
+                    <app-input-duration
+                        formControlName="duration"
+                    ></app-input-duration>
+                    <span class="error-msg">
+                        Please set duration between 
+                        {{ minDuration }} and {{ maxDuration }} minutes.
+                    </span>
+                </div>
             </li>
-            <li class="course-author-container">
-                <label for="course-author-id">authors</label>
-                <input
-                    type="text"
-                    id="course-author-id"
-                    placeholder="Enter a course author"
-                    class="course-author"
-                    [(ngModel)]="author"
-                    name="author">
+            <li class="course-author-container"
+                [class.error]="authors.invalid && (authors.dirty || authors.touched)">
+                <app-input-author
+                    [allAuthors]="(authors$ | async).authors"
+                    formControlName="authors"
+                ></app-input-author>
+                <span class="error-msg">
+                    Please add at least one author.
+                </span>
             </li>
             <li class="course-upload-area-container">
                 <label for="course-upload-file-id">upload video file</label>
@@ -75,16 +92,19 @@
             * Mandatory fields
         </span>
         <div class="buttons-block">
-            <a class="cancel"
+            <button class="cancel"
                 [routerLink]="'/courses'"
                 role="button">
                 cancel
-            </a>
-            <a class="save"
+            </button>
+            <button
+                class="save"
+                type="submit"
                 role="button"
-                (click)="onSave()">
+                (click)="onSave()"
+                [disabled]="courseForm.invalid">
                 save
-            </a>
+            </button>
         </div>
     </footer>
 </section>

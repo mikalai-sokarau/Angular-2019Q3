@@ -32,7 +32,13 @@
         background: white;
         border: 2px solid $blue;
         color: $blue;
-    }    
+
+        &[disabled] {
+            cursor: not-allowed;
+            border-color: $red;
+            color: $red;
+        }
+    }
 }
 
 %pale-btn {
@@ -46,4 +52,15 @@
         border: 2px solid $gray;
         color: $white;
     }
+}
+
+%error {
+    border-left-color: $red;
+    border-left-width: 4px;
+    padding-left: $default-input-padding - 3px;
+}
+
+%valid {
+    @extend %error;
+    border-left-color: $green;
 }

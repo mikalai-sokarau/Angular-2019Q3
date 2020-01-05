@@ -11,7 +11,7 @@
         grid-gap: 30px;
     }
 
-    [class^="course"][class$="container"] {
+    [class^="course"][class*="container"] {
         display: grid;
     }
 
@@ -21,7 +21,7 @@
         font-style: italic;
         height: 40px;
         margin: 10px 0;
-        padding-left: 15px;
+        padding-left: $default-input-padding;
     }
 
     label::first-letter {
@@ -123,5 +123,62 @@
         .save {
             @extend %info-btn;
         }
+    }
+
+    .duration-container,
+    .course-author-container,
+    .course-description-container,
+    .course-title-container,
+    .date-container {
+        &.error {
+            .error-msg {
+                color: $red;
+                visibility: visible;
+            }
+    
+            .course-title {
+                @extend %error;
+            }
+    
+            ::ng-deep app-input-author,
+            ::ng-deep app-input-date,
+            ::ng-deep app-input-duration,
+            ::ng-deep app-input-text {
+                .course-author,
+                .course-date,
+                .duration,
+                .description {
+                    @extend %error;
+                }
+    
+                .formatted-duration {
+                    color: $red;
+                }
+            }
+        }
+
+        &:not(.error) {
+            ::ng-deep app-input-author,
+            ::ng-deep app-input-date,
+            ::ng-deep app-input-duration,
+            ::ng-deep app-input-text {
+                &.ng-dirty {
+                    .course-author,
+                    .course-date,
+                    .duration,
+                    .description {
+                            @extend %valid;
+                    }
+                }
+            }
+
+            .course-title.ng-dirty {
+                @extend %valid;
+            }
+        }
+    }
+
+    .error-msg {
+        visibility: hidden;
     }
 }

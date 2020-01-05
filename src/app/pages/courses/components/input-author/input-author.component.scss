@@ -1,0 +1,78 @@
+@import 'src/styles/variables';
+
+.course-author {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 10px;
+    padding: 0 15px;
+    width: 100%;
+}
+
+.authors-container {
+    position: relative;
+}
+
+.course-author-label {
+    cursor: pointer;
+    text-transform: capitalize;
+
+    &:after {
+        content: '*';
+        padding-left: 3px;
+    }
+}
+
+.authors-list {
+    background-color: white;
+    border: 1px solid $gray;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: scroll;
+    padding: 10px 15px;
+    position: absolute;
+    width: 100%;
+
+    &.hidden {
+        display: none;
+    }
+
+    .single-author {
+        color: $dark-gray;
+        padding: 5px 0;
+        word-break: break-word;
+    
+        &:hover {
+            color: $blue;
+            cursor: pointer;
+        }
+    }
+}
+
+
+.authors-cloud-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    .single-author {
+        background-color: $orange;
+        border: 1px solid $orange;
+        border-radius: 10px;
+        color: white;
+        margin: 5px 10px 5px 0;
+        padding: 5px 0 5px 10px;
+        word-break: break-word;
+
+        &:hover {
+            background-color: white;
+            border: 1px solid $red;
+            color: $red;
+        }
+    }
+
+    .delete-author-icon {
+        cursor: pointer;
+        font-size: 10px;
+        padding: 5px 10px 5px 5px;
+    }
+}
