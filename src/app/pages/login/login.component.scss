@@ -71,6 +71,7 @@ $form-elements-space: 15px;
         .user-email,
         .user-password {
             @extend %error;
+            margin-bottom: 0;
         }
 
         .error-msg {
@@ -84,6 +85,7 @@ $form-elements-space: 15px;
     border: 1px solid $light-gray;
     padding-left: 10px;
     width: 100%;
+    margin-bottom: 19px;
     
     &.ng-valid {
         @extend %valid;

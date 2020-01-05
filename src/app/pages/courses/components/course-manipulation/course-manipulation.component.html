@@ -31,6 +31,7 @@
             <li class="course-meta-info-container">
                 <div class="date-container"
                     [class.error]="date.invalid && (date.dirty || date.touched)">
+                    <!-- only 2010-2029 years are valid -->
                     <app-input-date
                         formControlName="date">
                     </app-input-date>
