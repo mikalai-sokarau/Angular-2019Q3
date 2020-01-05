@@ -30,6 +30,7 @@ export class InputAuthorComponent implements ControlValueAccessor {
   
   public onFocusOut(): void {
     this.isAuthorsListOpened = false;
+    this.onTouched();
   }
 
   public onKeyUp(text: string): void {

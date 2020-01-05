@@ -134,6 +134,7 @@ $default-input-padding: 15px;
     }
 
     .duration-container.error,
+    .course-author-container.error,
     .course-description-container.error,
     .course-title-container.error,
     .date-container.error {
@@ -146,9 +147,11 @@ $default-input-padding: 15px;
             @extend %error;
         }
 
+        ::ng-deep app-input-author,
+        ::ng-deep app-input-date,
         ::ng-deep app-input-duration,
-        ::ng-deep app-input-text,
-        ::ng-deep app-input-date {
+        ::ng-deep app-input-text {
+            .course-author,
             .course-date,
             .duration,
             .description {

@@ -30,10 +30,12 @@ import { DurationValidatorDirective } from './directives/duration-validator/dura
 import { InputDateComponent } from './components/input-date/input-date.component';
 import { DateValidatorDirective } from './directives/date-validator/date-validator.directive';
 import { InputAuthorComponent } from './components/input-author/input-author.component';
+import { AuthorsValidatorDirective } from './directives/authors-validator/authors-validator.directive';
 
 @NgModule({
   declarations: [
     AddCourseComponent,
+    AuthorsValidatorDirective,
     ControlPanelComponent,
     CourseComponent,
     CourseHighlightingDirective,

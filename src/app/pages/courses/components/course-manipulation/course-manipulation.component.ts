@@ -11,6 +11,7 @@ import { ICoursesState } from '../../store/courses.reducers';
 import { Observable } from 'rxjs';
 import { coursesFeatureKey } from '../../store';
 import { authorsRequest } from '../../store/courses.actions';
+import { authorsValidator } from '../../directives/authors-validator/authors-validator.directive';
 
 @Component({
   selector: 'app-course-manipulation',
@@ -42,6 +43,10 @@ export class CourseManipulationComponent implements OnInit {
 
   get date() {
     return this.courseForm.get('date');
+  }
+
+  get authors() {
+    return this.courseForm.get('authors');
   }
 
   constructor(
@@ -77,7 +82,10 @@ export class CourseManipulationComponent implements OnInit {
   private createForm(course: ICourse): FormGroup {
     const authors = new FormControl(
       course.authors,
-      [ Validators.required ]
+      [
+        Validators.required,
+        authorsValidator()
+      ]
     );
     const date = new FormControl(
       InputDateComponent.formatDate(course.date),

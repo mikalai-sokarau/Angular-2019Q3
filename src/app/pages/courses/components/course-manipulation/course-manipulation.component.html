@@ -49,11 +49,15 @@
                     </span>
                 </div>
             </li>
-            <li class="course-author-container">
+            <li class="course-author-container"
+                [class.error]="authors.invalid && (authors.dirty || authors.touched)">
                 <app-input-author
                     [allAuthors]="(authors$ | async).authors"
                     formControlName="authors"
                 ></app-input-author>
+                <span class="error-msg">
+                    Please add at least one author.
+                </span>
             </li>
             <li class="course-upload-area-container">
                 <label for="course-upload-file-id">upload video file</label>
