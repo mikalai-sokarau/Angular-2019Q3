@@ -12,12 +12,12 @@ import { IAuthor } from '../components/input-author/input-author.model';
 
 export interface ICoursesState {
     items: Array<ICourse>,
-    autors: Array<IAuthor>
+    authors: Array<IAuthor>
 }
 
 export const initialState: ICoursesState = {
     items: [],
-    autors: []
+    authors: []
 };
 
 const reducer = createReducer<ICoursesState>(

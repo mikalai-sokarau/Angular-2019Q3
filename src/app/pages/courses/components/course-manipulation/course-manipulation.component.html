@@ -1,7 +1,8 @@
 <section class="course-manipulation-container">
     <form
         class="course-manipulation-form"
-        [formGroup]="courseForm">
+        [formGroup]="courseForm"
+        autocomplete="off">
         <ul class="form-sections">
             <li class="course-title-container"
                 [class.error]="title.invalid && (title.dirty || title.touched)">
@@ -50,7 +51,7 @@
             </li>
             <li class="course-author-container">
                 <app-input-author
-                    [authors]="(authors$ | async).authors"
+                    [allAuthors]="(authors$ | async).authors"
                     formControlName="authors"
                 ></app-input-author>
             </li>

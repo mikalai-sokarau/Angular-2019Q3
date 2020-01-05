@@ -26,12 +26,7 @@ export class Course implements ICourse {
         date = '',
         duration = '',
         description = '',
-        authors = [
-            {
-                firstName: '',
-                lastName: ''
-            }
-        ]
+        authors = []
     ) {
         this.title = title,
         this.date = date,

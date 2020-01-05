@@ -58,12 +58,8 @@ export class CourseManipulationComponent implements OnInit {
     console.log(this.courseForm.value);
     
     try {
-      const authorData = this.course.author;
       const course = {
-        author: {
-          firstName: authorData[0] || '',
-          lastName: authorData[1] || ''
-        },
+        authors: this.course.authors,
         date: InputDateComponent.formatDate(this.course.date, true),
         description: this.course.description,
         duration: this.course.duration,
@@ -79,10 +75,8 @@ export class CourseManipulationComponent implements OnInit {
   }
 
   private createForm(course: ICourse): FormGroup {
-    console.log(course);
-    
-    const author = new FormControl(
-      course.author,
+    const authors = new FormControl(
+      course.authors,
       [ Validators.required ]
     );
     const date = new FormControl(
@@ -115,7 +109,7 @@ export class CourseManipulationComponent implements OnInit {
     );
 
     return new FormGroup({
-      author,
+      authors,
       date,
       description,
       duration,

@@ -3,11 +3,39 @@
     for="course-author-id">
     authors
 </label>
-<input
-    type="text"
-    #inputAuthor
-    id="course-author-id"
-    placeholder="Enter a course author"
-    class="course-author"
-    [value]="author"
-    (keyup)="onKeyUp(inputAuthor.value)">
+<div class="authors-container">
+    <ul class="authors-cloud-tags">
+        <li
+            *ngFor="let author of selectedAuthors"
+            class="single-author">
+            {{ author.firstName + ' ' + author.lastName }}
+            <fa-icon
+                class="delete-author-icon"
+                icon="times"
+                (click)="removeAuthor(author)"
+            ></fa-icon>
+        </li>
+    </ul>
+    <div class="authors-select">
+        <input
+            type="text"
+            #inputAuthor
+            id="course-author-id"
+            placeholder="Enter a course author"
+            class="course-author"
+            [(value)]="value"
+            (keyup)="onKeyUp(inputAuthor.value)"
+            (focus)="onFocus(inputAuthor.value)"
+            (focusout)="onFocusOut()"
+            (keyup.enter)="addAuthor(inputAuthor.value)">
+        <ul class="authors-list"
+            [class.hidden]="!isAuthorsListOpened"
+            *ngIf="filteredAuthors.length">
+            <li *ngFor="let author of filteredAuthors"
+                class="single-author"
+                (mousedown)="addAuthor(author)">
+                {{ author.firstName + ' ' + author.lastName }}
+            </li>
+        </ul>
+    </div>
+</div>
