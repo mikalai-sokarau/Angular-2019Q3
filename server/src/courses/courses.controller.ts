@@ -67,13 +67,13 @@ export class CoursesController {
     @Res() res: Response,
     @Body('course') course: string
   ) {
-    const isCreated = this.coursesService.createCourse(course);
+    const newCourse = this.coursesService.createCourse(course);
 
-    if(!isCreated) {
+    if(!newCourse) {
       throw new HttpException('Error during the course creation', HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    res.status(HttpStatus.OK).send();
+    res.status(HttpStatus.OK).send({ course: newCourse });
   }
 
   @Put('update')

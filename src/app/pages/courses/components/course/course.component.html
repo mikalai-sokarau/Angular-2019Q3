@@ -2,7 +2,9 @@
     <img src="{{course.image}}" width="270" alt="course image">
     <div class="course-info">
         <div class="main-info">
-            <h3 class="course-title">{{course.title | uppercase}}
+            <h3 class="course-title"
+                [routerLink]="['/courses', course.id]">
+                {{course.title | uppercase}}
                 <fa-icon 
                     *ngIf="course.isTopRated"
                     class="top-rated-icon"

@@ -35,7 +35,7 @@ export class CoursesService {
     return !this.courses.some(({ id }) => id === courseId);
   }
 
-  createCourse(course: string): boolean {
+  createCourse(course: string): ICourse {
     const newCourse = JSON.parse(course) as ICourse;
 
     newCourse.id = String(Date.now());
@@ -44,7 +44,7 @@ export class CoursesService {
 
     this.courses.push(newCourse);
 
-    return this.courses.some(({ id }) => id === newCourse.id);
+    return newCourse;
   }
 
   updateCourse(course: ICourse): ICourse {

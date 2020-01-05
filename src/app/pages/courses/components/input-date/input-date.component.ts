@@ -20,13 +20,14 @@ export class InputDateComponent implements ControlValueAccessor {
   constructor() {}
   
   public onKeyUp(value: string): void {
-    this.writeValue(value);
+    if (value) {
+      this.writeValue(value);
+    }
   }
   
   public writeValue(value: string): void {
     this.date = value;
     this.onChange(this.date);
-    this.onTouched();
   }
   
   public registerOnChange(fn: any): void {

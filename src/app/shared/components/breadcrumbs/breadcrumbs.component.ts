@@ -25,12 +25,14 @@ export class BreadcrumbsComponent implements OnInit {
         
         this.store
           .pipe(select(coursesFeatureKey))
-          .subscribe(({ items }) => { 
+          .subscribe(({ items }) => {
             try {
               const course = items.find(c => id === c.id);
               const breadcrumb = { name: course.title, link: '' };
               
-              this.breadcrumbs.push(breadcrumb);
+              if (this.breadcrumbs.length <= 1) {
+                this.breadcrumbs.push(breadcrumb);
+              }
             } catch (e) { /* do nothing */ }
           });
         

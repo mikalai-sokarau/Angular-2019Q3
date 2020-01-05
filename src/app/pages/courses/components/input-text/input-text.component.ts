@@ -12,7 +12,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   }],
 })
 export class InputTextComponent implements ControlValueAccessor {
-  public description: string;
+  public description = '';
 
   constructor() {}
 
@@ -25,9 +25,10 @@ export class InputTextComponent implements ControlValueAccessor {
   }
 
   public writeValue(value: string): void {
-    this.description = value;
-    this.onChange(value);
-    this.onTouched();
+    if (this.description !== value ) {
+      this.description = value;
+      this.onChange(this.description);
+    }
   }
 
   public registerOnChange(fn: any): void {

@@ -28,7 +28,9 @@ export class InputDurationComponent implements AfterContentInit, ControlValueAcc
   }
   
   public onKeyUp(value: string): void {
-    this.writeValue(value);
+    if (value) {
+      this.writeValue(value);
+    }
   }
 
   public onFocusOut(): void {
@@ -39,7 +41,6 @@ export class InputDurationComponent implements AfterContentInit, ControlValueAcc
     this.duration = this.getLimitedDuration(value);
     this.formattedDuration = this.durationPipe.transform(Number(this.duration));
     this.onChange(this.duration);
-    this.onTouched();
   }
   
   public registerOnChange(fn: any): void {

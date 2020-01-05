@@ -60,23 +60,9 @@ export class CourseManipulationComponent implements OnInit {
   }
 
   public onSave(): void {
-    console.log(this.courseForm.value);
-    
-    try {
-      const course = {
-        authors: this.course.authors,
-        date: InputDateComponent.formatDate(this.course.date, true),
-        description: this.course.description,
-        duration: this.course.duration,
-        id: this.course.id,
-        title: this.course.title
-      } as ICourse;
-  
-      this.saveCourse.emit(course);
-      // this.router.navigate(['/courses']);
-    } catch (e) {
-      console.log('Create course failed, make sure that all required fields are filled.');
-    }
+    const date = InputDateComponent.formatDate(this.courseForm.value.date, true)
+    this.saveCourse.emit({ ...this.course, ...this.courseForm.value, date });
+    this.router.navigate(['/courses']);
   }
 
   private createForm(course: ICourse): FormGroup {
