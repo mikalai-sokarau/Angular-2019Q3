@@ -17,6 +17,10 @@
             "email": "Please enter your email.",
             "password": "Please enter your password."
         },
+        "placeholders": {
+            "email": "Email",
+            "password": "Password"
+        },
         "rememberMe": "Remember me",
         "forgotPassword": "Forgot password?"
     },

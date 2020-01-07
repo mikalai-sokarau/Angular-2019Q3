@@ -30,7 +30,7 @@
                     <input 
                         class="user-email"
                         type="email"
-                        placeholder="Email"
+                        [attr.placeholder]="'loginPage.placeholders.email' | translate"
                         formControlName="userEmail">
                     <p
                         class="error-msg"
@@ -44,7 +44,7 @@
                     <input
                         class="user-password"
                         type="password"
-                        placeholder="Password"
+                        [attr.placeholder]="'loginPage.placeholders.password' | translate"
                         autocomplete="new-password"
                         formControlName="userPassword">
                     <p

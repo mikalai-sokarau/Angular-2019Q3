@@ -14,8 +14,12 @@
         "externalLogin": "Вход через EPAM",
         "separator": "или",
         "errorMessage": {
-            "email": "Пожалуйста введите вашу почту.",
-            "password": "Пожалуйста введите ваш пароль."
+            "email": "Пожалуйста, введите вашу почту.",
+            "password": "Пожалуйста, введите ваш пароль."
+        },
+        "placeholders": {
+            "email": "Почта",
+            "password": "Пароль"
         },
         "rememberMe": "Запомнить меня",
         "forgotPassword": "Забыли пароль?"
