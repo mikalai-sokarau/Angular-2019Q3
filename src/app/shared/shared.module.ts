@@ -31,6 +31,7 @@ import {
 } from './components/modals/deleteConfirmation/delete-confirmation-modal/delete-confirmation-modal.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { GlobalLoadingComponent } from './components/modals/global-loading/global-loading.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const icons: Array<IconDefinition> = [
   faBars,
@@ -62,7 +63,8 @@ const icons: Array<IconDefinition> = [
     CommonModule,
     FontAwesomeModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TranslateModule
   ],
   exports: [
     BreadcrumbsComponent,

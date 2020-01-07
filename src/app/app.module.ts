@@ -1,7 +1,7 @@
 import { LoginModule } from './pages/login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { StoreModule, RootStoreConfig, MetaReducer, ActionReducerMap } from '@ng
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 const metaReducers: MetaReducer[] = [];
 const reducers: ActionReducerMap<any> = {};
@@ -23,6 +25,10 @@ const storeModuleConfig: RootStoreConfig<any, any> = {
     strictStateImmutability: true,
     strictActionImmutability: true,
   }
+}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }
 
 @NgModule({
@@ -38,6 +44,13 @@ const storeModuleConfig: RootStoreConfig<any, any> = {
     CoreModule,
     LoginModule,
     NotFoundModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     StoreModule.forRoot(reducers, storeModuleConfig),
     EffectsModule.forRoot([]),
     environment.production
