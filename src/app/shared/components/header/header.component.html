@@ -4,8 +4,8 @@
             <fa-icon [icon]="['far', 'play-circle']"></fa-icon>
             <h1>
                 <a class="logo-text"
-                    [routerLink]="'courses'">
-                    video courses
+                    [routerLink]="'courses'"
+                    [translate]="'header.appName'">
                 </a>
             </h1>
         </div>
@@ -58,7 +58,9 @@
                             class="logout-container"
                             (click)="store.dispatch(logoutRequest())">
                             <fa-icon icon="sign-out-alt"></fa-icon>
-                            <span>Log out</span>
+                            <span
+                                [translate]="'header.logout'"
+                            ></span>
                         </div>
                     </div>
                 </div>

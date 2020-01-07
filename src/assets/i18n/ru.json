@@ -1,5 +1,5 @@
 {
-    "courses": {
+    "coursesPage": {
 
     },
     "loginPage": {
@@ -15,7 +15,11 @@
         "rememberMe": "Запомнить меня",
         "forgotPassword": "Забыли пароль?"
     },
-    "notFound": {
+    "notFoundPage": {
 
+    },
+    "header": {
+        "appName": "видео курсы",
+        "logout": "Выход"
     }
 }

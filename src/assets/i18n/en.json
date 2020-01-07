@@ -1,6 +1,5 @@
 {
-    "translationCode": "en",
-    "courses": {
+    "coursesPage": {
 
     },
     "loginPage": {
@@ -16,7 +15,11 @@
         "rememberMe": "Remember me",
         "forgotPassword": "Forgot password?"
     },
-    "notFound": {
+    "notFoundPage": {
 
+    },
+    "header": {
+        "appName": "video courses",
+        "logout": "Log out"
     }
 }
