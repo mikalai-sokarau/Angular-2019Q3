@@ -14,8 +14,8 @@ import { StoreModule, RootStoreConfig, MetaReducer, ActionReducerMap } from '@ng
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
+import { translateLoader } from './app.config';
 
 const metaReducers: MetaReducer[] = [];
 const reducers: ActionReducerMap<any> = {};
@@ -25,10 +25,6 @@ const storeModuleConfig: RootStoreConfig<any, any> = {
     strictStateImmutability: true,
     strictActionImmutability: true,
   }
-}
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
 }
 
 @NgModule({
@@ -44,13 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoreModule,
     LoginModule,
     NotFoundModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
+    TranslateModule.forRoot(translateLoader),
     StoreModule.forRoot(reducers, storeModuleConfig),
     EffectsModule.forRoot([]),
     environment.production
