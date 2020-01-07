@@ -31,6 +31,7 @@ import { InputDateComponent } from './components/input-date/input-date.component
 import { DateValidatorDirective } from './directives/date-validator/date-validator.directive';
 import { InputAuthorComponent } from './components/input-author/input-author.component';
 import { AuthorsValidatorDirective } from './directives/authors-validator/authors-validator.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { AuthorsValidatorDirective } from './directives/authors-validator/author
       coursesReducer
     ),
     EffectsModule.forFeature([CoursesEffects]),
-    storeDevtoolsConfig(environment)
+    storeDevtoolsConfig(environment),
+    TranslateModule
   ],
   exports: [
     CoursesComponent

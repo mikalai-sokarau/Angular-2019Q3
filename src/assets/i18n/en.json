@@ -1,6 +1,11 @@
 {
     "coursesPage": {
-
+        "coursesNumber": "There are {{ number }} courses",
+        "noCoursesError": "no data, feel free to add new course",
+        "findOrAddCourseMessage": "Find or add courses ...",
+        "addCourse": "+ Add course",
+        "loadMore": "Load more",
+        "breadcrumb": "courses"
     },
     "loginPage": {
         "title": "Welcome",

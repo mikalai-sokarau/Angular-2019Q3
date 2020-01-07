@@ -1,6 +1,11 @@
 {
     "coursesPage": {
-
+        "coursesNumber": "Количество курсов: {{ number }}",
+        "noCoursesError": "выбранные курсы не найдены, вы можете добавить новый курс самостоятельно",
+        "findOrAddCourseMessage": "Найти или добавить курс ...",
+        "addCourse": "+ Добавить курс",
+        "loadMore": "Загрузить еще",
+        "breadcrumb": "курсы"
     },
     "loginPage": {
         "title": "Добро пожаловать",
