@@ -23,6 +23,37 @@
     "notFoundPage": {
 
     },
+    "courseManipulationPage": {
+        "addCourse": "add course",
+        "title": "title",
+        "description": "description",
+        "date": "date",
+        "duration": "duration",
+        "authors": "authors",
+        "uploadFile": "upload video file",
+        "dragAndDropMessage": "dran and drop files here (doesn't work at the moment)",
+        "separator": "or",
+        "choseFiles": "chose files",
+        "mandatoryFields": "* Mandatory fields",
+        "cancel": "cancel",
+        "save": "save",
+        "errorMessages": {
+            "title": "Please put any title shorter than {{ maxTitleLength }} symbols.",
+            "description": "Please put any description shorter than {{ maxDescriptionLength }} symbols.",
+            "date": "Please fill the date in the correct format - dd/mm/yyyy.",
+            "duration": "Please set duration between {{ minDuration }} and {{ maxDuration }} minutes.",
+            "authors": "Please add at least one author."
+        },
+        "placeholders": {
+            "title": "Enter a course name",
+            "description": "Enter a description",
+            "date": "dd/mm/yyyy",
+            "duration": "Enter duration",
+            "authors": "Add course authors",
+            "hoursPostfix": "h",
+            "minutesPostfix": "mm"
+        }
+    },
     "header": {
         "appName": "video courses",
         "logout": "Log out"

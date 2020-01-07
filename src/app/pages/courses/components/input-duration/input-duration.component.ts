@@ -1,6 +1,8 @@
-import { Component, forwardRef, AfterContentInit } from '@angular/core';
+import { Component, forwardRef, AfterContentInit, OnDestroy } from '@angular/core';
 import { DurationPipe } from '../../pipes/duration/duration-pipe.pipe';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-input-duration',
@@ -15,20 +17,28 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     }
   ]
 })
-export class InputDurationComponent implements AfterContentInit, ControlValueAccessor {
+export class InputDurationComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
   static readonly MAX_DURATION_IN_MINUTES = 1440;
   static readonly MIN_DURATION_IN_MINUTES = 10;
   public formattedDuration: string;
   public duration: string;
+  private subscription: Subscription;
 
-  constructor(private durationPipe: DurationPipe) {}
+  constructor(
+    private durationPipe: DurationPipe,
+    private translate: TranslateService
+  ) {
+    this.subscription = this.translate.onLangChange.subscribe(() => {
+      this.formattedDuration = this.durationPipe.transform(Number(this.duration));
+    });
+  }
 
   public ngAfterContentInit(): void {
     this.formattedDuration = this.durationPipe.transform(Number(this.duration));
   }
   
   public onKeyUp(value: string): void {
-    if (value) {
+    if (value !== this.duration) {
       this.writeValue(value);
     }
   }
@@ -49,6 +59,10 @@ export class InputDurationComponent implements AfterContentInit, ControlValueAcc
   
   public registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   private getLimitedDuration(value: string): string {

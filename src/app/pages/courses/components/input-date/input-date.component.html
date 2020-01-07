@@ -1,13 +1,13 @@
 <label
     class="course-date-label"
-    for="course-date-id">
-    date
+    for="course-date-id"
+    [translate]="'courseManipulationPage.date'">
 </label>
 <input
     type="text"
     #dateInput
     id="course-date-id"
-    placeholder="dd/mm/yyyy"
+    [attr.placeholder]="'courseManipulationPage.placeholders.date' | translate"
     class="course-date"
     [value]="date"
     (keyup)="onKeyUp(dateInput.value)"
