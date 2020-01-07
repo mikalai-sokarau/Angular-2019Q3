@@ -1,16 +1,19 @@
 <section class="app-modal">
     <div class="delete-confirmation-modal-wrapper">
-        <h3 class="modal-title">Do you really want to delete this course?</h3>
+        <h3
+            class="modal-title"
+            [translate]="'modals.deleteConfirmation.title'">
+        </h3>
         <div class="buttons-block">
             <button 
                 class="modal-button button-confirm"
-                (click)="onUserAction(true)">
-                Yes
+                (click)="onUserAction(true)"
+                [translate]="'modals.deleteConfirmation.yes'">
             </button>
             <button 
                 class="modal-button button-refuse"
-                (click)="onUserAction(false)">
-                No
+                (click)="onUserAction(false)"
+                [translate]="'modals.deleteConfirmation.no'">
             </button>
         </div>
         <span

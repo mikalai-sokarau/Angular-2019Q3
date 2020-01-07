@@ -66,5 +66,12 @@
     "header": {
         "appName": "video courses",
         "logout": "Log out"
+    },
+    "modals": {
+        "deleteConfirmation": {
+            "title": "Do you really want to delete this course?",
+            "yes": "Yes",
+            "no": "No"
+        }
     }
 }
