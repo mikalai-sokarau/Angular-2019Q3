@@ -1,0 +1,22 @@
+{
+    "translationCode": "en",
+    "courses": {
+
+    },
+    "loginPage": {
+        "title": "Welcome",
+        "greetings": "To the Angular global mentoring program, here you can find courses that cover all topics needed to start your own Angular application.",
+        "login": "Login",
+        "externalLogin": "EPAM Login",
+        "separator": "or",
+        "errorMessage": {
+            "email": "Please enter your email.",
+            "password": "Please enter your password."
+        },
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?"
+    },
+    "notFound": {
+
+    }
+}

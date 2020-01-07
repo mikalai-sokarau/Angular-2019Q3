@@ -1,17 +1,29 @@
 <div class="login-page">
     <section class="welcome-block">
-        <h2 class="welcome-title">Welcome</h2>
-        <p class="welcome-greetings">
-            To the Angular global mentoring program, here you can find courses
-            that cover all topics needed to start your own Angular application.
+        <h2
+            class="welcome-title"
+            [translate]="'loginPage.title'">
+        </h2>
+        <p
+            class="welcome-greetings"
+            [translate]="'loginPage.greetings'">
         </p>
     </section>
     <section class="login-block">
         <form class="login-form"
             [formGroup]="loginForm">
-            <h3 class="login-form-header">Login</h3>
-            <button class="external-login-btn">EPAM Login</button>
-            <div class="separator">or</div>
+            <h3
+                class="login-form-header"
+                [translate]="'loginPage.login'">
+            </h3>
+            <button
+                class="external-login-btn"
+                [translate]="'loginPage.externalLogin'">
+            </button>
+            <div
+                class="separator"
+                [translate]="'loginPage.separator'">
+            </div>
             <div class="user-info">
                 <div class="email-container"
                     [class.error]="email.invalid && (email.dirty || email.touched)">
@@ -20,8 +32,9 @@
                         type="email"
                         placeholder="Email"
                         formControlName="userEmail">
-                    <p class="error-msg">
-                        Please enter your email.
+                    <p
+                        class="error-msg"
+                        [translate]="'loginPage.errorMessage.email'">
                     </p>
                 </div>
                 <div class="password-container"
@@ -34,24 +47,32 @@
                         placeholder="Password"
                         autocomplete="new-password"
                         formControlName="userPassword">
-                    <p class="error-msg">
-                        Please enter your password.
+                    <p
+                        class="error-msg"
+                        [translate]="'loginPage.errorMessage.password'">
                     </p>
                 </div>
                 <div class="login-options">
                     <div>
                         <input type="checkbox" id="remember-me">
-                        <label class="remember-me" for="remember-me">Remember me</label>
+                        <label 
+                            class="remember-me"
+                            for="remember-me"
+                            [translate]="'loginPage.rememberMe'">
+                        </label>
                     </div>
-                    <a class="forgot-password-message" href="/login">Forgot password?</a>
+                    <a class="forgot-password-message"
+                        href="/login"
+                        [translate]="'loginPage.forgotPassword'">
+                    </a>
                 </div>
             </div>
             <button 
                 class="login-btn"
                 type="button"
                 (click)="login()"
-                [disabled]="loginForm.invalid">
-                Login
+                [disabled]="loginForm.invalid"
+                [translate]="'loginPage.login'">
             </button>
         </form>
     </section>
