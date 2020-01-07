@@ -1,11 +1,14 @@
 <div class="duration-container">
-    <label for="duration-id">duration</label>
+    <label
+        for="duration-id"
+        [translate]="'courseManipulationPage.duration'">
+    </label>
     <input
         class="duration"
         #durationInput
         type="number"
         id="duration-id"
-        placeholder="Enter duration"
+        [attr.placeholder]="'courseManipulationPage.placeholders.duration' | translate"
         [value]="duration"
         (keyup)="onKeyUp(durationInput.value)"
         (focusout)="onFocusOut()">

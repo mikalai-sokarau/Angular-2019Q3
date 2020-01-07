@@ -6,16 +6,20 @@
         <ul class="form-sections">
             <li class="course-title-container"
                 [class.error]="title.invalid && (title.dirty || title.touched)">
-                <label for="course-title">title</label>
+                <label
+                    for="course-title"
+                    [translate]="'courseManipulationPage.title'">
+                </label>
                 <input
                     type="text"
                     id="course-title"
                     class="course-title"
-                    placeholder="Enter a course name"
+                    [attr.placeholder]="'courseManipulationPage.placeholders.title' | translate"
                     formControlName="title">
-                <span class="error-msg">
-                    Please put any title shorter than
-                    {{ maxTitleLength }} symbols.
+                <span
+                    class="error-msg"
+                    [translate]="'courseManipulationPage.errorMessages.title'"
+                    [translateParams]="{ maxTitleLength: maxTitleLength }">
                 </span>
             </li>
             <li class="course-description-container"
@@ -23,9 +27,10 @@
                 <app-input-text
                     formControlName="description">
                 </app-input-text>
-                <span class="error-msg">
-                    Please put any description shorter than
-                    {{ maxDescriptionLength }} symbols.
+                <span
+                    class="error-msg"
+                    [translate]="'courseManipulationPage.errorMessages.description'"
+                    [translateParams]="{ maxDescriptionLength: maxDescriptionLength }">
                 </span>
             </li>
             <li class="course-meta-info-container">
@@ -35,8 +40,9 @@
                     <app-input-date
                         formControlName="date">
                     </app-input-date>
-                    <span class="error-msg">
-                        Please fill the date in the correct format - dd/mm/yyyy.
+                    <span
+                        class="error-msg"
+                        [translate]="'courseManipulationPage.errorMessages.date'">
                     </span>
                 </div>
                 <div class="duration-container"
@@ -44,9 +50,14 @@
                     <app-input-duration
                         formControlName="duration"
                     ></app-input-duration>
-                    <span class="error-msg">
-                        Please set duration between 
-                        {{ minDuration }} and {{ maxDuration }} minutes.
+                    <span
+                        class="error-msg"
+                        [translate]="'courseManipulationPage.errorMessages.duration'"
+                        [translateParams]="{
+                            minDuration: minDuration,
+                            maxDuration: maxDuration
+                        }">
+                        
                     </span>
                 </div>
             </li>
@@ -56,12 +67,16 @@
                     [allAuthors]="(authors$ | async).authors"
                     formControlName="authors"
                 ></app-input-author>
-                <span class="error-msg">
-                    Please add at least one author.
+                <span
+                    class="error-msg"
+                    [translate]="'courseManipulationPage.errorMessages.authors'">
                 </span>
             </li>
             <li class="course-upload-area-container">
-                <label for="course-upload-file-id">upload video file</label>
+                <label
+                    for="course-upload-file-id"
+                    [translate]="'courseManipulationPage.uploadFile'">
+                </label>
                 <input
                     type="file"
                     name="files[]"
@@ -73,37 +88,42 @@
                     class="course-visible-upload-area"
                     (click)="upload.click()">
                     <fa-icon class="upload-icon" icon="cloud-upload-alt"></fa-icon>
-                    <span class="upload-message">
-                        dran and drop files here (doesn't work at the moment)
+                    <span
+                        class="upload-message"
+                        [translate]="'courseManipulationPage.dragAndDropMessage'">
                     </span>
                 </div>
-                <span class="options-separator">or</span>
+                <span
+                    class="options-separator"
+                    [translate]="'courseManipulationPage.separator'">
+                </span>
                 <button
                     type="button"
                     class="course-upload-file-btn"
-                    (click)="upload.click()">
-                    chose files
+                    (click)="upload.click()"
+                    [translate]="'courseManipulationPage.choseFiles'">
                 </button>
             </li>
         </ul>
     </form>
     <footer class="course-manipulation-footer">
-        <span class="mandatory-fields-note">
-            * Mandatory fields
+        <span
+            class="mandatory-fields-note"
+            [translate]="'courseManipulationPage.mandatoryFields'">
         </span>
         <div class="buttons-block">
             <button class="cancel"
                 [routerLink]="'/courses'"
-                role="button">
-                cancel
+                role="button"
+                [translate]="'courseManipulationPage.cancel'">
             </button>
             <button
                 class="save"
                 type="submit"
                 role="button"
                 (click)="onSave()"
-                [disabled]="courseForm.invalid">
-                save
+                [disabled]="courseForm.invalid"
+                [translate]="'courseManipulationPage.save'">
             </button>
         </div>
     </footer>

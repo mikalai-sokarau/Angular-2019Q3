@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ICoursesState } from 'src/app/pages/courses/store/courses.reducers';
 import { Store, select } from '@ngrx/store';
 import { coursesFeatureKey } from 'src/app/pages/courses/store';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -16,10 +17,14 @@ export class BreadcrumbsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<{ courses: ICoursesState }>
+    private store: Store<{ courses: ICoursesState }>,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.DEFAULT_BREADCRUMB.name = event.translations.coursesPage.breadcrumb;
+    });
     this.route.paramMap.subscribe(params => {
         const id = params.get('id');
         

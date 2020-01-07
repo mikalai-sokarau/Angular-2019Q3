@@ -14,6 +14,10 @@ import { StoreModule, RootStoreConfig, MetaReducer, ActionReducerMap } from '@ng
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TranslateModule } from '@ngx-translate/core';
+import { translateLoader, APP_LANGUAGES } from './app.config';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
 
 const metaReducers: MetaReducer[] = [];
 const reducers: ActionReducerMap<any> = {};
@@ -38,6 +42,7 @@ const storeModuleConfig: RootStoreConfig<any, any> = {
     CoreModule,
     LoginModule,
     NotFoundModule,
+    TranslateModule.forRoot(translateLoader),
     StoreModule.forRoot(reducers, storeModuleConfig),
     EffectsModule.forRoot([]),
     environment.production
@@ -52,4 +57,8 @@ const storeModuleConfig: RootStoreConfig<any, any> = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    registerLocaleData(localeRu, APP_LANGUAGES.RUSSIAN);
+  }
+}

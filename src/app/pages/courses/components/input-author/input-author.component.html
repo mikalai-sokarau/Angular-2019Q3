@@ -1,7 +1,7 @@
 <label
     class="course-author-label"
-    for="course-author-id">
-    authors
+    for="course-author-id"
+    [translate]="'courseManipulationPage.authors'">
 </label>
 <div class="authors-container">
     <ul class="authors-cloud-tags">
@@ -21,7 +21,7 @@
             type="text"
             #inputAuthor
             id="course-author-id"
-            placeholder="Add course author"
+            [attr.placeholder]="'courseManipulationPage.placeholders.authors' | translate"
             class="course-author"
             [(value)]="value"
             (keyup)="onKeyUp(inputAuthor.value)"

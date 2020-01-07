@@ -1,13 +1,13 @@
 <label
     class="description-label"
-    for="description-id">
-    description
+    for="description-id"
+    [translate]="'courseManipulationPage.description'">
 </label>
 <textarea
     class="description"
     id="description-id"
     #descriptionArea
-    placeholder="Enter a description"
+    [attr.placeholder]="'courseManipulationPage.placeholders.description' | translate"
     cols="30"
     rows="10"
     [value]="description"

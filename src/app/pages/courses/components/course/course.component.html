@@ -15,15 +15,25 @@
             <div class="course-meta-info">
                 <div class="course-author">
                     <fa-icon icon="user-graduate"></fa-icon>
-                    <span class="icon-description">Author: </span>{{course.authors[0].firstName}} {{course.authors[0].lastName}}
+                    <span
+                        class="icon-description"
+                        [translate]="'coursesPage.singleCourse.author'">
+                    </span>
+                    {{course.authors[0].firstName}} {{course.authors[0].lastName}}
                 </div>
                 <div class="course-duration">
                     <fa-icon [icon]="['far', 'clock']"></fa-icon>
-                    <span class="icon-description">Duration: </span>{{course.duration | duration}}
+                    <span
+                        class="icon-description"
+                        [translate]="'coursesPage.singleCourse.duration'">
+                    </span>{{ duration }}
                 </div>
                 <div class="course-date">
                     <fa-icon [icon]="['far', 'calendar-alt']"></fa-icon>
-                    <span class="icon-description">Date: </span>{{course.date | date:'mediumDate'}}
+                    <span
+                        class="icon-description"
+                        [translate]="'coursesPage.singleCourse.date'">
+                    </span>{{course.date | date: 'mediumDate' : undefined : locale }}
                 </div>
             </div>
         </div>

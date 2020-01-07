@@ -1,0 +1,77 @@
+{
+    "coursesPage": {
+        "coursesNumber": "Количество курсов: {{ number }}",
+        "noCoursesError": "выбранные курсы не найдены, вы можете добавить новый курс самостоятельно",
+        "findOrAddCourseMessage": "Найти или добавить курс ...",
+        "addCourse": "+ Добавить курс",
+        "loadMore": "Загрузить еще",
+        "breadcrumb": "курсы",
+        "singleCourse": {
+            "author": "Автор: ",
+            "duration": "Продолжительность: ",
+            "date": "Дата: "
+        }
+    },
+    "loginPage": {
+        "title": "Добро пожаловать",
+        "greetings": "В глобальную менторинг программу Angular, здесь вы можете найти курсы необходимые для старта собственного Angular приложения.",
+        "login": "Вход",
+        "externalLogin": "Вход через EPAM",
+        "separator": "или",
+        "errorMessage": {
+            "email": "Пожалуйста, введите вашу почту.",
+            "password": "Пожалуйста, введите ваш пароль."
+        },
+        "placeholders": {
+            "email": "Почта",
+            "password": "Пароль"
+        },
+        "rememberMe": "Запомнить меня",
+        "forgotPassword": "Забыли пароль?"
+    },
+    "notFoundPage": {
+
+    },
+    "courseManipulationPage": {
+        "addCourse": "добавить курс",
+        "title": "заголовок",
+        "description": "описание",
+        "date": "дата",
+        "duration": "продолжительность",
+        "authors": "авторы",
+        "uploadFile": "Загрузить видео файл",
+        "dragAndDropMessage": "Перетащите файлы сюда (не работает на данный момент)",
+        "separator": "или",
+        "choseFiles": "выберите файлы",
+        "mandatoryFields": "* Обязательные поля",
+        "cancel": "отменить",
+        "save": "сохранить",
+        "errorMessages": {
+            "title": "Пожалуйста, добавьте любой заголовок не длиннее чем {{ maxTitleLength }} символов.",
+            "description": "Пожалуйста, добавьте любое описание не длиннее чем {{ maxDescriptionLength }} символов.",
+            "date": "Пожалуйста, заполните дату в правильном формате - дд/мм/гггг.",
+            "duration": "Пожалуйста установите продолжительность между {{ minDuration }} и {{ maxDuration }} минутами.",
+            "authors": "Пожалуйста добавьте хотя бы одного автора."
+        },
+        "placeholders": {
+            "title": "Введите название курса",
+            "description": "Введите описание курса",
+            "date": "дд/мм/гггг",
+            "duration": "Введите продолжительность курса",
+            "authors": "Добавьте авторов курса",
+            "hoursPostfix": "ч",
+            "minutesPostfix": "мин"
+        }
+    },
+    "header": {
+        "appName": "видео курсы",
+        "logout": "Выход"
+    },
+    "modals": {
+        "deleteConfirmation": {
+            "title": "Вы действительно хотите удалить этот курс?",
+            "yes": "Да",
+            "no": "Нет"
+        }
+    }
+}
