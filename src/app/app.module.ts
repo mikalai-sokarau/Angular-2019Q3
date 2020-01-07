@@ -1,7 +1,7 @@
 import { LoginModule } from './pages/login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +15,9 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateModule } from '@ngx-translate/core';
-import { translateLoader } from './app.config';
+import { translateLoader, APP_LANGUAGES } from './app.config';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
 
 const metaReducers: MetaReducer[] = [];
 const reducers: ActionReducerMap<any> = {};
@@ -55,4 +57,8 @@ const storeModuleConfig: RootStoreConfig<any, any> = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    registerLocaleData(localeRu, APP_LANGUAGES.RUSSIAN);
+  }
+}

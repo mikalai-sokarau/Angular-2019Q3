@@ -5,7 +5,12 @@
         "findOrAddCourseMessage": "Найти или добавить курс ...",
         "addCourse": "+ Добавить курс",
         "loadMore": "Загрузить еще",
-        "breadcrumb": "курсы"
+        "breadcrumb": "курсы",
+        "singleCourse": {
+            "author": "Автор: ",
+            "duration": "Продолжительность: ",
+            "date": "Дата: "
+        }
     },
     "loginPage": {
         "title": "Добро пожаловать",

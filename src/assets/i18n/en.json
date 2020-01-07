@@ -5,7 +5,12 @@
         "findOrAddCourseMessage": "Find or add courses ...",
         "addCourse": "+ Add course",
         "loadMore": "Load more",
-        "breadcrumb": "courses"
+        "breadcrumb": "courses",
+        "singleCourse": {
+            "author": "Author: ",
+            "duration": "Duration: ",
+            "date": "Date: "
+        }
     },
     "loginPage": {
         "title": "Welcome",
