@@ -13,7 +13,8 @@
     "server-build": "nest build -c server/nest-cli.json -p server/tsconfig.json",
     "server-start:dev": "nest start -c server/nest-cli.json -p server/tsconfig.json --watch",
     "server-start:prod": "node dist/server/main",
-    "server-lint": "tslint -p tsconfig.json -c tslint.json"
+    "server-lint": "tslint -p tsconfig.json -c tslint.json",
+    "squash-test": "01"
   },
   "private": true,
   "dependencies": {
